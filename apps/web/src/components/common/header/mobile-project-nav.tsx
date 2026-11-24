@@ -1,7 +1,7 @@
 import { Check, ChevronsUpDown, Plus } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Popover,
   PopoverContent,
@@ -43,8 +43,8 @@ export default function MobileProjectNav({
       <PopoverTrigger
         render={
           <Button
-            variant="ghost"
-            size="sm"
+            variant="minimal"
+            size="small"
             aria-label={t("navigation:projectList.switcherLabel")}
             className="h-8 min-w-0 max-w-full gap-1.5 px-2"
           />

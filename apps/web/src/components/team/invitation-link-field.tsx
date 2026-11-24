@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useCopyInvitationLink } from "@/hooks/use-copy-invitation-link";
 import { buildInvitationLink } from "@/lib/invitation-link";
-import { Button } from "../ui/button";
+import { Button } from "@blueprintjs/core";
 import { Input } from "../ui/input";
 
 type Props = {
@@ -27,8 +27,8 @@ function InvitationLinkField({ invitationId }: Props) {
       />
       <Button
         type="button"
-        variant="outline"
-        size="sm"
+        variant="outlined"
+        size="small"
         className="shrink-0 gap-1.5"
         onClick={() => copy(invitationId, inputRef.current)}
       >

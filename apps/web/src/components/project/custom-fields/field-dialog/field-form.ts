@@ -85,17 +85,17 @@ export function setMultiple(state: FieldFormState, multiple: boolean) {
   if (multiple === state.multiple) return state;
   return multiple
     ? {
-        ...state,
-        multiple,
-        defaultValue: "",
-        defaultValues: state.defaultValue ? [state.defaultValue] : [],
-      }
+      ...state,
+      multiple,
+      defaultValue: "",
+      defaultValues: state.defaultValue ? [state.defaultValue] : [],
+    }
     : {
-        ...state,
-        multiple,
-        defaultValue: state.defaultValues[0] ?? "",
-        defaultValues: [],
-      };
+      ...state,
+      multiple,
+      defaultValue: state.defaultValues[0] ?? "",
+      defaultValues: [],
+    };
 }
 
 export function addOption(state: FieldFormState, raw: string) {
@@ -158,13 +158,13 @@ export function moveOption(state: FieldFormState, from: number, to: number) {
   return { ...state, options: moveItem(state.options, from, to) };
 }
 
-export function toApiType(state: FieldFormState): CustomFieldType {
+function toApiType(state: FieldFormState): CustomFieldType {
   return state.kind === "dropdown" && state.multiple
     ? "multiselect"
     : state.kind;
 }
 
-export function toApiDefault(state: FieldFormState): string | null {
+function toApiDefault(state: FieldFormState): string | null {
   if (toApiType(state) === "multiselect") {
     return state.defaultValues.length > 0
       ? JSON.stringify(state.defaultValues)

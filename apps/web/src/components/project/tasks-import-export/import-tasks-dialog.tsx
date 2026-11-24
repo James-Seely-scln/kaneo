@@ -6,7 +6,7 @@ import {
   isJsonFile,
   parseTasksImport,
 } from "@/components/project/tasks-import-export/tasks-import-file";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Dialog,
   DialogClose,

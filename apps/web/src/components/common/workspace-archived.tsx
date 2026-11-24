@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArchiveIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import PageTitle from "@/components/page-title";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Empty,
   EmptyContent,
@@ -35,7 +35,7 @@ export default function WorkspaceArchived() {
       </EmptyHeader>
       <EmptyContent>
         <div className="flex flex-wrap justify-center gap-2">
-          <Button variant="outline" render={<Link to="/dashboard" />}>
+          <Button variant="outlined" render={<Link to="/dashboard" />}>
             {t("workspace:archived.otherWorkspaces")}
           </Button>
           {can("workspaces:archive") ? (

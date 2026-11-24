@@ -20,7 +20,7 @@ export function isSupportedImageFile(file: File) {
   return allowedImageMimeTypes.has(file.type.toLowerCase());
 }
 
-export function isSupportedTaskAsset(file: File) {
+function isSupportedTaskAsset(file: File) {
   return file.size > 0;
 }
 

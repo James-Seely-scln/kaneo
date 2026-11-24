@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { SortConfig } from "@/lib/sort-tasks";
 import { useUserPreferencesStore } from "@/store/user-preferences";
 import { CardFieldToggles } from "./card-field-toggles";

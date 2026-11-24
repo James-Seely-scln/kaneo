@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SettingsRow } from "@/components/settings/settings-row";
 import { StatusBadge } from "@/components/settings/status-badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { ChannelAvailabilityMap } from "../notification-channels";
 import { getWorkspaceRuleSummary } from "./get-workspace-rule-summary";
 import { WorkspaceRuleDialog } from "./workspace-rule-dialog";
@@ -47,11 +47,11 @@ export function WorkspaceRuleRow({
           aria-label={
             rule
               ? t("settings:notificationsPage.configureWorkspace", {
-                  workspaceName: workspace.name,
-                })
+                workspaceName: workspace.name,
+              })
               : t("settings:notificationsPage.setUpWorkspace", {
-                  workspaceName: workspace.name,
-                })
+                workspaceName: workspace.name,
+              })
           }
           className="w-24"
           onClick={() => setOpen(true)}

@@ -17,7 +17,7 @@ type ColumnProps = {
   animateEntries?: boolean;
 };
 
-export const columnVariants = cva(
+const columnVariants = cva(
   "group relative flex h-full min-h-0 w-full flex-col rounded-xl transition-colors duration-150",
   {
     defaultVariants: {

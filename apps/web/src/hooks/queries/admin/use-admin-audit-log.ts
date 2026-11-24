@@ -4,7 +4,6 @@ import { getAdminAuditLog } from "@/fetchers/admin/get-admin-audit-log";
 
 export {
   ADMIN_AUDIT_LOG_PAGE_SIZE,
-  type AdminAuditLogEntry,
 } from "@/fetchers/admin/audit-log-types";
 
 export const ADMIN_AUDIT_LOG_QUERY_KEY = ["admin", "audit-log"] as const;

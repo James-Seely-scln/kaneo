@@ -15,7 +15,7 @@ import {
   normalizeDeviceCode,
 } from "@/components/auth/device-code";
 import PageTitle from "@/components/page-title";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "@/lib/toast";
 

@@ -17,7 +17,7 @@ import { useSaveGitlabIntegration } from "@/components/project/gitlab-integratio
 import { IntegrationPanel } from "@/components/project/integrations/panel/integration-panel";
 import { IntegrationPanelFooter } from "@/components/project/integrations/panel/integration-panel-footer";
 import { IntegrationSteps } from "@/components/project/integrations/panel/integration-steps";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type GitlabSetupPanelProps = {
   projectId: string;
@@ -41,11 +41,11 @@ export function GitlabSetupPanel({ projectId }: GitlabSetupPanelProps) {
   const access =
     urlValid && pathValid && trimmedToken
       ? {
-          baseUrl: trimmedUrl,
-          accessToken: trimmedToken,
-          tokenType,
-          projectPath,
-        }
+        baseUrl: trimmedUrl,
+        accessToken: trimmedToken,
+        tokenType,
+        projectPath,
+      }
       : null;
   const verification = useGitlabVerification(projectId, access);
   const verified = isAccessVerified(verification.result);

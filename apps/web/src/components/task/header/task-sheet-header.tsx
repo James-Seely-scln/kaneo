@@ -2,7 +2,7 @@ import type { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-d
 import { ChevronDown, ChevronRight, Maximize2, X } from "lucide-react";
 import type { Ref } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { ShortcutTooltipLabel } from "@/components/shortcuts/shortcut-tooltip-label";
 import {
   Tooltip,

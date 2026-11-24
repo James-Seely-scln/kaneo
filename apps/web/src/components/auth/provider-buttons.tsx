@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { cn } from "@/lib/cn";
 import type { AuthProvider } from "./auth-methods";
 import { ProviderIcon } from "./provider-icon";
@@ -38,7 +38,7 @@ export function ProviderButtons({
       className={cn(
         "grid gap-2",
         layout === "compact" &&
-          (compactColumns[providers.length] ?? "grid-cols-2"),
+        (compactColumns[providers.length] ?? "grid-cols-2"),
       )}
     >
       {providers.map((provider) => {
@@ -49,7 +49,7 @@ export function ProviderButtons({
           <div key={provider} className="relative min-w-0">
             <Button
               variant={primary ? "default" : "outline"}
-              size="lg"
+              size="large"
               className={cn(
                 "w-full",
                 isLastUsed && "border-foreground/50 dark:border-foreground/50",

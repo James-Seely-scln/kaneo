@@ -5,7 +5,7 @@ import { ConfirmDialog } from "@/components/settings/confirm-dialog";
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsRowsSkeleton } from "@/components/settings/settings-rows-skeleton";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { ActiveSession } from "@/fetchers/user/session-types";
 import useRevokeOtherSessions from "@/hooks/mutations/user/use-revoke-other-sessions";
 import useRevokeUserSession from "@/hooks/mutations/user/use-revoke-user-session";
@@ -54,8 +54,8 @@ export function ActiveSessionsSettings() {
         hasOthers ? (
           <Button
             type="button"
-            variant="outline"
-            size="sm"
+            variant="outlined"
+            size="small"
             onClick={() => setConfirmOthers(true)}
           >
             {t("settings:securityPage.sessions.revokeOthers")}

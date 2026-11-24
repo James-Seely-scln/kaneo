@@ -1,6 +1,6 @@
 import { CopyIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { toast } from "@/lib/toast";
 
 type CopyValueButtonProps = {
@@ -27,8 +27,8 @@ export function CopyValueButton({ value, label }: CopyValueButtonProps) {
   return (
     <Button
       type="button"
-      variant="outline"
-      size="icon"
+      variant="outlined"
+      size="small"
       aria-label={label}
       onClick={copy}
     >

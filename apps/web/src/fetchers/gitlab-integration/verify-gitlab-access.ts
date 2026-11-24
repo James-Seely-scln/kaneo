@@ -6,7 +6,7 @@ export type VerifyGitlabAccessRequest = InferRequestType<
   (typeof client)["gitlab-integration"]["verify"]["$post"]
 >["json"];
 
-export type VerifyGitlabAccessResponse = InferResponseType<
+type VerifyGitlabAccessResponse = InferResponseType<
   (typeof client)["gitlab-integration"]["verify"]["$post"],
   200
 >;

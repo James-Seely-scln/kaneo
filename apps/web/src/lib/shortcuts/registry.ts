@@ -72,7 +72,7 @@ export function createShortcutRegistry(isMac: boolean, sequenceTimeout = 2000) {
   const best = (candidates: Entry[]) =>
     candidates.reduce((winner, entry) =>
       RANK[entry.scope] > RANK[winner.scope] ||
-      (RANK[entry.scope] === RANK[winner.scope] && entry.token > winner.token)
+        (RANK[entry.scope] === RANK[winner.scope] && entry.token > winner.token)
         ? entry
         : winner,
     );
@@ -200,7 +200,5 @@ export function createShortcutRegistry(isMac: boolean, sequenceTimeout = 2000) {
     },
   };
 }
-
-export type ShortcutRegistry = ReturnType<typeof createShortcutRegistry>;
 
 export const shortcutRegistry = createShortcutRegistry(isMacPlatform());

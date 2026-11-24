@@ -1,6 +1,6 @@
 import { TriangleAlert } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { useGetBilling } from "@/hooks/queries/billing/use-get-billing";
 import { useOpenWorkspaceBilling } from "@/hooks/use-open-workspace-billing";
 import { useWorkspacePermission } from "@/hooks/use-workspace-permission";
@@ -46,7 +46,7 @@ export function TrialExpiredCallout({
       </div>
       {isAdmin ? (
         <Button
-          size="sm"
+          size="small"
           className="shrink-0"
           disabled={billingLink.isOpening}
           onClick={billingLink.open}

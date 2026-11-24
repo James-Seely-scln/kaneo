@@ -1,4 +1,4 @@
-export const priorityColorsFilter = {
+const priorityColorsFilter = {
   low: "text-info-foreground",
   medium: "text-warning-foreground/85",
   high: "text-warning-foreground",

@@ -5,7 +5,7 @@ import { ConfirmDialog } from "@/components/settings/confirm-dialog";
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsRowsSkeleton } from "@/components/settings/settings-rows-skeleton";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { AdminApiKey } from "@/fetchers/admin/get-admin-user-api-keys";
 import type { AdminUser } from "@/fetchers/admin/types";
 import useRevokeAdminUserApiKey from "@/hooks/mutations/admin/use-revoke-admin-user-api-key";
@@ -44,8 +44,8 @@ export function UserApiKeysSection({ user }: { user: AdminUser }) {
           </p>
           <Button
             type="button"
-            variant="ghost"
-            size="sm"
+            variant="minimal"
+            size="small"
             onClick={() => refetch()}
           >
             {t("settings:adminUsers.retry")}

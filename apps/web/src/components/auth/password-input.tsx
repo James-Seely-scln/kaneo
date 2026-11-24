@@ -1,7 +1,7 @@
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { InputProps } from "@/components/ui/input";
 import {
   InputGroup,
@@ -22,8 +22,8 @@ export function PasswordInput(props: Omit<InputProps, "type">) {
       />
       <InputGroupAddon align="inline-end">
         <Button
-          variant="ghost"
-          size="icon-xs"
+          variant="minimal"
+          size="small"
           className="text-muted-foreground hover:text-foreground"
           aria-label={
             visible

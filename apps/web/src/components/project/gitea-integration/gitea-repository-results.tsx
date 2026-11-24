@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { RepositoryPickerMessage } from "@/components/project/code-hosting/picker/repository-picker-message";
 import { RepositoryPickerRow } from "@/components/project/code-hosting/picker/repository-picker-row";
 import { RepositoryPickerSkeleton } from "@/components/project/code-hosting/picker/repository-picker-skeleton";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { ListGiteaRepositoriesResponse } from "@/fetchers/gitea-integration/list-gitea-repositories";
 
 type GiteaRepository = ListGiteaRepositoriesResponse["repositories"][number];

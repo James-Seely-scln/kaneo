@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { PreferenceSwitchRow } from "@/components/settings/preferences/preference-switch-row";
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { useUserPreferencesStore } from "@/store/user-preferences";
 
 export function TaskDetailsSection() {

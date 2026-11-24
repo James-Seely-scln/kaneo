@@ -44,10 +44,3 @@ export const dueDateStatusColors = {
   "far-future": "bg-muted/50 text-muted-foreground",
   "no-due-date": "bg-muted/50 text-muted-foreground",
 } as const;
-
-export const dueDateStatusIcons = {
-  overdue: "calendar-x",
-  "due-soon": "calendar-clock",
-  "far-future": "calendar",
-  "no-due-date": "calendar",
-} as const;

@@ -19,7 +19,7 @@ import { FieldSettingsBox } from "@/components/project/custom-fields/field-dialo
 import { FieldTypePicker } from "@/components/project/custom-fields/field-dialog/field-type-picker";
 import type { CustomFieldDefinition } from "@/components/project/custom-fields/types";
 import { errorMessage } from "@/components/project/error-message";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Dialog,
   DialogDescription,
@@ -123,8 +123,8 @@ export function CustomFieldDialog({
             <DialogDescription>
               {projectName
                 ? t("settings:customFields.dialogDescription", {
-                    project: projectName,
-                  })
+                  project: projectName,
+                })
                 : t("settings:customFields.dialogDescriptionFallback")}
             </DialogDescription>
           </DialogHeader>
@@ -186,9 +186,9 @@ export function CustomFieldDialog({
                   onToggleHidden={
                     field
                       ? (option) =>
-                          setForm((current) =>
-                            toggleOptionHidden(current, option),
-                          )
+                        setForm((current) =>
+                          toggleOptionHidden(current, option),
+                        )
                       : undefined
                   }
                 />

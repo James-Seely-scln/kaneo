@@ -8,7 +8,7 @@ import {
   RowActionsMenu,
 } from "@/components/settings/row-actions-menu";
 import { SettingsRow } from "@/components/settings/settings-row";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { cn } from "@/lib/cn";
 
 type LabelRowProps = {

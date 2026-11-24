@@ -12,7 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { ContextMenu, ContextMenuTrigger } from "@/components/ui/context-menu";
 import { CardFieldList } from "@/components/custom-fields/card-field-list";
 import { CheckboxMark } from "@/components/custom-fields/checkbox-mark";
@@ -144,7 +144,7 @@ function TaskCardContent({
                 ? "border-board-card-border-hover bg-board-card shadow-[0_8px_24px_rgb(0_0_0/0.12)]"
                 : !isTaskFocused && "hover:border-board-card-border-hover",
               isTaskSelected &&
-                "border-board-card-selected-border bg-board-card-selected",
+              "border-board-card-selected-border bg-board-card-selected",
               isTaskFocused && "border-board-card-focus",
             )}
           >
@@ -176,7 +176,7 @@ function TaskCardContent({
                     avatarFallbackClassName={cn(
                       isTaskSelected && "bg-avatar-selected",
                       taskIsCompleted &&
-                        "bg-avatar-done text-avatar-foreground-done",
+                      "bg-avatar-done text-avatar-foreground-done",
                     )}
                   />
                 )}
@@ -245,14 +245,14 @@ function TaskCardContent({
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogClose render={<Button variant="outline" size="sm" />}>
+              <AlertDialogClose render={<Button variant="outlined" size="small" />}>
                 {t("common:actions.cancel")}
               </AlertDialogClose>
               <AlertDialogClose
                 render={
                   <Button
-                    variant="destructive"
-                    size="sm"
+                    intent="danger"
+                    size="small"
                     onClick={handleDeleteTask}
                   />
                 }

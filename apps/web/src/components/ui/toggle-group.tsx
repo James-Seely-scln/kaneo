@@ -4,7 +4,6 @@ import type { Toggle as TogglePrimitive } from "@base-ui/react/toggle";
 import { ToggleGroup as ToggleGroupPrimitive } from "@base-ui/react/toggle-group";
 import type { VariantProps } from "class-variance-authority";
 import * as React from "react";
-import { Separator } from "@/components/ui/separator";
 import {
   Toggle as ToggleComponent,
   type toggleVariants,
@@ -79,23 +78,4 @@ function Toggle({
   );
 }
 
-function ToggleGroupSeparator({
-  className,
-  orientation = "vertical",
-  ...props
-}: {
-  className?: string;
-} & React.ComponentProps<typeof Separator>) {
-  return (
-    <Separator
-      className={cn(
-        "pointer-events-none relative bg-input before:absolute before:inset-0 dark:before:bg-input/32",
-        className,
-      )}
-      orientation={orientation}
-      {...props}
-    />
-  );
-}
-
-export { Toggle, Toggle as ToggleGroupItem, ToggleGroup, ToggleGroupSeparator };
+export { Toggle as ToggleGroupItem, ToggleGroup };

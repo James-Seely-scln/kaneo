@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Input } from "@/components/ui/input";
 import { authMessageClassName } from "@/components/auth/auth-form-styles";
 import { Label } from "@/components/ui/label";
@@ -53,8 +53,8 @@ export function InviteEmailField({
         {removable ? (
           <Button
             type="button"
-            variant="ghost"
-            size="icon"
+            variant="minimal"
+            size="small"
             className="shrink-0"
             disabled={disabled}
             aria-label={t("auth:onboarding.cloud.invite.remove", {

@@ -1,35 +1,21 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
+import {
+  Breadcrumbs,
+  Button,
+  Dialog,
+  InputGroup,
+  PopoverNext,
+  type BreadcrumbProps,
+} from "@blueprintjs/core";
 import { SquarePlusIcon } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import icons from "@/constants/project-icons";
 import useCreateProject from "@/hooks/mutations/project/use-create-project";
 import { prefetchBoard } from "@/hooks/queries/task/prefetch-board";
 import useActiveWorkspace from "@/hooks/queries/workspace/use-active-workspace";
 import { useCanImport } from "@/hooks/use-can-import";
-import { cn } from "@/lib/cn";
 import generateProjectSlug from "@/lib/generate-project-id";
 import { toast } from "@/lib/toast";
 
@@ -110,58 +96,52 @@ function CreateProjectModal({ open, onClose }: CreateProjectModalProps) {
     setSlug(generateProjectSlug(newName));
   };
 
-  return (
-    <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-md" showCloseButton={false}>
-        <DialogHeader className="px-3 pt-4 pb-1 gap-1.5">
-          <DialogTitle className="sr-only">
-            {t("common:modals.createProject.title")}
-          </DialogTitle>
-          <Breadcrumb>
-            <BreadcrumbList className="gap-1 text-xs">
-              <BreadcrumbItem className="text-muted-foreground font-medium tracking-wide">
-                {workspace?.name?.toUpperCase() ||
-                  t("common:modals.createProject.workspaceFallback")}
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="[&>svg]:size-3.5" />
-              <BreadcrumbItem className="text-foreground font-medium">
-                {t("common:modals.createProject.breadcrumbNew")}
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-          <DialogDescription className="sr-only">
-            {t("common:modals.createProject.description")}
-          </DialogDescription>
-        </DialogHeader>
+  const breadcrumbItems: BreadcrumbProps[] = [
+    {
+      text:
+        workspace?.name?.toUpperCase() ||
+        t("common:modals.createProject.workspaceFallback"),
+    },
+    {
+      text: t("common:modals.createProject.breadcrumbNew"),
+      current: true,
+    },
+  ];
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-6 px-3 pt-2">
-            <Popover
-              open={iconPopoverOpen}
-              onOpenChange={(open) => {
-                setIconPopoverOpen(open);
-                if (!open) setIconSearch("");
-              }}
-              modal={true}
-            >
-              <PopoverTrigger asChild>
-                <Button
-                  type="button"
-                  variant="outline"
-                  size="icon-sm"
-                  className="h-8 w-8 p-0"
-                  title={t("common:modals.createProject.pickIcon")}
-                >
-                  <SelectedIcon className="h-4 w-4" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-64 p-2" align="start">
+  return (
+    <Dialog
+      isOpen={open}
+      onClose={handleClose}
+      style={{ maxWidth: 448 }}
+      aria-label={t("common:modals.createProject.title")}
+      aria-describedby="create-project-desc"
+    >
+      <span id="create-project-desc" className="sr-only">
+        {t("common:modals.createProject.description")}
+      </span>
+
+      <div className="px-3 pt-4 pb-1">
+        <Breadcrumbs items={breadcrumbItems} className="text-xs" />
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-6 px-3 pt-2">
+          <PopoverNext
+            isOpen={iconPopoverOpen}
+            onInteraction={(nextOpenState) => {
+              setIconPopoverOpen(nextOpenState);
+              if (!nextOpenState) setIconSearch("");
+            }}
+            placement="bottom-start"
+            content={
+              <div className="w-64 p-2">
                 <div className="space-y-2">
-                  <Input
+                  <InputGroup
                     value={iconSearch}
                     onChange={(e) => setIconSearch(e.target.value)}
                     placeholder={t("common:modals.createProject.searchIcons")}
-                    className="h-8 text-base sm:text-xs"
+                    size="small"
+                    fill
                   />
                   <div className="max-h-[280px] overflow-y-auto pr-1">
                     <div className="grid grid-cols-6 gap-1.5">
@@ -170,100 +150,97 @@ function CreateProjectModal({ open, onClose }: CreateProjectModalProps) {
                         return (
                           <Button
                             key={iconName}
-                            type="button"
-                            variant="ghost"
-                            size="sm"
+                            variant="minimal"
+                            intent={isSelected ? "primary" : undefined}
                             onClick={() => {
                               setSelectedIcon(iconName);
                               setIconPopoverOpen(false);
                               setIconSearch("");
                             }}
-                            className={cn(
-                              "h-10 items-center justify-center rounded-md p-0",
-                              isSelected &&
-                                "bg-sidebar-accent text-sidebar-accent-foreground",
-                            )}
+                            className="h-10 w-10 p-0"
                             title={iconName}
-                          >
-                            <Icon className="h-4 w-4" />
-                          </Button>
+                            icon={<Icon className="h-4 w-4" />}
+                          />
                         );
                       })}
                     </div>
                   </div>
                 </div>
-              </PopoverContent>
-            </Popover>
-
-            <Input
-              unstyled
-              value={name}
-              onChange={handleNameChange}
-              autoFocus
-              placeholder={t("common:modals.createProject.projectName")}
-              className="w-full [&_[data-slot=input]]:h-auto [&_[data-slot=input]]:px-0 [&_[data-slot=input]]:py-2 [&_[data-slot=input]]:text-2xl [&_[data-slot=input]]:leading-tight [&_[data-slot=input]]:font-semibold [&_[data-slot=input]]:tracking-tight [&_[data-slot=input]]:text-foreground [&_[data-slot=input]]:placeholder:text-muted-foreground [&_[data-slot=input]]:outline-none"
-              required
-            />
-          </div>
-
-          <div className="space-y-3 px-3">
-            <div className="flex items-center gap-3 p-3 rounded-xl bg-muted/50 border border-border">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-muted-foreground">
-                  {t("common:modals.createProject.keyLabel")}
-                </span>
-                <Input
-                  id="project-key"
-                  value={slug}
-                  onChange={(e) => setSlug(e.target.value)}
-                  placeholder="PRO"
-                  maxLength={8}
-                  className="w-20 h-8 text-center font-semibold text-base sm:text-sm bg-background border-border rounded-lg transition-colors duration-150"
-                  required
-                />
               </div>
-              <div className="flex-1 text-xs text-muted-foreground opacity-80">
-                {t("common:modals.createProject.keyHint", {
-                  example: slug || "ABC",
-                })}
-              </div>
-            </div>
-            {canImport && (
-              <p className="text-muted-foreground text-xs">
-                {t("settings:workspaceImport.entry.createProjectPrompt")}{" "}
-                <Link
-                  to="/dashboard/settings/workspace/import"
-                  onClick={handleClose}
-                  className="font-medium text-foreground underline-offset-4 hover:underline"
-                >
-                  {t("settings:workspaceImport.entry.createProjectLink")}
-                </Link>
-              </p>
+            }
+            renderTarget={(props) => (
+              <Button
+                {...props}
+                title={t("common:modals.createProject.pickIcon")}
+                icon={<SelectedIcon className="h-4 w-4" />}
+              />
             )}
-          </div>
+          />
 
-          <DialogFooter>
-            <Button
-              type="button"
-              onClick={handleClose}
-              variant="outline"
-              size="sm"
-              className="border-border text-foreground hover:bg-accent"
-            >
-              {t("common:actions.cancel")}
-            </Button>
-            <Button
-              type="submit"
-              disabled={!name.trim() || !slug.trim()}
-              loading={isSubmitting}
-              size="sm"
-              className="bg-primary hover:bg-primary/90  disabled:opacity-50"
-            >
-              {t("common:modals.createProject.createButton")}
-            </Button>
-          </DialogFooter>
-        </form>
-      </DialogContent>
+          <InputGroup
+            value={name}
+            onChange={handleNameChange}
+            autoFocus
+            placeholder={t("common:modals.createProject.projectName")}
+            size="large"
+            fill
+            required
+            inputClassName="!text-2xl !font-semibold !tracking-tight !bg-transparent !border-0 !shadow-none !px-0"
+          />
+        </div>
+
+        <div className="space-y-3 px-3">
+          <div className="flex items-center gap-3 p-3 rounded-xl bg-muted/50 border border-border">
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-medium text-muted-foreground">
+                {t("common:modals.createProject.keyLabel")}
+              </span>
+              <InputGroup
+                id="project-key"
+                value={slug}
+                onChange={(e) => setSlug(e.target.value)}
+                placeholder="PRO"
+                maxLength={8}
+                className="w-20"
+                inputClassName="!text-center !font-semibold"
+                required
+              />
+            </div>
+            <div className="flex-1 text-xs text-muted-foreground opacity-80">
+              {t("common:modals.createProject.keyHint", {
+                example: slug || "ABC",
+              })}
+            </div>
+          </div>
+          {canImport && (
+            <p className="text-muted-foreground text-xs">
+              {t("settings:workspaceImport.entry.createProjectPrompt")}{" "}
+              <Link
+                to="/dashboard/settings/workspace/import"
+                onClick={handleClose}
+                className="font-medium text-foreground underline-offset-4 hover:underline"
+              >
+                {t("settings:workspaceImport.entry.createProjectLink")}
+              </Link>
+            </p>
+          )}
+        </div>
+
+        <div className="flex justify-end gap-2 px-3 pb-3">
+          <Button onClick={handleClose} size="small">
+            {t("common:actions.cancel")}
+          </Button>
+          <Button
+            type="submit"
+            disabled={!name.trim() || !slug.trim()}
+            loading={isSubmitting}
+            size="small"
+            intent="primary"
+          >
+            {t("common:modals.createProject.createButton")}
+          </Button>
+        </div>
+      </form>
     </Dialog>
   );
 }

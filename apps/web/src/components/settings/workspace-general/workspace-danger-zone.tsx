@@ -7,7 +7,7 @@ import { ConfirmDialog } from "@/components/settings/confirm-dialog";
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsRow } from "@/components/settings/settings-row";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useDeleteWorkspace from "@/hooks/mutations/workspace/use-delete-workspace";
 import { toast } from "@/lib/toast";
 

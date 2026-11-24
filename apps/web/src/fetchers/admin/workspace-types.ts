@@ -4,7 +4,7 @@ import type { getAdminWorkspaces } from "./get-admin-workspaces";
 export const ADMIN_WORKSPACES_PAGE_SIZE = 20;
 export const ADMIN_WORKSPACES_SEARCH_MAX_LENGTH = 200;
 
-export type AdminWorkspacesResult = Awaited<
+type AdminWorkspacesResult = Awaited<
   ReturnType<typeof getAdminWorkspaces>
 >;
 

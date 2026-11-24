@@ -2,7 +2,7 @@ import { client } from "@kaneo/libs";
 import type { InferRequestType } from "hono/client";
 import { HttpError } from "@/lib/http-error";
 
-export type DeleteProjectRequest = InferRequestType<
+type DeleteProjectRequest = InferRequestType<
   (typeof client)["project"][":id"]["$delete"]
 >["param"];
 

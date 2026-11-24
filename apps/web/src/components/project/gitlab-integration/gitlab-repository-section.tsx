@@ -6,7 +6,7 @@ import { StoredTokenRow } from "@/components/project/code-hosting/stored-token-r
 import { GitlabChangeToken } from "@/components/project/gitlab-integration/gitlab-change-token";
 import { IntegrationCheckLine } from "@/components/project/integrations/panel/integration-check-line";
 import { IntegrationPanelSection } from "@/components/project/integrations/panel/integration-panel-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { GitlabIntegration } from "@/fetchers/gitlab-integration/get-gitlab-integration";
 import { useUpdateGitlabIntegration } from "@/hooks/mutations/gitlab-integration/use-update-gitlab-integration";
 import { toast } from "@/lib/toast";

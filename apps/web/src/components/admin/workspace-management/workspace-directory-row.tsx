@@ -5,7 +5,7 @@ import {
   type RowAction,
   RowActionsMenu,
 } from "@/components/settings/row-actions-menu";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { AdminWorkspace } from "@/fetchers/admin/workspace-types";
 import { cn } from "@/lib/cn";
 import { formatDateMedium } from "@/lib/format";
@@ -34,31 +34,31 @@ export function WorkspaceDirectoryRow({
   const actions: RowAction[] = [
     ...(can("workspaces:archive")
       ? [
-          isArchived
-            ? {
-                id: "restore",
-                label: t("settings:adminWorkspaces.actions.restore"),
-                icon: ArchiveRestoreIcon,
-                onSelect: () => onAction("restore"),
-              }
-            : {
-                id: "archive",
-                label: t("settings:adminWorkspaces.actions.archive"),
-                icon: ArchiveIcon,
-                onSelect: () => onAction("archive"),
-              },
-        ]
+        isArchived
+          ? {
+            id: "restore",
+            label: t("settings:adminWorkspaces.actions.restore"),
+            icon: ArchiveRestoreIcon,
+            onSelect: () => onAction("restore"),
+          }
+          : {
+            id: "archive",
+            label: t("settings:adminWorkspaces.actions.archive"),
+            icon: ArchiveIcon,
+            onSelect: () => onAction("archive"),
+          },
+      ]
       : []),
     ...(can("workspaces:delete")
       ? [
-          {
-            id: "delete",
-            label: t("common:actions.delete"),
-            icon: Trash2Icon,
-            destructive: true,
-            onSelect: () => onAction("delete" as const),
-          },
-        ]
+        {
+          id: "delete",
+          label: t("common:actions.delete"),
+          icon: Trash2Icon,
+          destructive: true,
+          onSelect: () => onAction("delete" as const),
+        },
+      ]
       : []),
   ];
 
@@ -119,8 +119,8 @@ export function WorkspaceDirectoryRow({
       >
         <Button
           type="button"
-          variant="outline"
-          size="sm"
+          variant="outlined"
+          size="small"
           aria-label={t("settings:adminWorkspaces.manageLabel", {
             name: workspace.name,
           })}

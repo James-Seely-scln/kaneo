@@ -21,7 +21,7 @@ function nextWeekday(date: TZDate, interval: number, weekdays: number[]) {
   return addDays(addWeeks(date, interval), (days[0] ?? today) - today);
 }
 
-export function nextOccurrenceDate(date: Date, recurrence: TaskRecurrence) {
+function nextOccurrenceDate(date: Date, recurrence: TaskRecurrence) {
   const zoned = new TZDate(date.getTime(), recurrence.timeZone);
   const next =
     recurrence.frequency === "weekly" && recurrence.weekdays?.length

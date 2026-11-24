@@ -14,7 +14,7 @@ import {
   TaskPropertiesRailSkeleton,
 } from "@/components/task/task-page-skeleton";
 import { AlertDialogCreateHandle } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useGetActivitiesByTaskId from "@/hooks/queries/activity/use-get-activities-by-task-id";
 import useGetProject from "@/hooks/queries/project/use-get-project";
 import useGetTask from "@/hooks/queries/task/use-get-task";

@@ -4,7 +4,7 @@ import { RepositoryPickerMessage } from "@/components/project/code-hosting/picke
 import { RepositoryPickerRow } from "@/components/project/code-hosting/picker/repository-picker-row";
 import { RepositoryPickerSkeleton } from "@/components/project/code-hosting/picker/repository-picker-skeleton";
 import { GithubRepositoryMeta } from "@/components/project/github-integration/github-repository-meta";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { GithubRepository } from "@/fetchers/github-integration/list-repositories";
 import { openExternalWebUrl } from "@/lib/external-url";
 

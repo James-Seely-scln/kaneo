@@ -8,7 +8,7 @@ import {
   getCalendarLabelOptions,
 } from "@/components/project/calendar-feeds/get-calendar-label-options";
 import { calendarFeedsQueryKey } from "@/components/project/calendar-feeds/use-calendar-feeds";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   DialogDescription,
   DialogFooter,
@@ -107,7 +107,7 @@ export function NewCalendarFeedForm({
         </div>
       </DialogPanel>
       <DialogFooter>
-        <Button type="button" variant="outline" onClick={onClose}>
+        <Button type="button" variant="outlined" onClick={onClose}>
           {t("common:actions.cancel")}
         </Button>
         <Button

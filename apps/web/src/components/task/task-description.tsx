@@ -47,7 +47,7 @@ import {
 } from "react";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "@/components/providers/auth-provider";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Dialog, DialogPopup } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import {
@@ -460,8 +460,8 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
     );
   }, []);
 
-  const linkShortcutRef = useRef(() => {});
-  const attachShortcutRef = useRef(() => {});
+  const linkShortcutRef = useRef(() => { });
+  const attachShortcutRef = useRef(() => { });
   const editor = useEditor(
     {
       immediatelyRender: false,
@@ -996,9 +996,9 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
         setSlashMenu((value) =>
           value
             ? {
-                ...value,
-                selectedIndex: (value.selectedIndex + 1) % commands.length,
-              }
+              ...value,
+              selectedIndex: (value.selectedIndex + 1) % commands.length,
+            }
             : value,
         );
         return;
@@ -1009,10 +1009,10 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
         setSlashMenu((value) =>
           value
             ? {
-                ...value,
-                selectedIndex:
-                  (value.selectedIndex - 1 + commands.length) % commands.length,
-              }
+              ...value,
+              selectedIndex:
+                (value.selectedIndex - 1 + commands.length) % commands.length,
+            }
             : value,
         );
         return;
@@ -1386,7 +1386,7 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
                 className={cn(
                   "kaneo-tiptap-bubble-btn",
                   editor.isActive("heading", { level: 2 }) &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() =>
                   editor.chain().focus().toggleHeading({ level: 2 }).run()
@@ -1401,7 +1401,7 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
                 className={cn(
                   "kaneo-tiptap-bubble-btn",
                   editor.isActive("bulletList") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleBulletList().run()}
               >
@@ -1414,7 +1414,7 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
                 className={cn(
                   "kaneo-tiptap-bubble-btn",
                   editor.isActive("taskList") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleTaskList().run()}
               >
@@ -1427,7 +1427,7 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
                 className={cn(
                   "kaneo-tiptap-bubble-btn",
                   editor.isActive("orderedList") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleOrderedList().run()}
               >
@@ -1440,7 +1440,7 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
                 className={cn(
                   "kaneo-tiptap-bubble-btn",
                   editor.isActive("blockquote") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleBlockquote().run()}
               >
@@ -1453,7 +1453,7 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
                 className={cn(
                   "kaneo-tiptap-bubble-btn",
                   editor.isActive("codeBlock") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleCodeBlock().run()}
               >
@@ -1490,7 +1490,7 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
                 className={cn(
                   "kaneo-tiptap-bubble-btn",
                   editor.isActive("italic") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleItalic().run()}
               >
@@ -1503,7 +1503,7 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
                 className={cn(
                   "kaneo-tiptap-bubble-btn",
                   editor.isActive("underline") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleUnderline().run()}
               >
@@ -1516,7 +1516,7 @@ export default function TaskDescription({ taskId }: TaskDescriptionProps) {
                 className={cn(
                   "kaneo-tiptap-bubble-btn",
                   editor.isActive("strike") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleStrike().run()}
               >

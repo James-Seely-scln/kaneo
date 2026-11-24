@@ -2,7 +2,7 @@ import { client } from "@kaneo/libs";
 import type { InferResponseType } from "hono";
 import { HttpError } from "@/lib/http-error";
 
-export type GetImportRunsResponse = InferResponseType<
+type GetImportRunsResponse = InferResponseType<
   (typeof client)["import"]["runs"][":workspaceId"]["$get"],
   200
 >;

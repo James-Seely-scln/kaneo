@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { IntegrationPanelRow } from "@/components/project/integrations/panel/integration-panel-row";
 import { IntegrationPanelSection } from "@/components/project/integrations/panel/integration-panel-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type ImportIssuesSectionProps = {
   description: ReactNode;
@@ -31,8 +31,8 @@ export function ImportIssuesSection({
       >
         <Button
           type="button"
-          variant="outline"
-          size="sm"
+          variant="outlined"
+          size="small"
           onClick={onImport}
           disabled={pending || disabled}
         >

@@ -1,7 +1,7 @@
 import { CheckIcon, CopyIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { copyToClipboard } from "@/lib/copy-to-clipboard";
 import { toast } from "@/lib/toast";
 
@@ -28,7 +28,7 @@ export function CopyFeedLinkButton({ url }: { url: string }) {
   return (
     <Button
       type="button"
-      variant="outline"
+      variant="outlined"
       size="sm"
       className="w-24"
       onClick={handleCopy}

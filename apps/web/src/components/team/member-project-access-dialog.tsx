@@ -5,7 +5,7 @@ import useUpdateMemberProjectAccess from "@/hooks/mutations/workspace-user/use-u
 import useGetProjects from "@/hooks/queries/project/use-get-projects";
 import useGetMyProjectAccess from "@/hooks/queries/workspace-users/use-get-my-project-access";
 import { toast } from "@/lib/toast";
-import { Button } from "../ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Dialog,
   DialogClose,
@@ -111,12 +111,12 @@ function MemberProjectAccessDialog({
         </DialogPanel>
         <DialogFooter>
           <DialogClose
-            render={<Button variant="outline" size="sm" type="button" />}
+            render={<Button variant="outlined" size="small" type="button" />}
           >
             {t("common:actions.cancel")}
           </DialogClose>
           <Button
-            size="sm"
+            size="small"
             type="button"
             disabled={isPending || isLoadingProjects || myAccess.isPending}
             onClick={handleSave}

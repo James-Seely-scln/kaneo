@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { authMessageClassName } from "@/components/auth/auth-form-styles";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -62,7 +62,7 @@ export function WorkspaceStep({
           </p>
         ) : null}
       </div>
-      <Button type="submit" size="lg" className="self-start">
+      <Button type="submit" size="large" className="self-start">
         {t("auth:onboarding.continue")}
       </Button>
     </form>

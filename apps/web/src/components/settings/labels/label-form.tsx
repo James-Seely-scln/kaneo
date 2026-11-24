@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { LabelColorSwatches } from "@/components/settings/labels/label-color-swatches";
 import { LabelPreview } from "@/components/settings/labels/label-preview";
 import type { WorkspaceLabel } from "@/components/settings/labels/workspace-label";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   DialogDescription,
   DialogFooter,
@@ -65,10 +65,10 @@ export function LabelForm({ label, workspaceId, onClose }: LabelFormProps) {
         submitError instanceof Error
           ? submitError.message
           : t(
-              isEditing
-                ? "settings:workspaceLabels.updateError"
-                : "settings:workspaceLabels.createError",
-            ),
+            isEditing
+              ? "settings:workspaceLabels.updateError"
+              : "settings:workspaceLabels.createError",
+          ),
       );
     }
   };

@@ -40,7 +40,7 @@ import {
 } from "../ui/alert-dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
-import { Button } from "../ui/button";
+import { Button } from "@blueprintjs/core";
 import { Menu, MenuItem, MenuPopup, MenuTrigger } from "../ui/menu";
 import {
   Select,
@@ -146,8 +146,8 @@ function MembersTable({ workspaceId, invitations, users }: Props) {
     access.projectAccess === "all"
       ? t("team:projectAccess.allProjects")
       : t("team:projectAccess.projectCount", {
-          count: access.projectIds.length,
-        });
+        count: access.projectIds.length,
+      });
 
   const customRoles = allWorkspaceRoles.filter(
     (role) => !RESERVED_ROLE_NAMES.has(role.role),
@@ -356,8 +356,8 @@ function MembersTable({ workspaceId, invitations, users }: Props) {
                       "–"
                     ) : showAccessEdit ? (
                       <Button
-                        variant="ghost"
-                        size="sm"
+                        variant="minimal"
+                        size="small"
                         className="h-8 gap-1.5 px-2 text-muted-foreground"
                         aria-label={t("team:projectAccess.editAria", {
                           name: memberName,
@@ -389,8 +389,8 @@ function MembersTable({ workspaceId, invitations, users }: Props) {
                       <MenuTrigger
                         render={
                           <Button
-                            variant="ghost"
-                            size="icon"
+                            variant="minimal"
+                            size="small"
                             className="h-8 w-8 text-muted-foreground"
                             aria-label={t("team:membersTable.ariaRemoveMember")}
                           />
@@ -436,9 +436,9 @@ function MembersTable({ workspaceId, invitations, users }: Props) {
                     <div className="text-xs text-muted-foreground">
                       {invitation.expiresAt
                         ? t("team:invitations.expires", {
-                            defaultValue: "Expires {{date}}",
-                            date: formatDateMedium(invitation.expiresAt),
-                          })
+                          defaultValue: "Expires {{date}}",
+                          date: formatDateMedium(invitation.expiresAt),
+                        })
                         : "–"}
                     </div>
                   </div>
@@ -465,8 +465,8 @@ function MembersTable({ workspaceId, invitations, users }: Props) {
                     <MenuTrigger
                       render={
                         <Button
-                          variant="ghost"
-                          size="icon"
+                          variant="minimal"
+                          size="small"
                           className="h-8 w-8 text-muted-foreground"
                           aria-label={t(
                             "team:membersTable.ariaInvitationActions",
@@ -548,8 +548,8 @@ function MembersTable({ workspaceId, invitations, users }: Props) {
             <AlertDialogClose
               render={
                 <Button
-                  variant="destructive"
-                  size="sm"
+                  vintent="danger"
+                  size="small"
                   disabled={isDeleting}
                   onClick={handleDeleteMember}
                 />
@@ -588,8 +588,8 @@ function MembersTable({ workspaceId, invitations, users }: Props) {
             <AlertDialogClose
               render={
                 <Button
-                  variant="destructive"
-                  size="sm"
+                  intent="danger"
+                  size="small"
                   disabled={isCancelling}
                   onClick={handleCancelInvitation}
                 />

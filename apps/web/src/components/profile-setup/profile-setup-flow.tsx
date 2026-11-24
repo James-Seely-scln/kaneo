@@ -10,7 +10,7 @@ import { z } from "zod/v4";
 import { Logo } from "@/components/common/logo";
 import PageTitle from "@/components/page-title";
 import useAuth from "@/components/providers/auth-provider/hooks/use-auth";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Form,
   FormControl,

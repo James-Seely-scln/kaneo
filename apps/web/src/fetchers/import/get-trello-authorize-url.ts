@@ -2,7 +2,7 @@ import { client } from "@kaneo/libs";
 import type { InferResponseType } from "hono";
 import { HttpError } from "@/lib/http-error";
 
-export type GetTrelloAuthorizeUrlResponse = InferResponseType<
+type GetTrelloAuthorizeUrlResponse = InferResponseType<
   (typeof client)["import"]["trello"]["authorize-url"][":workspaceId"]["$get"],
   200
 >;

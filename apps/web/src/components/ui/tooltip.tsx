@@ -5,8 +5,6 @@ import * as React from "react";
 
 import { cn } from "@/lib/cn";
 
-const TooltipCreateHandle = TooltipPrimitive.createHandle;
-
 const TooltipProvider = TooltipPrimitive.Provider;
 
 const Tooltip = TooltipPrimitive.Root;
@@ -77,7 +75,6 @@ function TooltipPopup({
 
 export {
   Tooltip,
-  TooltipCreateHandle,
   TooltipPopup,
   TooltipPopup as TooltipContent,
   TooltipProvider,

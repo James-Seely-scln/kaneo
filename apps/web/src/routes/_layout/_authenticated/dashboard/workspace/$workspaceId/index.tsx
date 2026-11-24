@@ -1,5 +1,9 @@
+import "@blueprintjs/core/lib/css/blueprint.css";
+import "@blueprintjs/icons/lib/css/blueprint-icons.css";
+
 import { createFileRoute } from "@tanstack/react-router";
-import { Plus } from "lucide-react";
+// import { Plus } from "lucide-react";
+import { CirclePlusIcon } from "@blueprintjs/icons/next";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { TrialExpiredCallout } from "@/components/billing/trial-expired-callout";
@@ -12,7 +16,8 @@ import { WeekStrip } from "@/components/home/week-strip";
 import PageTitle from "@/components/page-title";
 import CreateProjectModal from "@/components/shared/modals/create-project-modal";
 import CreateTaskModal from "@/components/shared/modals/create-task-modal";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@blueprintjs/core";
+import { Button } from "@blueprintjs/core";
 import useGetProjects from "@/hooks/queries/project/use-get-projects";
 import useGetAssignedTasks from "@/hooks/queries/task/use-get-assigned-tasks";
 import { useLocalDay } from "@/hooks/use-local-day";
@@ -71,14 +76,14 @@ function RouteComponent() {
               </div>
               {canCreateTasks() && (
                 <Button
-                  size="sm"
+                  size="small"
+                  icon={<CirclePlusIcon />}
                   onClick={() =>
                     needsProjectFirst
                       ? setIsCreateProjectOpen(true)
                       : setIsCreateTaskOpen(true)
                   }
                 >
-                  <Plus />
                   {t("workspace:home.newTask")}
                 </Button>
               )}

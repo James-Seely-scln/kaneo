@@ -5,7 +5,7 @@ import { ChangePasswordDialog } from "@/components/account/change-password/chang
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsRow } from "@/components/settings/settings-row";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useListAccounts from "@/hooks/queries/use-list-accounts";
 
 export function ChangePasswordSettings() {
@@ -46,8 +46,8 @@ export function ChangePasswordSettings() {
           >
             <Button
               type="button"
-              variant="outline"
-              size="sm"
+              variant="outlined"
+              size="small"
               onClick={() => setOpen(true)}
             >
               {t("settings:securityPage.changePassword")}

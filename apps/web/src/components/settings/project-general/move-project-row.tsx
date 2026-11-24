@@ -4,7 +4,7 @@ import { useId, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ConfirmDialog } from "@/components/settings/confirm-dialog";
 import { SettingsRow } from "@/components/settings/settings-row";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -66,8 +66,8 @@ export function MoveProjectRow({
       toast.success(
         moved.unassignedTaskCount > 0
           ? t("settings:projectGeneral.toastMovedWithUnassigned", {
-              taskCount: moved.unassignedTaskCount,
-            })
+            taskCount: moved.unassignedTaskCount,
+          })
           : t("settings:projectGeneral.toastMoved"),
         { icon: FolderInputIcon },
       );

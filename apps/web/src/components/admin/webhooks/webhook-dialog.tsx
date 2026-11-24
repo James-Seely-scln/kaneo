@@ -1,7 +1,7 @@
 import { type FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AUDIT_LOG_CATEGORIES } from "@/components/admin/audit-log/audit-log-categories";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
@@ -109,8 +109,8 @@ export function WebhookDialog({ webhook, onClose, onSecret }: Props) {
                             categories: checked
                               ? [...values.categories, value]
                               : values.categories.filter(
-                                  (category) => category !== value,
-                                ),
+                                (category) => category !== value,
+                              ),
                           })
                         }
                       />
@@ -133,7 +133,7 @@ export function WebhookDialog({ webhook, onClose, onSecret }: Props) {
           </DialogPanel>
           <DialogFooter>
             <DialogClose
-              render={<Button type="button" variant="outline" />}
+              render={<Button type="button" variant="outlined" />}
               disabled={pending}
             >
               {t("common:actions.cancel")}

@@ -10,7 +10,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useClearNotifications from "@/hooks/mutations/notification/use-clear-notifications";
 import useMarkAllNotificationsAsRead from "@/hooks/mutations/notification/use-mark-all-notifications-as-read";
 import { useLocalDay } from "@/hooks/use-local-day";
@@ -111,8 +111,8 @@ export function InboxList({
         </fieldset>
         <div className="flex items-center gap-0.5">
           <Button
-            variant="ghost"
-            size="xs"
+            variant="minimal"
+            size="small"
             disabled={unreadCount === 0}
             onClick={() => markAllAsRead()}
             className="text-muted-foreground"
@@ -121,8 +121,8 @@ export function InboxList({
             {t("common:actions.markAllRead")}
           </Button>
           <Button
-            variant="ghost"
-            size="icon-xs"
+            variant="minimal"
+            size="small"
             disabled={notifications.length === 0}
             onClick={() => setShowClearDialog(true)}
             className="text-muted-foreground"
@@ -181,14 +181,14 @@ export function InboxList({
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogClose render={<Button variant="outline" size="sm" />}>
+            <AlertDialogClose render={<Button variant="outlined" size="small" />}>
               {t("common:actions.cancel")}
             </AlertDialogClose>
             <AlertDialogClose
               render={
                 <Button
-                  variant="destructive"
-                  size="sm"
+                  intent="danger"
+                  size="small"
                   onClick={() => clearAll()}
                 />
               }

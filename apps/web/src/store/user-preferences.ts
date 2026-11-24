@@ -10,7 +10,7 @@ export function isWeekStartDay(value: number): value is WeekStartDay {
 
 export type TaskLayout = "board" | "list" | "calendar" | "gantt";
 
-export type PriorityIconStyle = "marks" | "classic";
+type PriorityIconStyle = "marks" | "classic";
 
 type UserPreferencesStore = {
   theme: "light" | "dark" | "system";

@@ -8,7 +8,7 @@ import {
   createChangePasswordSchema,
 } from "@/components/account/change-password/create-change-password-schema";
 import { PasswordInput } from "@/components/account/change-password/password-input";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Dialog,
   DialogClose,
@@ -42,25 +42,25 @@ const FIELDS: Array<{
   placeholderKey: string;
   autoComplete: string;
 }> = [
-  {
-    name: "currentPassword",
-    labelKey: "settings:securityPage.currentPassword",
-    placeholderKey: "settings:securityPage.currentPasswordPlaceholder",
-    autoComplete: "current-password",
-  },
-  {
-    name: "newPassword",
-    labelKey: "settings:securityPage.newPassword",
-    placeholderKey: "settings:securityPage.newPasswordPlaceholder",
-    autoComplete: "new-password",
-  },
-  {
-    name: "confirmPassword",
-    labelKey: "settings:securityPage.confirmPassword",
-    placeholderKey: "settings:securityPage.confirmPasswordPlaceholder",
-    autoComplete: "new-password",
-  },
-];
+    {
+      name: "currentPassword",
+      labelKey: "settings:securityPage.currentPassword",
+      placeholderKey: "settings:securityPage.currentPasswordPlaceholder",
+      autoComplete: "current-password",
+    },
+    {
+      name: "newPassword",
+      labelKey: "settings:securityPage.newPassword",
+      placeholderKey: "settings:securityPage.newPasswordPlaceholder",
+      autoComplete: "new-password",
+    },
+    {
+      name: "confirmPassword",
+      labelKey: "settings:securityPage.confirmPassword",
+      placeholderKey: "settings:securityPage.confirmPasswordPlaceholder",
+      autoComplete: "new-password",
+    },
+  ];
 
 type ChangePasswordDialogProps = {
   open: boolean;
@@ -145,7 +145,7 @@ export function ChangePasswordDialog({
                 render={
                   <Button
                     type="button"
-                    variant="outline"
+                    variant="outlined"
                     disabled={isPending}
                   />
                 }

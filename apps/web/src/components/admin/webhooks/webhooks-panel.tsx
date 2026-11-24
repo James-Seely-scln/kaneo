@@ -6,7 +6,7 @@ import { ConfirmDialog } from "@/components/settings/confirm-dialog";
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsPage } from "@/components/settings/settings-page";
 import { SettingsRowsSkeleton } from "@/components/settings/settings-rows-skeleton";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { deleteAdminWebhook } from "@/fetchers/admin/delete-admin-webhook";
 import { rotateAdminWebhookSecret } from "@/fetchers/admin/rotate-admin-webhook-secret";
 import { sendAdminWebhookTest } from "@/fetchers/admin/send-admin-webhook-test";
@@ -63,7 +63,7 @@ export default function WebhooksPanel() {
       actions={
         <Button
           type="button"
-          size="sm"
+          size="small"
           disabled={!data?.signingConfigured}
           onClick={() => setEditing(null)}
         >

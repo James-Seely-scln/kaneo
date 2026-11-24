@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { IntegrationCheckLine } from "@/components/project/integrations/panel/integration-check-line";
 import { IntegrationPanel } from "@/components/project/integrations/panel/integration-panel";
 import { IntegrationPanelSection } from "@/components/project/integrations/panel/integration-panel-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type TelegramLoadErrorProps = {
   retrying: boolean;

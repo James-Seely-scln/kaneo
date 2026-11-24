@@ -4,7 +4,7 @@ import {
   getNotificationContent,
   getNotificationTitle,
 } from "@/components/notification/notification-text";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { formatDateTime, formatRelativeTime } from "@/lib/format";
 import type { Notification } from "@/types/notification";
 import { InboxTask } from "./inbox-task";
@@ -30,8 +30,8 @@ export function InboxDetail({
     <div className="flex h-full min-h-0 flex-col">
       <div className="flex h-12 shrink-0 items-center justify-between gap-2 border-border/60 border-b px-4 lg:px-8">
         <Button
-          variant="ghost"
-          size="xs"
+          variant="minimal"
+          size="small"
           onClick={onBack}
           className="text-muted-foreground lg:hidden"
         >

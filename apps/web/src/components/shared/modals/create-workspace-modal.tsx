@@ -1,26 +1,29 @@
 import { useNavigate } from "@tanstack/react-router";
-import { SquarePlusIcon } from "lucide-react";
+import {
+  Breadcrumbs,
+  Button,
+  Dialog,
+  InputGroup,
+  OverlayToaster,
+  Position,
+  type BreadcrumbProps,
+  type Toaster,
+} from "@blueprintjs/core";
+import { SquarePlusIcon } from "@blueprintjs/icons/next";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import useCreateWorkspace from "@/hooks/queries/workspace/use-create-workspace";
 import { authClient } from "@/lib/auth-client";
-import { toast } from "@/lib/toast";
+
+// Module-level lazy singleton – OverlayToaster.create() is async and should
+// be called once per app so toasts share one container.
+let toasterPromise: Promise<Toaster> | null = null;
+const getToaster = () => {
+  if (!toasterPromise) {
+    toasterPromise = OverlayToaster.create({ position: Position.TOP });
+  }
+  return toasterPromise;
+};
 
 type CreateWorkspaceModalProps = {
   open: boolean;
@@ -69,88 +72,96 @@ function CreateWorkspaceModal({ open, onClose }: CreateWorkspaceModalProps) {
         },
       });
 
-      toast.success(t("common:modals.createWorkspace.successToast"), {
-        icon: SquarePlusIcon,
+      const toaster = await getToaster();
+      toaster.show({
+        message: t("common:modals.createWorkspace.successToast"),
+        intent: "success",
+        icon: <SquarePlusIcon />,
       });
       handleClose();
     } catch (error) {
-      toast.error(
-        error instanceof Error
-          ? error.message
-          : t("common:modals.createWorkspace.errorToast"),
-      );
+      const toaster = await getToaster();
+      toaster.show({
+        message:
+          error instanceof Error
+            ? error.message
+            : t("common:modals.createWorkspace.errorToast"),
+        intent: "danger",
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const breadcrumbItems: BreadcrumbProps[] = [
+    {
+      text: t("common:modals.createWorkspace.breadcrumbKaneo"),
+    },
+    {
+      text: t("common:modals.createWorkspace.title"),
+      current: true,
+    },
+  ];
+
   return (
-    <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-md" showCloseButton={false}>
-        <DialogHeader>
-          <DialogTitle asChild>
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="text-muted-foreground font-semibold tracking-wider text-sm">
-                  {t("common:modals.createWorkspace.breadcrumbKaneo")}
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem className="text-foreground font-medium text-sm">
-                  {t("common:modals.createWorkspace.title")}
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </DialogTitle>
-          <DialogDescription className="sr-only">
-            {t("common:modals.createWorkspace.description")}
-          </DialogDescription>
-        </DialogHeader>
+    <Dialog
+      isOpen={open}
+      onClose={handleClose}
+      style={{ maxWidth: 448 }}
+      aria-label={t("common:modals.createWorkspace.title")}
+      aria-describedby="create-workspace-desc"
+    >
+      <span id="create-workspace-desc" className="sr-only">
+        {t("common:modals.createWorkspace.description")}
+      </span>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-4 px-6">
-            <Input
-              ref={inputRef}
-              unstyled
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder={t("common:modals.createWorkspace.namePlaceholder")}
-              className="w-full [&_[data-slot=input]]:h-auto [&_[data-slot=input]]:px-0 [&_[data-slot=input]]:py-2 [&_[data-slot=input]]:text-2xl [&_[data-slot=input]]:leading-tight [&_[data-slot=input]]:font-semibold [&_[data-slot=input]]:tracking-tight [&_[data-slot=input]]:text-foreground [&_[data-slot=input]]:placeholder:text-muted-foreground [&_[data-slot=input]]:outline-none"
-              required
-            />
+      <div className="px-3 pt-4 pb-1">
+        <Breadcrumbs items={breadcrumbItems} />
+      </div>
 
-            <Input
-              unstyled
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder={t(
-                "common:modals.createWorkspace.descriptionPlaceholder",
-              )}
-              className="w-full [&_[data-slot=input]]:h-auto [&_[data-slot=input]]:px-0 [&_[data-slot=input]]:py-2 [&_[data-slot=input]]:text-base [&_[data-slot=input]]:leading-relaxed [&_[data-slot=input]]:text-foreground [&_[data-slot=input]]:placeholder:text-muted-foreground [&_[data-slot=input]]:outline-none"
-            />
-          </div>
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="space-y-4 px-3">
+          <InputGroup
+            inputRef={inputRef}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder={t("common:modals.createWorkspace.namePlaceholder")}
+            size="large"
+            fill
+            required
+            inputClassName="!text-2xl !font-semibold !tracking-tight !bg-transparent !border-0 !shadow-none !px-0"
+          />
 
-          <DialogFooter>
-            <Button
-              type="button"
-              onClick={handleClose}
-              variant="outline"
-              size="sm"
-              className="border-border text-foreground hover:bg-accent"
-            >
-              {t("common:actions.cancel")}
-            </Button>
-            <Button
-              type="submit"
-              disabled={!name.trim()}
-              loading={isSubmitting}
-              size="sm"
-              className="disabled:opacity-50"
-            >
-              {t("common:modals.createWorkspace.createButton")}
-            </Button>
-          </DialogFooter>
-        </form>
-      </DialogContent>
+          <InputGroup
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder={t(
+              "common:modals.createWorkspace.descriptionPlaceholder",
+            )}
+            fill
+            inputClassName="!text-base !leading-relaxed !bg-transparent !border-0 !shadow-none !px-0"
+          />
+        </div>
+
+        <div className="flex justify-end gap-2 px-3 pb-3">
+          <Button
+            type="button"
+            onClick={handleClose}
+            size="small"
+          >
+            {t("common:actions.cancel")}
+          </Button>
+          <Button
+            type="submit"
+            disabled={!name.trim()}
+            loading={isSubmitting}
+            size="small"
+            intent="primary"
+          >
+            {t("common:modals.createWorkspace.createButton")}
+          </Button>
+        </div>
+      </form>
     </Dialog>
   );
 }

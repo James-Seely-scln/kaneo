@@ -1,7 +1,7 @@
 import { createFileRoute, Link, redirect } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import PageTitle from "@/components/page-title";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import getTaskByTicketId from "@/fetchers/task/get-task-by-ticket-id";
 import {
   HttpError,

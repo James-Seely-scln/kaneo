@@ -10,7 +10,7 @@ import { SettingsEmpty } from "@/components/settings/settings-empty";
 import { SettingsPage } from "@/components/settings/settings-page";
 import { SettingsRowsSkeleton } from "@/components/settings/settings-rows-skeleton";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useGetLabelsByWorkspace from "@/hooks/queries/label/use-get-labels-by-workspace";
 import { useWorkspacePermission } from "@/hooks/use-workspace-permission";
 
@@ -97,8 +97,8 @@ export function LabelsSettings() {
         description={
           workspace?.name
             ? t("settings:workspaceLabels.subtitleWithWorkspace", {
-                workspaceName: workspace.name,
-              })
+              workspaceName: workspace.name,
+            })
             : t("settings:workspaceLabels.subtitle")
         }
         actions={newLabelButton}

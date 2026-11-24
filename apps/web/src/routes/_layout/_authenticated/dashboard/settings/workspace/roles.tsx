@@ -27,7 +27,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Empty,
   EmptyDescription,
@@ -400,17 +400,17 @@ function RouteComponent() {
                   const isDefault = isDefaultRole(role.role);
                   const roleLabel = isDefault
                     ? t(`team:roles.${role.role}`, {
-                        defaultValue: role.role,
-                      })
+                      defaultValue: role.role,
+                    })
                     : role.role;
                   const description = isDefault
                     ? t(
-                        `settings:workspaceRoles.defaultRoleDescriptions.${role.role}`,
-                        {
-                          defaultValue:
-                            DEFAULT_ROLE_DESCRIPTIONS[role.role] ?? "",
-                        },
-                      )
+                      `settings:workspaceRoles.defaultRoleDescriptions.${role.role}`,
+                      {
+                        defaultValue:
+                          DEFAULT_ROLE_DESCRIPTIONS[role.role] ?? "",
+                      },
+                    )
                     : undefined;
                   return (
                     <AccordionItem
@@ -427,9 +427,8 @@ function RouteComponent() {
                             <div className="min-w-0">
                               <div className="flex items-center gap-2">
                                 <p
-                                  className={`text-sm font-medium truncate ${
-                                    isDefault ? "" : "capitalize"
-                                  }`}
+                                  className={`text-sm font-medium truncate ${isDefault ? "" : "capitalize"
+                                    }`}
                                 >
                                   {roleLabel}
                                 </p>
@@ -853,8 +852,8 @@ function DeleteRoleConfirm({
         <AlertDialogDescription>
           {role
             ? t("settings:workspaceRoles.deleteDialog.description", {
-                role: role.role,
-              })
+              role: role.role,
+            })
             : ""}
         </AlertDialogDescription>
       </AlertDialogHeader>

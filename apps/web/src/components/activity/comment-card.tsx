@@ -13,7 +13,7 @@ import { GithubIcon } from "@/components/icons/github-icon";
 import { GitlabIcon } from "@/components/icons/gitlab-icon";
 import { useAuth } from "@/components/providers/auth-provider/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   HoverCard,
   HoverCardContent,
@@ -253,8 +253,8 @@ export default function CommentCard({
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
-                  variant="ghost"
-                  size="sm"
+                  variant="minimal"
+                  size="small"
                   onClick={handleEdit}
                   className="h-6 w-6 rounded-md p-0 text-muted-foreground hover:text-foreground"
                 >
@@ -268,8 +268,8 @@ export default function CommentCard({
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
-                  variant="ghost"
-                  size="sm"
+                  variant="minimal"
+                  size="small"
                   onClick={() => deleteComment({ activityId: commentId })}
                   disabled={isDeleting}
                   className="h-6 w-6 rounded-md p-0 text-muted-foreground hover:text-destructive"
@@ -306,8 +306,8 @@ export default function CommentCard({
         {isEditing && (
           <div className="flex items-center justify-end gap-2 border-border/70 border-t bg-card/60 px-3 py-2">
             <Button
-              variant="secondary"
-              size="sm"
+              variant="primary"
+              size="small"
               onClick={handleCancel}
               disabled={isPending}
               className="h-7 px-2.5 text-xs"
@@ -315,8 +315,7 @@ export default function CommentCard({
               {t("common:actions.cancel")}
             </Button>
             <Button
-              variant="default"
-              size="sm"
+              size="small"
               onClick={handleSave}
               disabled={isPending || !editedContent.trim()}
               className="h-7 px-2.5 text-xs"

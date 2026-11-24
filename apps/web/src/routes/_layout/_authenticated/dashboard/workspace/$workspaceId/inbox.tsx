@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import WorkspaceLayout from "@/components/common/workspace-layout";
 import { InboxDetail } from "@/components/inbox/inbox-detail";
 import { InboxList } from "@/components/inbox/inbox-list";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import PageTitle from "@/components/page-title";
 import useMarkNotificationAsRead from "@/hooks/mutations/notification/use-mark-notification-as-read";
 import useGetNotifications from "@/hooks/queries/notification/use-get-notifications";
@@ -48,7 +48,7 @@ function RouteComponent() {
               "w-full shrink-0 border-border/60 lg:block lg:w-[26rem] lg:border-r",
               selected && "hidden",
               wentBack &&
-                "max-lg:transition-[translate,opacity] max-lg:duration-200 max-lg:ease-out max-lg:starting:-translate-x-6 max-lg:starting:opacity-0 motion-reduce:max-lg:starting:translate-x-0",
+              "max-lg:transition-[translate,opacity] max-lg:duration-200 max-lg:ease-out max-lg:starting:-translate-x-6 max-lg:starting:opacity-0 motion-reduce:max-lg:starting:translate-x-0",
             )}
           >
             {isPending ? (

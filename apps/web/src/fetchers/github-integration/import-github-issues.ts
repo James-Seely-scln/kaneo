@@ -2,14 +2,14 @@ import { client } from "@kaneo/libs";
 import type { InferRequestType } from "hono";
 import { HttpError } from "@/lib/http-error";
 
-export type ImportGithubIssuesRequest = InferRequestType<
+type ImportGithubIssuesRequest = InferRequestType<
   (typeof client)["github-integration"]["import-issues"]["$post"]
 >["json"];
 
 async function importGithubIssues(data: ImportGithubIssuesRequest) {
   let runId = data.runId;
   let busyRetries = 0;
-  for (;;) {
+  for (; ;) {
     const response = await client["github-integration"]["import-issues"].$post({
       json: { ...data, runId },
     });

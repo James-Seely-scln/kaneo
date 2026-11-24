@@ -2,7 +2,7 @@ import type { Editor } from "@tiptap/react";
 import { Check, Link2, Unlink } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { normalizeLinkHref } from "./normalize-link-href";
 
 type BubbleLinkEditorProps = {
@@ -57,8 +57,8 @@ export function BubbleLinkEditor({
       />
       <Button
         type="button"
-        variant="ghost"
-        size="xs"
+        variant="minimal"
+        size="small"
         aria-label={t("common:editor.link.apply")}
         className={buttonClassName}
         onClick={() => finish(normalizeLinkHref(value))}
@@ -68,8 +68,8 @@ export function BubbleLinkEditor({
       {currentHref && (
         <Button
           type="button"
-          variant="ghost"
-          size="xs"
+          variant="minimal"
+          size="small"
           aria-label={t("common:editor.link.remove")}
           className={buttonClassName}
           onClick={() => finish("")}

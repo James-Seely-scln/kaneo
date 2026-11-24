@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { DatePickerMenu } from "@/components/common/date-picker/date-picker-menu";
 import { formatDateDefault } from "@/components/project/custom-fields/describe-custom-field";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Popover,
   PopoverContent,

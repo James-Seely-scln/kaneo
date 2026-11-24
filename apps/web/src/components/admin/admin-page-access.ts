@@ -1,6 +1,6 @@
 import type { InstancePermission } from "@kaneo/permissions";
 
-export const ADMIN_PAGE_PERMISSIONS = {
+const ADMIN_PAGE_PERMISSIONS = {
   "/dashboard/settings/admin/overview": [
     "users:read",
     "workspaces:read",

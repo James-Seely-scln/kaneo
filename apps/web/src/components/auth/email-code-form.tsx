@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { z } from "zod/v4";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Form,
   FormControl,
@@ -139,7 +139,7 @@ export function EmailCodeForm({
         <AuthCaptcha captcha={captcha} />
         <Button
           type="submit"
-          size="lg"
+          size="large"
           className="w-full"
           loading={isPending}
           disabled={disabled || captcha.pending}

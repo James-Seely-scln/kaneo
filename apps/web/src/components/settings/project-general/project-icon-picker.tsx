@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Input } from "@/components/ui/input";
 import {
   Popover,
@@ -82,7 +82,7 @@ export function ProjectIconPicker({
                   className={cn(
                     "h-10 items-center justify-center rounded-md p-0",
                     name === selectedName &&
-                      "bg-sidebar-accent text-sidebar-accent-foreground",
+                    "bg-sidebar-accent text-sidebar-accent-foreground",
                   )}
                 >
                   <Icon className="size-4" />

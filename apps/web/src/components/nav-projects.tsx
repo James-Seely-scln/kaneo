@@ -79,7 +79,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "./ui/alert-dialog";
-import { Button } from "./ui/button";
+import { Button } from "@blueprintjs/core";
 
 function SortableProjectItem({
   id,
@@ -424,14 +424,14 @@ export function NavProjects() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogClose render={<Button variant="outline" size="sm" />}>
+            <AlertDialogClose render={<Button variant="outlined" size="small" />}>
               {t("common:actions.cancel")}
             </AlertDialogClose>
             <AlertDialogClose
               render={
                 <Button
-                  variant="destructive"
-                  size="sm"
+                  intent="danger"
+                  size="small"
                   onClick={async () => {
                     await deleteProject({
                       id: projectToDeleteId || "",

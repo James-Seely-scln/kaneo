@@ -10,7 +10,7 @@ import { formatDate } from "@/lib/format";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-export function daysUntil(value: string | null | undefined) {
+function daysUntil(value: string | null | undefined) {
   if (!value) return null;
   const ms = new Date(value).getTime() - Date.now();
   return Math.max(0, Math.ceil(ms / DAY_MS));
@@ -96,5 +96,5 @@ export function readDismissedTrialCards(): string[] {
 export function writeDismissedTrialCards(workspaceIds: string[]) {
   try {
     localStorage.setItem(TRIAL_CARD_DISMISS_KEY, JSON.stringify(workspaceIds));
-  } catch {}
+  } catch { }
 }

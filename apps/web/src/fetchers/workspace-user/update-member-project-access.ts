@@ -5,9 +5,9 @@ import { HttpError } from "@/lib/http-error";
 type UpdateMemberProjectAccessEndpoint =
   (typeof client)["workspace"][":workspaceId"]["members"][":userId"]["project-access"]["$put"];
 
-export type UpdateMemberProjectAccessRequest =
+type UpdateMemberProjectAccessRequest =
   InferRequestType<UpdateMemberProjectAccessEndpoint>["param"] &
-    InferRequestType<UpdateMemberProjectAccessEndpoint>["json"];
+  InferRequestType<UpdateMemberProjectAccessEndpoint>["json"];
 
 async function updateMemberProjectAccess({
   workspaceId,

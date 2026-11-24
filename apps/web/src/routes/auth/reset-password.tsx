@@ -7,7 +7,7 @@ import { authLinkClassName } from "@/components/auth/auth-link-class";
 import { AuthPage } from "@/components/auth/auth-page";
 import { PasswordInput } from "@/components/auth/password-input";
 import PageTitle from "@/components/page-title";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";
 

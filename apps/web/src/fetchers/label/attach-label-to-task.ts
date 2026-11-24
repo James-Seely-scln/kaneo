@@ -1,7 +1,7 @@
 import { client } from "@kaneo/libs";
 
 import { HttpError } from "@/lib/http-error";
-export type AttachLabelToTaskRequest = {
+type AttachLabelToTaskRequest = {
   labelId: string;
   taskId: string;
 };

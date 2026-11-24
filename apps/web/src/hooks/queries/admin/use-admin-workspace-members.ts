@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAdminWorkspaceMembers } from "@/fetchers/admin/get-admin-workspace-members";
 
-export type { AdminWorkspaceMember } from "@/fetchers/admin/workspace-types";
+type { AdminWorkspaceMember } from "@/fetchers/admin/workspace-types";
 
 export function adminWorkspaceMembersQueryKey(workspaceId: string) {
   return ["admin", "workspace-members", workspaceId] as const;

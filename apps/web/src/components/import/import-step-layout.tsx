@@ -6,7 +6,7 @@ import {
   type ImportStepNumber,
   ImportSteps,
 } from "@/components/import/import-steps";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type ImportStepLayoutProps = {
   source: ImportSourceDefinition;
@@ -34,8 +34,8 @@ export function ImportStepLayout({
       <div className="space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
           <Button
-            variant="ghost"
-            size="sm"
+            variant="minimal"
+            size="small"
             className="-ms-2 text-muted-foreground hover:text-foreground"
             onClick={onBack}
           >

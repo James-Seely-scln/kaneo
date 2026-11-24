@@ -19,37 +19,37 @@ export const PROJECT_ROUTE_PATHS = {
   gantt: "/dashboard/workspace/$workspaceId/project/$projectId/gantt",
 } as const;
 
-export const PROJECT_VIEWS: ReadonlyArray<{
+const PROJECT_VIEWS: ReadonlyArray<{
   id: ProjectView;
   labelKey: string;
   icon: LucideIcon;
 }> = [
-  {
-    id: "board",
-    labelKey: "tasks:view.board",
-    icon: SquareKanban,
-  },
-  {
-    id: "list",
-    labelKey: "tasks:view.list",
-    icon: Rows3,
-  },
-  {
-    id: "backlog",
-    labelKey: "tasks:view.backlog",
-    icon: SquircleDashed,
-  },
-  {
-    id: "calendar",
-    labelKey: "tasks:calendar.title",
-    icon: CalendarDays,
-  },
-  {
-    id: "gantt",
-    labelKey: "tasks:view.gantt",
-    icon: ChartGantt,
-  },
-];
+    {
+      id: "board",
+      labelKey: "tasks:view.board",
+      icon: SquareKanban,
+    },
+    {
+      id: "list",
+      labelKey: "tasks:view.list",
+      icon: Rows3,
+    },
+    {
+      id: "backlog",
+      labelKey: "tasks:view.backlog",
+      icon: SquircleDashed,
+    },
+    {
+      id: "calendar",
+      labelKey: "tasks:calendar.title",
+      icon: CalendarDays,
+    },
+    {
+      id: "gantt",
+      labelKey: "tasks:view.gantt",
+      icon: ChartGantt,
+    },
+  ];
 
 export function routeForView(view: ProjectView): ProjectRoute {
   return view === "list" ? "board" : view;

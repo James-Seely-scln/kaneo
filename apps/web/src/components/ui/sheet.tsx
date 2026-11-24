@@ -2,22 +2,13 @@
 
 import { Dialog as SheetPrimitive } from "@base-ui/react/dialog";
 import { XIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@blueprintjs/core";
 import { cn } from "@/lib/cn";
 import { i18n } from "@/lib/i18n";
 
 const Sheet = SheetPrimitive.Root;
 
 const SheetPortal = SheetPrimitive.Portal;
-
-function SheetTrigger(props: SheetPrimitive.Trigger.Props) {
-  return <SheetPrimitive.Trigger data-slot="sheet-trigger" {...props} />;
-}
-
-function SheetClose(props: SheetPrimitive.Close.Props) {
-  return <SheetPrimitive.Close data-slot="sheet-close" {...props} />;
-}
 
 function SheetBackdrop({ className, ...props }: SheetPrimitive.Backdrop.Props) {
   return (
@@ -77,15 +68,15 @@ function SheetPopup({
           className={cn(
             "relative flex max-h-full min-h-0 w-full min-w-0 flex-col bg-popover not-dark:bg-clip-padding text-popover-foreground shadow-lg/5 transition-[opacity,translate] duration-200 ease-out will-change-transform before:pointer-events-none before:absolute before:inset-0 before:shadow-[0_1px_--theme(--color-black/4%)] data-ending-style:opacity-0 data-starting-style:opacity-0 max-sm:before:hidden dark:before:shadow-[0_-1px_--theme(--color-white/6%)]",
             side === "bottom" &&
-              "row-start-2 border-t data-ending-style:translate-y-8 data-starting-style:translate-y-8",
+            "row-start-2 border-t data-ending-style:translate-y-8 data-starting-style:translate-y-8",
             side === "top" &&
-              "data-ending-style:-translate-y-8 data-starting-style:-translate-y-8 border-b",
+            "data-ending-style:-translate-y-8 data-starting-style:-translate-y-8 border-b",
             side === "left" &&
-              "data-ending-style:-translate-x-8 data-starting-style:-translate-x-8 w-[calc(100%-(--spacing(12)))] max-w-md border-e",
+            "data-ending-style:-translate-x-8 data-starting-style:-translate-x-8 w-[calc(100%-(--spacing(12)))] max-w-md border-e",
             side === "right" &&
-              "col-start-2 w-[calc(100%-(--spacing(12)))] max-w-md border-s data-ending-style:translate-x-8 data-starting-style:translate-x-8",
+            "col-start-2 w-[calc(100%-(--spacing(12)))] max-w-md border-s data-ending-style:translate-x-8 data-starting-style:translate-x-8",
             variant === "inset" &&
-              "before:hidden sm:rounded-2xl sm:border sm:before:rounded-[calc(var(--radius-2xl)-1px)] sm:**:data-[slot=sheet-footer]:rounded-b-[calc(var(--radius-2xl)-1px)]",
+            "before:hidden sm:rounded-2xl sm:border sm:before:rounded-[calc(var(--radius-2xl)-1px)] sm:**:data-[slot=sheet-footer]:rounded-b-[calc(var(--radius-2xl)-1px)]",
             className,
           )}
           data-slot="sheet-popup"
@@ -96,7 +87,7 @@ function SheetPopup({
             <SheetPrimitive.Close
               aria-label={i18n.t("common:actions.close")}
               className="absolute end-2 top-2"
-              render={<Button size="icon" variant="ghost" />}
+              render={<Button size="small" variant="outlined" />}
             >
               <XIcon />
             </SheetPrimitive.Close>
@@ -115,28 +106,6 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
         className,
       )}
       data-slot="sheet-header"
-      {...props}
-    />
-  );
-}
-
-function SheetFooter({
-  className,
-  variant = "default",
-  ...props
-}: React.ComponentProps<"div"> & {
-  variant?: "default" | "bare";
-}) {
-  return (
-    <div
-      className={cn(
-        "flex flex-col-reverse gap-2 px-6 sm:flex-row sm:justify-end",
-        variant === "default" && "border-t bg-muted/72 py-4",
-        variant === "bare" &&
-          "in-[[data-slot=sheet-popup]:has([data-slot=sheet-panel])]:pt-3 pt-4 pb-6",
-        className,
-      )}
-      data-slot="sheet-footer"
       {...props}
     />
   );
@@ -168,37 +137,11 @@ function SheetDescription({
   );
 }
 
-function SheetPanel({
-  className,
-  scrollFade = true,
-  ...props
-}: React.ComponentProps<"div"> & { scrollFade?: boolean }) {
-  return (
-    <ScrollArea scrollFade={scrollFade}>
-      <div
-        className={cn(
-          "p-6 in-[[data-slot=sheet-popup]:has([data-slot=sheet-header])]:pt-1 in-[[data-slot=sheet-popup]:has([data-slot=sheet-footer]:not(.border-t))]:pb-1",
-          className,
-        )}
-        data-slot="sheet-panel"
-        {...props}
-      />
-    </ScrollArea>
-  );
-}
-
 export {
   Sheet,
-  SheetBackdrop,
-  SheetBackdrop as SheetOverlay,
-  SheetClose,
   SheetDescription,
-  SheetFooter,
   SheetHeader,
-  SheetPanel,
   SheetPopup,
   SheetPopup as SheetContent,
-  SheetPortal,
   SheetTitle,
-  SheetTrigger,
 };

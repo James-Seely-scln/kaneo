@@ -8,7 +8,7 @@ import { ConfirmDialog } from "@/components/settings/confirm-dialog";
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsPage } from "@/components/settings/settings-page";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { AdminRole } from "@/fetchers/admin/role-types";
 import useDeleteAdminRole from "@/hooks/mutations/admin/use-delete-admin-role";
 import useAdminRoles from "@/hooks/queries/admin/use-admin-roles";
@@ -44,7 +44,7 @@ function RolesPanel() {
     <SettingsPage
       title={t("settings:adminRoles.title")}
       actions={
-        <Button type="button" size="sm" onClick={() => openDialog(null)}>
+        <Button type="button" size="small" onClick={() => openDialog(null)}>
           <ShieldPlusIcon aria-hidden="true" />
           {t("settings:adminRoles.create")}
         </Button>

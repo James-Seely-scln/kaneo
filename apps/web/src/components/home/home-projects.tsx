@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Skeleton } from "@/components/ui/skeleton";
 import icons from "@/constants/project-icons";
 import useGetProjects from "@/hooks/queries/project/use-get-projects";
@@ -65,7 +65,7 @@ export function HomeProjects({
             </p>
           </div>
           {onCreateProject ? (
-            <Button size="sm" variant="outline" onClick={onCreateProject}>
+            <Button size="small" variant="outlined" onClick={onCreateProject}>
               <Plus />
               {t("workspace:projects.createProject")}
             </Button>

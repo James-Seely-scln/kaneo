@@ -1,6 +1,6 @@
 import { X } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { DrawnCheck } from "./drawn-check";
 
 export function CheckoutSuccessCallout({
@@ -25,8 +25,8 @@ export function CheckoutSuccessCallout({
         </p>
       </div>
       <Button
-        variant="ghost"
-        size="icon-sm"
+        variant="minimal"
+        size="small"
         aria-label={t("common:actions.close")}
         onClick={onDismiss}
         className="shrink-0 text-success-foreground"

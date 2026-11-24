@@ -12,7 +12,7 @@ import { LoadingSkeleton } from "@/components/public-project/loading-skeleton";
 import { PublicProjectDescription } from "@/components/public-project/project-description";
 import { PublicTaskDetailModal } from "@/components/public-project/task-detail-modal";
 import { ThemeToggle } from "@/components/public-project/theme-toggle";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import icons from "@/constants/project-icons";
 import useGetPublicProject from "@/hooks/queries/project/use-get-public-project";
 import type Task from "@/types/task";

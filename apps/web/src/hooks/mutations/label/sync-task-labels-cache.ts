@@ -46,7 +46,7 @@ export function updateTaskLabelsInProject(
   };
 }
 
-export function syncTaskLabelsInTasksCache(
+function syncTaskLabelsInTasksCache(
   queryClient: QueryClient,
   taskId: string,
   updater: TaskLabelsUpdater,

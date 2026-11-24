@@ -5,7 +5,7 @@ import {
   getNetworkTroubleshootingSteps,
   parseApiError,
 } from "../../lib/error-handler";
-import { Button } from "./button";
+import { Button } from "@blueprintjs/core";
 import {
   Card,
   CardContent,
@@ -79,8 +79,8 @@ export function ErrorDisplay({
             {onRetry && (
               <Button
                 onClick={onRetry}
-                variant="outline"
-                size="sm"
+                variant="outlined"
+                size="small"
                 className="w-full"
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
@@ -91,8 +91,8 @@ export function ErrorDisplay({
             {parsedError.type === "cors" && (
               <Button
                 onClick={() => window.open("https://kaneo.app/docs", "_blank")}
-                variant="outline"
-                size="icon"
+                variant="outlined"
+                size="small"
                 className="w-full"
               >
                 <ExternalLink className="w-4 h-4 mr-2" />
@@ -102,8 +102,8 @@ export function ErrorDisplay({
 
             <Button
               onClick={() => window.location.reload()}
-              variant="outline"
-              size="icon"
+              variant="outlined"
+              size="small"
               className="w-full"
             >
               <RefreshCw className="w-4 h-4 mr-2" />

@@ -3,7 +3,6 @@ import { Workflow } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsEmpty } from "@/components/settings/settings-empty";
-import { buttonVariants } from "@/components/ui/button";
 
 export function AutomationsEmpty({ projectId }: { projectId: string }) {
   const { t } = useTranslation();
@@ -18,7 +17,7 @@ export function AutomationsEmpty({ projectId }: { projectId: string }) {
           <Link
             to="/dashboard/settings/projects/$projectId/integrations"
             params={{ projectId }}
-            className={buttonVariants({ variant: "outline", size: "sm" })}
+          // className={buttonVariants({ variant: "outline", size: "sm" })}
           >
             {t("settings:workflowEditor.openIntegrations")}
           </Link>

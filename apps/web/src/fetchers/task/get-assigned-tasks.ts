@@ -2,7 +2,7 @@ import { client } from "@kaneo/libs";
 import type { InferResponseType } from "hono/client";
 import { HttpError } from "@/lib/http-error";
 
-export type AssignedTasks = InferResponseType<
+type AssignedTasks = InferResponseType<
   (typeof client)["task"]["assigned"]["$get"],
   200
 >;

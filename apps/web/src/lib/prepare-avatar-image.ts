@@ -1,5 +1,5 @@
-export const AVATAR_OUTPUT_SIZE = 256;
-export const MAX_AVATAR_SOURCE_BYTES = 10 * 1024 * 1024;
+const AVATAR_OUTPUT_SIZE = 256;
+const MAX_AVATAR_SOURCE_BYTES = 10 * 1024 * 1024;
 export const ACCEPTED_AVATAR_TYPES = "image/*";
 
 const SUPPORTED_OUTPUT_TYPES = ["image/webp", "image/png"] as const;

@@ -2,7 +2,7 @@ import { client } from "@kaneo/libs";
 import type { InferRequestType } from "hono/client";
 import { HttpError } from "@/lib/http-error";
 
-export type MoveProjectRequest = InferRequestType<
+type MoveProjectRequest = InferRequestType<
   (typeof client)["project"][":id"]["move"]["$put"]
 >["json"] &
   InferRequestType<(typeof client)["project"][":id"]["move"]["$put"]>["param"];

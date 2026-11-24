@@ -3,7 +3,7 @@ import { Repeat } from "lucide-react";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { DatePickerMenu } from "@/components/common/date-picker/date-picker-menu";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { cn } from "@/lib/cn";
 import { defaultRecurrence } from "@/lib/default-recurrence";
 import { upcomingOccurrences } from "@/lib/next-occurrence-date";

@@ -9,7 +9,7 @@ const USER_PROFILE_QUERY_KEYS = [
   ["task"],
 ] as const;
 
-export async function invalidateUserProfileQueries(queryClient: QueryClient) {
+async function invalidateUserProfileQueries(queryClient: QueryClient) {
   await Promise.all(
     USER_PROFILE_QUERY_KEYS.map((queryKey) =>
       queryClient.invalidateQueries({ queryKey }),

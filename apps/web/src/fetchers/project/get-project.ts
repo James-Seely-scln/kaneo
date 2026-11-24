@@ -2,7 +2,7 @@ import { client } from "@kaneo/libs";
 import type { InferRequestType } from "hono/client";
 import { HttpError } from "@/lib/http-error";
 
-export type GetProjectRequest = InferRequestType<
+type GetProjectRequest = InferRequestType<
   (typeof client)["project"][":id"]["$get"]
 >["param"] & {
   workspaceId: string;

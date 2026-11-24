@@ -6,7 +6,7 @@ import { CustomFieldDialog } from "@/components/project/custom-fields/field-dial
 import type { CustomFieldDefinition } from "@/components/project/custom-fields/types";
 import { SettingsPage } from "@/components/settings/settings-page";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useGetProject from "@/hooks/queries/project/use-get-project";
 import useActiveWorkspace from "@/hooks/queries/workspace/use-active-workspace";
 import { useWorkspacePermission } from "@/hooks/use-workspace-permission";

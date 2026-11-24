@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { FolderXIcon, LockIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import PageTitle from "@/components/page-title";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Empty,
   EmptyContent,
@@ -43,7 +43,7 @@ export default function ProjectUnavailable({ reason, workspaceId }: Props) {
       </EmptyHeader>
       <EmptyContent>
         <Button
-          variant="outline"
+          variant="outlined"
           render={
             <Link
               to="/dashboard/workspace/$workspaceId"

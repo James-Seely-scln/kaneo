@@ -2,7 +2,7 @@ import { MailIcon, SendIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Spinner } from "@/components/ui/spinner";
 import type { AdminSystemStatus } from "@/fetchers/admin/system-types";
 import useSendAdminTestEmail from "@/hooks/mutations/admin/use-send-admin-test-email";
@@ -23,8 +23,8 @@ export function EmailSection({ email }: EmailSectionProps) {
       : email.status === "ok"
         ? t("settings:adminSystem.email.ok")
         : t("settings:adminSystem.email.down", {
-            code: email.errorCode ?? "UNKNOWN",
-          });
+          code: email.errorCode ?? "UNKNOWN",
+        });
 
   return (
     <SettingsSection title={t("settings:adminSystem.email.title")}>
@@ -41,8 +41,8 @@ export function EmailSection({ email }: EmailSectionProps) {
           status={
             <Button
               type="button"
-              variant="outline"
-              size="sm"
+              variant="outlined"
+              size="small"
               disabled={!email.configured || sendTestEmail.isPending}
               onClick={() => sendTestEmail.mutate()}
             >

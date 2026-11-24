@@ -1,6 +1,6 @@
 import { type ReactNode, useId } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Switch } from "@/components/ui/switch";
 import { DisplaySection } from "@/components/project/display/display-section";
 import { DisplayMenu } from "@/components/project/display/display-menu";

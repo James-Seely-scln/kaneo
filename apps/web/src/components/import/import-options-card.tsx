@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import type { ImportSourceId } from "@/components/import/import-source-definitions";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Switch } from "@/components/ui/switch";
 
 type ImportOptionsCardProps = {
@@ -52,20 +52,20 @@ export function ImportOptionsCard({
           <p className="text-muted-foreground text-xs">
             {sourceId === "trello"
               ? t("settings:workspaceImport.select.membersNoteTrello", {
-                  workspace: workspaceName,
-                })
+                workspace: workspaceName,
+              })
               : sourceId === "jira"
                 ? t("settings:workspaceImport.select.membersNoteJira", {
-                    workspace: workspaceName,
-                  })
+                  workspace: workspaceName,
+                })
                 : t("settings:workspaceImport.select.membersNote", {
-                    workspace: workspaceName,
-                  })}
+                  workspace: workspaceName,
+                })}
           </p>
         </div>
         <Button
-          variant="outline"
-          size="sm"
+          variant="outlined"
+          size="small"
           className="self-start sm:self-auto"
           render={
             <Link

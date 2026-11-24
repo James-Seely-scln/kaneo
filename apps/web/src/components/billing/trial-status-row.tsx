@@ -2,7 +2,7 @@ import { Sparkles, TriangleAlert } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { SettingsRow } from "@/components/settings/settings-row";
 import { StatusBadge } from "@/components/settings/status-badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { GetBillingResponse } from "@/fetchers/billing/get-billing";
 import { getTrialState } from "@/lib/billing";
 
@@ -49,7 +49,7 @@ export function TrialStatusRow({ billing, onChoosePlan }: TrialStatusRowProps) {
       }
     >
       {onChoosePlan ? (
-        <Button type="button" size="sm" onClick={onChoosePlan}>
+        <Button type="button" size="small" onClick={onChoosePlan}>
           {t("settings:billing.trialCard.choosePlan")}
         </Button>
       ) : null}

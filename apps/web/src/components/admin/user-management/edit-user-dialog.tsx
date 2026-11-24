@@ -1,6 +1,6 @@
 import { type FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Dialog,
   DialogClose,
@@ -147,7 +147,7 @@ export function EditUserDialog({
           </DialogPanel>
           <DialogFooter>
             <DialogClose
-              render={<Button type="button" variant="outline" />}
+              render={<Button type="button" variant="outlined" />}
               disabled={isPending}
             >
               {t("common:actions.cancel")}

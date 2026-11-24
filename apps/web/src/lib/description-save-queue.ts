@@ -1,4 +1,4 @@
-export type DescriptionSaveState = "saved" | "saving" | "pending" | "failed";
+type DescriptionSaveState = "saved" | "saving" | "pending" | "failed";
 
 type Entry = {
   ownerId: string;

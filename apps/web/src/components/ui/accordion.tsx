@@ -64,6 +64,5 @@ export {
   Accordion,
   AccordionItem,
   AccordionPanel,
-  AccordionPanel as AccordionContent,
   AccordionTrigger,
 };

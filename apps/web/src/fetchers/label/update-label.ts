@@ -2,7 +2,7 @@ import { client } from "@kaneo/libs";
 import type { InferRequestType } from "hono/client";
 import { HttpError } from "@/lib/http-error";
 
-export type UpdateLabelRequest = InferRequestType<
+type UpdateLabelRequest = InferRequestType<
   (typeof client)["label"][":id"]["$put"]
 >["json"] &
   InferRequestType<(typeof client)["label"][":id"]["$put"]>["param"];

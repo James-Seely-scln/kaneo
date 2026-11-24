@@ -8,7 +8,7 @@ export type ListImportSourceProjectsRequest = InferRequestType<
 
 export type ImportConnection = ListImportSourceProjectsRequest["connection"];
 
-export type ListImportSourceProjectsResponse = InferResponseType<
+type ListImportSourceProjectsResponse = InferResponseType<
   (typeof client)["import"]["projects"]["$post"],
   200
 >;

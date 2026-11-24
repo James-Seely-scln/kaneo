@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IntegrationCheckLine } from "@/components/project/integrations/panel/integration-check-line";
 import { IntegrationPanelSection } from "@/components/project/integrations/panel/integration-panel-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { SyncParams } from "@/fetchers/integration-sync/types";
 import { useSyncRules } from "@/hooks/queries/integration-sync/use-sync-rules";
 import { useWorkspacePermission } from "@/hooks/use-workspace-permission";

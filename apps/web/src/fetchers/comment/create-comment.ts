@@ -2,7 +2,7 @@ import { client } from "@kaneo/libs";
 import type { InferRequestType } from "hono/client";
 import { HttpError } from "@/lib/http-error";
 
-export type CreateCommentRequest = InferRequestType<
+type CreateCommentRequest = InferRequestType<
   (typeof client)["activity"]["comment"]["$post"]
 >["json"];
 

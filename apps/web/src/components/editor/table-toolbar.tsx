@@ -8,7 +8,7 @@ import {
   Grid2x2X,
   Rows3,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { cn } from "@/lib/cn";
 
 export function TableToolbar({
@@ -46,8 +46,8 @@ export function TableToolbar({
     <span key={action.command} className="contents">
       <Button
         type="button"
-        variant="ghost"
-        size="xs"
+        variant="minimal"
+        size="small"
         className={cn(className, "destructive" in action && "text-destructive")}
         title={labels[action.command]}
         aria-label={labels[action.command]}

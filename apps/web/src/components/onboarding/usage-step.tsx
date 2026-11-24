@@ -1,7 +1,7 @@
 import { User, Users } from "lucide-react";
 import { useId } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   WORKSPACE_USAGE_OPTIONS,
   type WorkspaceUsage,
@@ -57,7 +57,7 @@ export function UsageStep({ value, onChange, onContinue }: UsageStepProps) {
           );
         })}
       </fieldset>
-      <Button type="submit" size="lg" className="self-start">
+      <Button type="submit" size="large" className="self-start">
         {t("auth:onboarding.continue")}
       </Button>
     </form>

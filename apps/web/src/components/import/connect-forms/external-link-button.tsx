@@ -1,18 +1,18 @@
 import { ExternalLink } from "lucide-react";
 import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { Button, type ButtonProps } from "@/components/ui/button";
+import { Button, Size } from "@blueprintjs/core";
 
 type ExternalLinkButtonProps = {
   href: string | null;
-  size?: ButtonProps["size"];
+  size?: Size;
   className?: string;
   children: ReactNode;
 };
 
 export function ExternalLinkButton({
   href,
-  size = "sm",
+  size = "small",
   className,
   children,
 }: ExternalLinkButtonProps) {
@@ -29,7 +29,7 @@ export function ExternalLinkButton({
 
   if (!href) {
     return (
-      <Button variant="outline" size={size} className={className} disabled>
+      <Button variant="outlined" size={size} className={className} disabled>
         {content}
       </Button>
     );
@@ -37,10 +37,9 @@ export function ExternalLinkButton({
 
   return (
     <Button
-      variant="outline"
+      variant="outlined"
       size={size}
       className={className}
-      render={<a href={href} target="_blank" rel="noopener noreferrer" />}
     >
       {content}
     </Button>

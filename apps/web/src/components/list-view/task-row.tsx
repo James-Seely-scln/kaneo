@@ -14,7 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { useDeleteTask } from "@/hooks/mutations/task/use-delete-task";
 import useActiveWorkspace from "@/hooks/queries/workspace/use-active-workspace";
 import { useGetActiveWorkspaceUsers } from "@/hooks/queries/workspace-users/use-get-active-workspace-users";
@@ -213,7 +213,7 @@ function TaskRow({
         "group/row flex items-stretch border-b border-border/50 transition-colors duration-150",
         (isDragging || isTaskDragging) && "opacity-50",
         isTaskSelected &&
-          "bg-accent/60 shadow-sm ring-1 ring-inset ring-ring/30",
+        "bg-accent/60 shadow-sm ring-1 ring-inset ring-ring/30",
         isTaskFocused && "ring-1 ring-board-card-focus ring-inset",
       )}
     >
@@ -336,14 +336,14 @@ function TaskRow({
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogClose render={<Button variant="outline" size="sm" />}>
+              <AlertDialogClose render={<Button variant="outlined" size="small" />}>
                 {t("common:actions.cancel")}
               </AlertDialogClose>
               <AlertDialogClose
                 render={
                   <Button
-                    variant="destructive"
-                    size="sm"
+                    intent="danger"
+                    size="small"
                     onClick={handleDeleteTask}
                   />
                 }

@@ -10,7 +10,7 @@ import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsEmpty } from "@/components/settings/settings-empty";
 import { SettingsPage } from "@/components/settings/settings-page";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useAdminAuditLog, {
   ADMIN_AUDIT_LOG_PAGE_SIZE,
 } from "@/hooks/queries/admin/use-admin-audit-log";
@@ -76,8 +76,8 @@ function AuditLogPanel() {
                 category ? (
                   <Button
                     type="button"
-                    variant="ghost"
-                    size="sm"
+                    variant="minimal"
+                    size="small"
                     onClick={() => setCategory("")}
                   >
                     {t("settings:adminAuditLog.clearFilter")}

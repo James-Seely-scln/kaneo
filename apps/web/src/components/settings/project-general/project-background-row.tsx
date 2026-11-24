@@ -2,7 +2,7 @@ import { Trash2 } from "lucide-react";
 import { type ChangeEvent, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { SettingsRow } from "@/components/settings/settings-row";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { getApiUrl } from "@/fetchers/get-api-url";
 import useRemoveProjectBackground from "@/hooks/mutations/project/use-remove-project-background";
 import useUploadProjectBackground from "@/hooks/mutations/project/use-upload-project-background";

@@ -15,8 +15,6 @@ export type BoardFilters = {
   negated?: string[] | null;
 };
 
-export { DUE_DATE_FILTER_VALUES } from "@/lib/task-filters/due-date-filter-values";
-
 const DEFAULT_FILTERS: BoardFilters = {
   status: null,
   priority: null,
@@ -109,13 +107,13 @@ export function useTaskFilters(
 
   const filteredProject = project
     ? {
-        ...project,
-        columns:
-          project.columns?.map((column) => ({
-            ...column,
-            tasks: filterTasks(column.tasks),
-          })) ?? [],
-      }
+      ...project,
+      columns:
+        project.columns?.map((column) => ({
+          ...column,
+          tasks: filterTasks(column.tasks),
+        })) ?? [],
+    }
     : null;
 
   const hasActiveFilters = Object.values(filters).some(

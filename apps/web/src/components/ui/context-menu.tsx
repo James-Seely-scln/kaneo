@@ -1,5 +1,5 @@
 import { ContextMenu as ContextMenuPrimitive } from "@base-ui/react/context-menu";
-import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
+import { CheckIcon, ChevronRightIcon } from "lucide-react";
 import * as React from "react";
 
 import { cn } from "@/lib/cn";
@@ -27,27 +27,6 @@ function ContextMenuTrigger({
     <ContextMenuPrimitive.Trigger data-slot="context-menu-trigger" {...props}>
       {children}
     </ContextMenuPrimitive.Trigger>
-  );
-}
-
-function ContextMenuPortal(props: ContextMenuPrimitive.Portal.Props) {
-  return (
-    <ContextMenuPrimitive.Portal data-slot="context-menu-portal" {...props} />
-  );
-}
-
-function ContextMenuGroup(props: ContextMenuPrimitive.Group.Props) {
-  return (
-    <ContextMenuPrimitive.Group data-slot="context-menu-group" {...props} />
-  );
-}
-
-function ContextMenuRadioGroup(props: ContextMenuPrimitive.RadioGroup.Props) {
-  return (
-    <ContextMenuPrimitive.RadioGroup
-      data-slot="context-menu-radio-group"
-      {...props}
-    />
   );
 }
 
@@ -198,48 +177,6 @@ function ContextMenuCheckboxItem({
   );
 }
 
-function ContextMenuRadioItem({
-  className,
-  children,
-  ...props
-}: ContextMenuPrimitive.RadioItem.Props) {
-  return (
-    <ContextMenuPrimitive.RadioItem
-      className={cn(
-        "grid min-h-8 in-data-[side=none]:min-w-[calc(var(--anchor-width)+1.25rem)] cursor-default grid-cols-[1rem_1fr] items-center gap-2 rounded-sm py-1 ps-2 pe-4 text-base text-foreground outline-none data-disabled:pointer-events-none data-highlighted:bg-accent data-highlighted:text-accent-foreground data-disabled:opacity-64 sm:min-h-7 sm:text-sm [&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-        className,
-      )}
-      data-slot="context-menu-radio-item"
-      {...props}
-    >
-      <ContextMenuPrimitive.RadioItemIndicator className="col-start-1">
-        <CircleIcon className="size-2 fill-current" />
-      </ContextMenuPrimitive.RadioItemIndicator>
-      <div className="col-start-2 inline-flex items-center gap-2">
-        {children}
-      </div>
-    </ContextMenuPrimitive.RadioItem>
-  );
-}
-
-function ContextMenuLabel({
-  className,
-  inset,
-  ...props
-}: ContextMenuPrimitive.GroupLabel.Props & { inset?: boolean }) {
-  return (
-    <ContextMenuPrimitive.GroupLabel
-      className={cn(
-        "px-2 py-1.5 font-medium text-muted-foreground text-xs data-inset:ps-8",
-        className,
-      )}
-      data-inset={inset}
-      data-slot="context-menu-label"
-      {...props}
-    />
-  );
-}
-
 function ContextMenuSeparator({
   className,
   ...props
@@ -253,34 +190,12 @@ function ContextMenuSeparator({
   );
 }
 
-function ContextMenuShortcut({
-  className,
-  ...props
-}: React.ComponentProps<"span">) {
-  return (
-    <span
-      className={cn(
-        "ms-auto text-muted-foreground text-xs tracking-widest",
-        className,
-      )}
-      data-slot="context-menu-shortcut"
-      {...props}
-    />
-  );
-}
-
 export {
   ContextMenu,
   ContextMenuCheckboxItem,
   ContextMenuContent,
-  ContextMenuGroup,
   ContextMenuItem,
-  ContextMenuLabel,
-  ContextMenuPortal,
-  ContextMenuRadioGroup,
-  ContextMenuRadioItem,
   ContextMenuSeparator,
-  ContextMenuShortcut,
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,

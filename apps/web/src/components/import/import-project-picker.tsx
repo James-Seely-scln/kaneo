@@ -8,7 +8,7 @@ import { ImportStepLayout } from "@/components/import/import-step-layout";
 import { IMPORT_UNIT_COPY } from "@/components/import/import-unit-copy";
 import { SettingsSectionHeader } from "@/components/settings/settings-section-header";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { CheckboxGroup } from "@/components/ui/checkbox-group";
 import type { ImportSourceProject } from "@/fetchers/import/list-import-source-projects";
 
@@ -79,7 +79,7 @@ export function ImportProjectPicker({
           })}
           action={
             projects.length > 0 ? (
-              <Button variant="ghost" size="sm" onClick={toggleAll}>
+              <Button variant="minimal" size="small" onClick={toggleAll}>
                 {allSelected
                   ? t("settings:workspaceImport.select.clear")
                   : t("settings:workspaceImport.select.selectAll")}

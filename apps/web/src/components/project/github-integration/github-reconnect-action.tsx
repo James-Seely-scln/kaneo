@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { GithubLinkAccountButton } from "@/components/project/github-integration/github-link-account-button";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { GitHubAppInfo } from "@/fetchers/github-integration/get-app-info";
 
 type GithubReconnectActionProps = {

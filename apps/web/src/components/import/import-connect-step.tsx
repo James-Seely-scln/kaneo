@@ -4,7 +4,7 @@ import type { ImportConnectValues } from "@/components/import/connect-values";
 import type { ImportSourceDefinition } from "@/components/import/import-source-definitions";
 import { ImportStepLayout } from "@/components/import/import-step-layout";
 import { SettingsSectionHeader } from "@/components/settings/settings-section-header";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type ImportConnectStepProps = {
   source: ImportSourceDefinition;
@@ -67,12 +67,12 @@ export function ImportConnectStep({
           trelloAuthorizeUrl={trelloAuthorizeUrl}
         />
         <div className="flex justify-end gap-2 pt-1">
-          <Button variant="ghost" size="sm" onClick={onCancel}>
+          <Button variant="minimal" size="small" onClick={onCancel}>
             {t("settings:workspaceImport.connect.cancel")}
           </Button>
           <Button
             type="submit"
-            size="sm"
+            size="small"
             loading={isSubmitting}
             disabled={!canSubmit}
           >

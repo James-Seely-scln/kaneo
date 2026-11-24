@@ -12,7 +12,7 @@ import { SettingsNote } from "@/components/settings/settings-note";
 import { SettingsPage } from "@/components/settings/settings-page";
 import { SettingsRowsSkeleton } from "@/components/settings/settings-rows-skeleton";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useGetApiKeys from "@/hooks/queries/use-get-api-keys";
 
 export function ApiKeysSettings() {

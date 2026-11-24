@@ -6,7 +6,7 @@ export type ImportCountKey = "tasks" | "columns" | "labels" | "comments";
 
 export type ImportCountPart = { key: ImportCountKey; count: number };
 
-export const PROJECT_COUNT_KEYS: ImportCountKey[] = [
+const PROJECT_COUNT_KEYS: ImportCountKey[] = [
   "tasks",
   "columns",
   "labels",

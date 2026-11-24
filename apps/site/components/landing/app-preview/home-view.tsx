@@ -1,6 +1,8 @@
 import { format } from "date-fns";
-import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
+// import { Plus } from "lucide-react";
+import { CirclePlusIcon } from "@blueprintjs/icons/next";
+// import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { ProjectWithTasks } from "@/types/project";
 import messages from "../../../../../i18n/en-US.json";
 import { ActivityFeed } from "./activity-feed";
@@ -52,8 +54,8 @@ export function HomeView({
                 {greeting()}
               </h1>
             </div>
-            <Button size="sm">
-              <Plus />
+            <Button size="small">
+              <CirclePlusIcon />
               {copy.newTask}
             </Button>
           </header>
@@ -74,7 +76,6 @@ export function HomeView({
                   )}
                   action={
                     <button
-                      type="button"
                       onClick={onViewAllTasks}
                       className="shrink-0 text-[13px] font-medium text-muted-foreground hover:text-foreground"
                     >

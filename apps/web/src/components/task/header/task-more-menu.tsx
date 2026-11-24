@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { ShortcutKeys } from "@/components/shortcuts/shortcut-keys";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Menu,
   MenuItem,

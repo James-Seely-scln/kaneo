@@ -2,7 +2,7 @@ import { LogOutIcon, MonitorIcon, SmartphoneIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { SettingsRow } from "@/components/settings/settings-row";
 import { StatusBadge } from "@/components/settings/status-badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { ActiveSession } from "@/fetchers/user/session-types";
 import { formatDateMedium, formatRelativeTime } from "@/lib/format";
 import { getSessionDeviceLabel } from "./get-session-device-label";
@@ -50,8 +50,8 @@ export function SessionRow({ session, onRevoke, disabled }: SessionRowProps) {
       {onRevoke && !session.current ? (
         <Button
           type="button"
-          variant="ghost"
-          size="sm"
+          variant="minimal"
+          size="small"
           disabled={disabled}
           aria-label={t("settings:sessions.revokeLabel", { device })}
           onClick={onRevoke}

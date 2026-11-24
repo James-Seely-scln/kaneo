@@ -3,7 +3,7 @@ import { ArrowUp, Paperclip, MessageSquareIcon } from "lucide-react";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import CommentEditor from "@/components/activity/comment-editor";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { ShortcutKeys } from "@/components/shortcuts/shortcut-keys";
 import {
   Tooltip,
@@ -73,8 +73,8 @@ export default function CommentInput({ taskId, projectId }: CommentInputProps) {
         />
         <div className="flex items-center justify-end gap-2 border-border/70 border-t px-2 py-2">
           <Button
-            size="xs"
-            variant="ghost"
+            size="small"
+            variant="minimal"
             onClick={() => attachAction?.()}
             disabled={!attachAction}
             className="text-muted-foreground"
@@ -86,15 +86,14 @@ export default function CommentInput({ taskId, projectId }: CommentInputProps) {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
-                  size="xs"
-                  variant="default"
+                  size="small"
                   onClick={handleSubmit}
                   disabled={isPending || !content.trim()}
                   className={cn(
                     isPending ||
-                      (!content.trim() && "opacity-50 cursor-not-allowed"),
+                    (!content.trim() && "opacity-50 cursor-not-allowed"),
                     content.trim().length > 0 &&
-                      "bg-primary text-primary-foreground",
+                    "bg-primary text-primary-foreground",
                   )}
                 >
                   <ArrowUp className="size-3.5" />

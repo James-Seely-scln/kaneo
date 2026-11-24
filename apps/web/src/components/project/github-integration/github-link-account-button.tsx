@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { GithubIcon } from "@/components/icons/github-icon";
 import { useLinkGithubAccount } from "@/components/project/github-integration/use-link-github-account";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 export function GithubLinkAccountButton() {
   const { t } = useTranslation();

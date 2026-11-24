@@ -49,7 +49,7 @@ type KeyEventLike = Pick<
   "key" | "code" | "metaKey" | "ctrlKey" | "altKey" | "shiftKey"
 >;
 
-export function eventKey(event: KeyEventLike) {
+function eventKey(event: KeyEventLike) {
   if (event.key === " ") return "space";
   if (event.key.length > 1) return event.key.toLowerCase();
   const printable = /^[\x21-\x7e]$/.test(event.key);

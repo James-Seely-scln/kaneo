@@ -1,7 +1,7 @@
 import { useId, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BillingIntervalToggle } from "@/components/billing/billing-interval-toggle";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   BILLING_PLANS,
   type BillingIntervalKey,
@@ -89,14 +89,14 @@ export function PlanStep({
       <div className="flex flex-col gap-3">
         <div className="grid grid-cols-2 gap-2">
           {checkoutFirst ? (
-            <Button size="lg" loading={isStartingCheckout} onClick={subscribe}>
+            <Button size="large" loading={isStartingCheckout} onClick={subscribe}>
               {intent
                 ? t("auth:onboarding.plan.checkout")
                 : t("auth:onboarding.plan.subscribe", { plan: planName })}
             </Button>
           ) : (
             <Button
-              size="lg"
+              size="large"
               disabled={isStartingCheckout}
               onClick={onStartTrial}
             >
@@ -106,8 +106,8 @@ export function PlanStep({
           {canTrial ? (
             checkoutFirst ? (
               <Button
-                variant="outline"
-                size="lg"
+                variant="outlined"
+                size="large"
                 disabled={isStartingCheckout}
                 onClick={onStartTrial}
               >
@@ -115,8 +115,8 @@ export function PlanStep({
               </Button>
             ) : (
               <Button
-                variant="outline"
-                size="lg"
+                variant="outlined"
+                size="large"
                 loading={isStartingCheckout}
                 onClick={subscribe}
               >

@@ -10,7 +10,7 @@ import {
   isApiKeyExpiration,
 } from "@/components/settings/api-keys/api-key-expirations";
 import { ApiKeyExpiryToggle } from "@/components/settings/api-keys/api-key-expiry-toggle";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Dialog,
   DialogDescription,

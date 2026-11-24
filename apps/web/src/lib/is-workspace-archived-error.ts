@@ -1,5 +1,5 @@
 /** The API's stable code for requests to an archived workspace. */
-export const WORKSPACE_ARCHIVED_CODE = "WORKSPACE_ARCHIVED";
+const WORKSPACE_ARCHIVED_CODE = "WORKSPACE_ARCHIVED";
 
 export function isWorkspaceArchivedError(error: unknown) {
   return (

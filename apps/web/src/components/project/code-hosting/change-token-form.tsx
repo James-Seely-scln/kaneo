@@ -2,7 +2,7 @@ import { type ReactNode, useId } from "react";
 import { useTranslation } from "react-i18next";
 import { AccessVerificationLine } from "@/components/project/code-hosting/access-verification-line";
 import type { AccessVerificationResult } from "@/components/project/code-hosting/access-verification-tone";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Input } from "@/components/ui/input";
 
 type ChangeTokenFormProps = {
@@ -57,7 +57,7 @@ export function ChangeTokenForm({
         <div className="flex gap-2">
           <Button
             type="button"
-            variant="outline"
+            variant="outlined"
             disabled={saving}
             onClick={onCancel}
           >

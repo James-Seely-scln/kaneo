@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { InlineNameInput } from "@/components/project/inline-name-input";
 import { DragHandle } from "@/components/project/sortable/drag-handle";
 import { useSortableRow } from "@/components/project/sortable/use-sortable-row";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { cn } from "@/lib/cn";
 
 type FieldOptionRowProps = {

@@ -82,7 +82,7 @@ function ComboboxInput({
       <ComboboxPrimitive.Input
         className={cn(
           startAddon &&
-            "data-[size=sm]:*:data-[slot=combobox-input]:ps-[calc(--spacing(7.5)-1px)] *:data-[slot=combobox-input]:ps-[calc(--spacing(8.5)-1px)] sm:data-[size=sm]:*:data-[slot=combobox-input]:ps-[calc(--spacing(7)-1px)] sm:*:data-[slot=combobox-input]:ps-[calc(--spacing(8)-1px)]",
+          "data-[size=sm]:*:data-[slot=combobox-input]:ps-[calc(--spacing(7.5)-1px)] *:data-[slot=combobox-input]:ps-[calc(--spacing(8.5)-1px)] sm:data-[size=sm]:*:data-[slot=combobox-input]:ps-[calc(--spacing(7)-1px)] sm:*:data-[slot=combobox-input]:ps-[calc(--spacing(8)-1px)]",
           sizeValue === "sm"
             ? "has-[+[data-slot=combobox-trigger],+[data-slot=combobox-clear]]:*:data-[slot=combobox-input]:pe-6.5"
             : "has-[+[data-slot=combobox-trigger],+[data-slot=combobox-clear]]:*:data-[slot=combobox-input]:pe-7",
@@ -225,45 +225,6 @@ function ComboboxItem({
   );
 }
 
-function ComboboxSeparator({
-  className,
-  ...props
-}: ComboboxPrimitive.Separator.Props) {
-  return (
-    <ComboboxPrimitive.Separator
-      className={cn("mx-2 my-1 h-px bg-border last:hidden", className)}
-      data-slot="combobox-separator"
-      {...props}
-    />
-  );
-}
-
-function ComboboxGroup({ className, ...props }: ComboboxPrimitive.Group.Props) {
-  return (
-    <ComboboxPrimitive.Group
-      className={cn("[[role=group]+&]:mt-1.5", className)}
-      data-slot="combobox-group"
-      {...props}
-    />
-  );
-}
-
-function ComboboxGroupLabel({
-  className,
-  ...props
-}: ComboboxPrimitive.GroupLabel.Props) {
-  return (
-    <ComboboxPrimitive.GroupLabel
-      className={cn(
-        "px-2 py-1.5 font-medium text-muted-foreground text-xs",
-        className,
-      )}
-      data-slot="combobox-group-label"
-      {...props}
-    />
-  );
-}
-
 function ComboboxEmpty({ className, ...props }: ComboboxPrimitive.Empty.Props) {
   return (
     <ComboboxPrimitive.Empty
@@ -272,16 +233,6 @@ function ComboboxEmpty({ className, ...props }: ComboboxPrimitive.Empty.Props) {
         className,
       )}
       data-slot="combobox-empty"
-      {...props}
-    />
-  );
-}
-
-function ComboboxRow({ className, ...props }: ComboboxPrimitive.Row.Props) {
-  return (
-    <ComboboxPrimitive.Row
-      className={className}
-      data-slot="combobox-row"
       {...props}
     />
   );
@@ -329,12 +280,6 @@ function ComboboxStatus({
       data-slot="combobox-status"
       {...props}
     />
-  );
-}
-
-function ComboboxCollection(props: ComboboxPrimitive.Collection.Props) {
-  return (
-    <ComboboxPrimitive.Collection data-slot="combobox-collection" {...props} />
   );
 }
 
@@ -398,26 +343,16 @@ function ComboboxChipRemove(props: ComboboxPrimitive.ChipRemove.Props) {
   );
 }
 
-const useComboboxFilter = ComboboxPrimitive.useFilter;
-
 export {
   Combobox,
   ComboboxChip,
   ComboboxChips,
   ComboboxChipsInput,
-  ComboboxClear,
-  ComboboxCollection,
   ComboboxEmpty,
-  ComboboxGroup,
-  ComboboxGroupLabel,
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
   ComboboxPopup,
-  ComboboxRow,
-  ComboboxSeparator,
   ComboboxStatus,
-  ComboboxTrigger,
   ComboboxValue,
-  useComboboxFilter,
 };

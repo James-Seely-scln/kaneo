@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { ActiveFilterChip } from "./active-filter-chip";
 import { AddFilterButton } from "./add-filter-button";
 import type { FilterSubject } from "./filter-subject";

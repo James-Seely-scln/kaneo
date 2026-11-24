@@ -11,7 +11,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { useDeleteTask } from "@/hooks/mutations/task/use-delete-task";
 import { useShortcut } from "@/lib/shortcuts/use-shortcut";
 import { useWorkspacePermission } from "@/hooks/use-workspace-permission";

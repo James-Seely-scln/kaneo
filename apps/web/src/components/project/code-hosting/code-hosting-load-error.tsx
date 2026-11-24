@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { IntegrationCheckLine } from "@/components/project/integrations/panel/integration-check-line";
 import { IntegrationPanelSection } from "@/components/project/integrations/panel/integration-panel-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type CodeHostingLoadErrorProps = {
   error: unknown;
@@ -19,7 +19,7 @@ export function CodeHostingLoadError({
       <IntegrationCheckLine
         tone="destructive"
         action={
-          <Button type="button" variant="outline" size="sm" onClick={onRetry}>
+          <Button type="button" variant="outlined" size="small" onClick={onRetry}>
             {t("settings:codeHosting.retry")}
           </Button>
         }

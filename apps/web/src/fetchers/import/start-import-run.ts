@@ -6,7 +6,7 @@ export type StartImportRunRequest = InferRequestType<
   (typeof client)["import"]["runs"]["$post"]
 >["json"];
 
-export type StartImportRunResponse = InferResponseType<
+type StartImportRunResponse = InferResponseType<
   (typeof client)["import"]["runs"]["$post"],
   202
 >;

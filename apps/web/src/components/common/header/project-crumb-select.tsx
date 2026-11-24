@@ -1,6 +1,6 @@
 import { ChevronsUpDown, Plus } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,8 +35,8 @@ export default function ProjectCrumbSelect({
       <DropdownMenuTrigger
         render={
           <Button
-            variant="ghost"
-            size="xs"
+            variant="minimal"
+            size="small"
             className="h-7 justify-between gap-2.5 px-2 text-xs text-foreground"
           />
         }

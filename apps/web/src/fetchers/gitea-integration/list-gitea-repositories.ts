@@ -2,7 +2,7 @@ import { client } from "@kaneo/libs";
 import type { InferRequestType, InferResponseType } from "hono";
 import { HttpError } from "@/lib/http-error";
 
-export type ListGiteaRepositoriesRequest = InferRequestType<
+type ListGiteaRepositoriesRequest = InferRequestType<
   (typeof client)["gitea-integration"]["repositories"]["$post"]
 >["json"];
 

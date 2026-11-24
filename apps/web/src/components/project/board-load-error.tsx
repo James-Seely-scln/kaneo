@@ -1,6 +1,6 @@
 import { CloudOffIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Empty,
   EmptyContent,
@@ -32,7 +32,7 @@ export function BoardLoadError({ isRetrying, onRetry }: BoardLoadErrorProps) {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button variant="outline" loading={isRetrying} onClick={onRetry}>
+        <Button variant="outlined" loading={isRetrying} onClick={onRetry}>
           {t("tasks:board.tryAgain")}
         </Button>
       </EmptyContent>

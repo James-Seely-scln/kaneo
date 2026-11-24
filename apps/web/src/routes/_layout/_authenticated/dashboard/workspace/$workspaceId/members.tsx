@@ -6,7 +6,7 @@ import WorkspaceLayout from "@/components/common/workspace-layout";
 import PageTitle from "@/components/page-title";
 import InviteTeamMemberModal from "@/components/team/invite-team-member-modal";
 import MembersTable from "@/components/team/members-table";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useGetFullWorkspace from "@/hooks/queries/workspace/use-get-full-workspace";
 import { useWorkspacePermission } from "@/hooks/use-workspace-permission";
 

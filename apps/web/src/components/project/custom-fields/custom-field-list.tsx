@@ -11,7 +11,7 @@ import { useSortableOrder } from "@/components/project/sortable/use-sortable-ord
 import { ConfirmDialog } from "@/components/settings/confirm-dialog";
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsEmpty } from "@/components/settings/settings-empty";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useDeleteCustomField from "@/hooks/mutations/custom-field/use-delete-custom-field";
 import { useReorderCustomFields } from "@/hooks/mutations/custom-field/use-reorder-custom-field";
 import useGetCustomFieldsByProject from "@/hooks/queries/custom-field/use-get-custom-fields-by-project";

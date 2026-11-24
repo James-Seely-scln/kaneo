@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { UserFilterSelect } from "./user-filter-select";
 import {
   getRoleFilterOptions,
@@ -23,8 +23,8 @@ export function UserDirectoryFilters({
   const { t } = useTranslation();
   const set =
     <Key extends keyof UserFilterValues>(key: Key) =>
-    (value: UserFilterValues[Key]) =>
-      onChange({ ...values, [key]: value });
+      (value: UserFilterValues[Key]) =>
+        onChange({ ...values, [key]: value });
 
   return (
     <div
@@ -53,8 +53,8 @@ export function UserDirectoryFilters({
       {hasUserFilters(values) ? (
         <Button
           type="button"
-          variant="ghost"
-          size="sm"
+          variant="minimal"
+          size="small"
           className="text-muted-foreground"
           onClick={() => onChange(NO_USER_FILTERS)}
         >

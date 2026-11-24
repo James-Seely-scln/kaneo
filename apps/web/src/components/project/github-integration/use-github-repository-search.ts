@@ -7,8 +7,8 @@ import listRepositories, {
 } from "@/fetchers/github-integration/list-repositories";
 import { authClient } from "@/lib/auth-client";
 
-export const AUTO_FETCH_TARGET = 20;
-export const AUTO_FETCH_LIMIT = 5;
+const AUTO_FETCH_TARGET = 20;
+const AUTO_FETCH_LIMIT = 5;
 
 type AutoFetchState = {
   scope: string;

@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { BillingIntervalKey, BillingPlan } from "@/constants/billing";
 import { getPlanPrice } from "@/lib/billing";
 import { cn } from "@/lib/cn";

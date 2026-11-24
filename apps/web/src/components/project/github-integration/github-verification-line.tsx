@@ -7,7 +7,7 @@ import {
 } from "@/components/project/github-integration/describe-github-verification";
 import { githubVerificationMessage } from "@/components/project/github-integration/github-verification-message";
 import { IntegrationCheckLine } from "@/components/project/integrations/panel/integration-check-line";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { VerifyGithubInstallationResponse } from "@/fetchers/github-integration/verify-github-installation";
 import { openExternalWebUrl } from "@/lib/external-url";
 
@@ -56,14 +56,14 @@ export function GithubVerificationLine({
       action={
         outcome.kind === "missingPermissions"
           ? link(
-              outcome.settingsUrl,
-              t("settings:githubIntegration.updatePermissions"),
-            )
+            outcome.settingsUrl,
+            t("settings:githubIntegration.updatePermissions"),
+          )
           : outcome.kind === "notInstalled"
             ? link(
-                outcome.installationUrl,
-                t("settings:githubIntegration.installGithubApp"),
-              )
+              outcome.installationUrl,
+              t("settings:githubIntegration.installGithubApp"),
+            )
             : undefined
       }
     >

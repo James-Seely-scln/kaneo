@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { getApiKeyExpiry } from "@/components/settings/api-keys/get-api-key-expiry";
 import { SettingsRow } from "@/components/settings/settings-row";
 import { StatusBadge } from "@/components/settings/status-badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { AdminApiKey } from "@/fetchers/admin/get-admin-user-api-keys";
 import { formatDateMedium, formatRelativeTime } from "@/lib/format";
 
@@ -23,17 +23,17 @@ export function AdminApiKeyRow({ apiKey, onRevoke }: Props) {
     }),
     apiKey.lastUsedAt
       ? t("settings:adminUsers.security.lastUsed", {
-          time: formatRelativeTime(apiKey.lastUsedAt),
-        })
+        time: formatRelativeTime(apiKey.lastUsedAt),
+      })
       : t("settings:adminUsers.security.neverUsed"),
     expiry.status === "never"
       ? t("settings:apiKey.row.neverExpires")
       : t(
-          expiry.status === "expired"
-            ? "settings:apiKey.row.expired"
-            : "settings:apiKey.row.expires",
-          { date: formatDateMedium(expiry.date) },
-        ),
+        expiry.status === "expired"
+          ? "settings:apiKey.row.expired"
+          : "settings:apiKey.row.expires",
+        { date: formatDateMedium(expiry.date) },
+      ),
   ];
 
   return (
@@ -63,8 +63,8 @@ export function AdminApiKeyRow({ apiKey, onRevoke }: Props) {
     >
       <Button
         type="button"
-        variant="ghost"
-        size="sm"
+        variant="minimal"
+        size="small"
         aria-label={t("settings:adminUsers.security.revokeKeyLabel", { name })}
         onClick={onRevoke}
       >

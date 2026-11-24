@@ -7,7 +7,7 @@ import {
   ALL_PROJECTS_ACCESS,
   type ProjectAccessValue,
 } from "@/components/team/project-access/project-access-value";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Dialog,
   DialogDescription,
@@ -123,8 +123,8 @@ function WorkspaceMembersDialog({ workspace, open, onOpenChange }: Props) {
               {canManage && can("users:read") ? (
                 <Button
                   type="button"
-                  variant="outline"
-                  size="sm"
+                  variant="outlined"
+                  size="small"
                   className="ms-auto"
                   disabled={!members}
                   onClick={() => setIsAddOpen(true)}

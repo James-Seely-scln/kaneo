@@ -4,7 +4,7 @@ import { DirectoryErrorRow } from "@/components/admin/directory/directory-error-
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsPage } from "@/components/settings/settings-page";
 import { SettingsRowsSkeleton } from "@/components/settings/settings-rows-skeleton";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useAdminSystemStatus from "@/hooks/queries/admin/use-admin-system-status";
 import { formatDateTime } from "@/lib/format";
 import { cn } from "@/lib/cn";
@@ -32,8 +32,8 @@ function SystemStatusPanel() {
           ) : null}
           <Button
             type="button"
-            variant="outline"
-            size="sm"
+            variant="outlined"
+            size="small"
             disabled={isFetching}
             onClick={() => refetch()}
           >

@@ -26,7 +26,7 @@ import { TaskCount } from "@/components/project/toolbar/task-count";
 import { useProjectTaskView } from "@/components/project/toolbar/use-project-task-view";
 import { LayoutSwitch } from "@/components/project/views/layout-switch";
 import TaskDetailsSheet from "@/components/task/task-details-sheet";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { useGetTasks } from "@/hooks/queries/task/use-get-tasks";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/cn";
@@ -428,7 +428,7 @@ function RouteComponent() {
                           className={cn(
                             "mx-auto flex size-6 items-center justify-center rounded-full text-xs font-medium",
                             isCurrentDay &&
-                              "bg-primary text-primary-foreground",
+                            "bg-primary text-primary-foreground",
                           )}
                         >
                           {format(day, "d")}
@@ -512,16 +512,16 @@ function RouteComponent() {
                             </button>
                             {(task.scheduleEnd < timeline.rangeStart ||
                               task.scheduleStart > timeline.rangeEnd) && (
-                              <button
-                                type="button"
-                                className="px-3 pb-2 text-xs text-primary underline"
-                                onClick={() =>
-                                  showDate(addDays(task.scheduleStart, -7))
-                                }
-                              >
-                                {t("tasks:gantt.showTaskDates")}
-                              </button>
-                            )}
+                                <button
+                                  type="button"
+                                  className="px-3 pb-2 text-xs text-primary underline"
+                                  onClick={() =>
+                                    showDate(addDays(task.scheduleStart, -7))
+                                  }
+                                >
+                                  {t("tasks:gantt.showTaskDates")}
+                                </button>
+                              )}
                           </div>
                         ) : null}
 

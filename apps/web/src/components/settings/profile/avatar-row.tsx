@@ -2,7 +2,7 @@ import { Loader2, ImageMinusIcon, ImageUpIcon } from "lucide-react";
 import { type ChangeEvent, type ReactNode, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useRemoveUserAvatar from "@/hooks/mutations/use-remove-user-avatar";
 import useUpdateUserAvatar from "@/hooks/mutations/use-update-user-avatar";
 import { getInitials } from "@/lib/get-initials";

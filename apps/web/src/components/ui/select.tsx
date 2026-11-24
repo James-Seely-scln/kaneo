@@ -202,43 +202,12 @@ function SelectItem({
   );
 }
 
-function SelectSeparator({
-  className,
-  ...props
-}: SelectPrimitive.Separator.Props) {
-  return (
-    <SelectPrimitive.Separator
-      className={cn("mx-2 my-1 h-px bg-border", className)}
-      data-slot="select-separator"
-      {...props}
-    />
-  );
-}
-
-function SelectGroup(props: SelectPrimitive.Group.Props) {
-  return <SelectPrimitive.Group data-slot="select-group" {...props} />;
-}
-
-function SelectGroupLabel(props: SelectPrimitive.GroupLabel.Props) {
-  return (
-    <SelectPrimitive.GroupLabel
-      className="px-2 py-1.5 font-medium text-muted-foreground text-xs"
-      data-slot="select-group-label"
-      {...props}
-    />
-  );
-}
-
 export {
   Select,
   SelectButton,
-  SelectGroup,
-  SelectGroupLabel,
   SelectItem,
   SelectPopup,
   SelectPopup as SelectContent,
-  SelectSeparator,
   SelectTrigger,
   SelectValue,
-  selectTriggerVariants,
 };

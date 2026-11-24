@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { ShortcutTooltipLabel } from "@/components/shortcuts/shortcut-tooltip-label";
 import {
   Tooltip,

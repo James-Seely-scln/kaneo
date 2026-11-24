@@ -8,7 +8,7 @@ import { StoredTokenRow } from "@/components/project/code-hosting/stored-token-r
 import { GiteaChangeToken } from "@/components/project/gitea-integration/gitea-change-token";
 import { IntegrationCheckLine } from "@/components/project/integrations/panel/integration-check-line";
 import { IntegrationPanelSection } from "@/components/project/integrations/panel/integration-panel-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { GiteaIntegration } from "@/fetchers/gitea-integration/get-gitea-integration";
 import { useUpdateGiteaIntegration } from "@/hooks/mutations/gitea-integration/use-update-gitea-integration";
 import { toast } from "@/lib/toast";

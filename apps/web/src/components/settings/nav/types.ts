@@ -1,12 +1,12 @@
 import type { LucideIcon } from "lucide-react";
 
-export type SettingsNavSubLink = {
+type SettingsNavSubLink = {
   id: string;
   label: string;
   to: string;
 };
 
-export type SettingsNavLink = SettingsNavSubLink & {
+type SettingsNavLink = SettingsNavSubLink & {
   icon: LucideIcon;
 };
 

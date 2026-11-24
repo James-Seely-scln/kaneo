@@ -14,7 +14,7 @@ import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsEmpty } from "@/components/settings/settings-empty";
 import { SettingsPage } from "@/components/settings/settings-page";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useAdminUsers, {
   ADMIN_USERS_PAGE_SIZE,
   ADMIN_USERS_SEARCH_MAX_LENGTH,
@@ -97,7 +97,7 @@ function UserManagementPanel({ initialRole }: UserManagementPanelProps) {
       description={t("settings:adminUsers.subtitle")}
       actions={
         permissions.includes("users:create") ? (
-          <Button type="button" size="sm" onClick={() => setIsCreating(true)}>
+          <Button type="button" size="small" onClick={() => setIsCreating(true)}>
             <UserPlusIcon aria-hidden="true" />
             {t("settings:adminUsers.create.open")}
           </Button>
@@ -147,8 +147,8 @@ function UserManagementPanel({ initialRole }: UserManagementPanelProps) {
                 search || hasUserFilters(filters) ? (
                   <Button
                     type="button"
-                    variant="ghost"
-                    size="sm"
+                    variant="minimal"
+                    size="small"
                     onClick={() => {
                       setSearch("");
                       changeFilters(NO_USER_FILTERS);

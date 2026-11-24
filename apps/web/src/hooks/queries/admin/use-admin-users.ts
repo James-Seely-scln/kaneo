@@ -7,7 +7,6 @@ export {
   ADMIN_USERS_PAGE_SIZE,
   ADMIN_USERS_SEARCH_MAX_LENGTH,
   type AdminUser,
-  type AdminUserFilters,
 } from "@/fetchers/admin/types";
 
 export const ADMIN_USERS_QUERY_KEY = ["admin", "users"] as const;

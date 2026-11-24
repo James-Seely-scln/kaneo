@@ -7,7 +7,7 @@ import { ConfirmDialog } from "@/components/settings/confirm-dialog";
 import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsRowsSkeleton } from "@/components/settings/settings-rows-skeleton";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { AdminUser } from "@/fetchers/admin/types";
 import type { ActiveSession } from "@/fetchers/user/session-types";
 import useRevokeAdminUserSession from "@/hooks/mutations/admin/use-revoke-admin-user-session";
@@ -63,8 +63,8 @@ export function UserSessionsSection({ user, isSelf }: Props) {
           </p>
           <Button
             type="button"
-            variant="ghost"
-            size="sm"
+            variant="minimal"
+            size="small"
             onClick={() => refetch()}
           >
             {t("settings:adminUsers.retry")}

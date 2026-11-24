@@ -1,6 +1,6 @@
 import { EllipsisIcon, type LucideIcon } from "lucide-react";
 import { Fragment } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Menu,
   MenuItem,

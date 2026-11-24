@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type DirectoryPaginationProps = {
   page: number;
@@ -25,8 +25,8 @@ export function DirectoryPagination({
       <div className="flex items-center gap-1.5">
         <Button
           type="button"
-          variant="outline"
-          size="sm"
+          variant="outlined"
+          size="small"
           disabled={page === 0 || disabled}
           onClick={() => onPageChange(Math.max(0, page - 1))}
         >
@@ -34,8 +34,8 @@ export function DirectoryPagination({
         </Button>
         <Button
           type="button"
-          variant="outline"
-          size="sm"
+          variant="outlined"
+          size="small"
           disabled={page + 1 >= pageCount || disabled}
           onClick={() => onPageChange(page + 1)}
         >

@@ -2,10 +2,10 @@ import { client } from "@kaneo/libs";
 import type { InferRequestType, InferResponseType } from "hono/client";
 import { loadBoardPages } from "@/fetchers/task/load-board-pages";
 import { HttpError } from "@/lib/http-error";
-export type GetPublicProjectRequest = InferRequestType<
+type GetPublicProjectRequest = InferRequestType<
   (typeof client)["public-project"][":id"]["$get"]
 >["param"];
-class BoardChanged extends Error {}
+class BoardChanged extends Error { }
 async function getPublicProject(
   { id }: GetPublicProjectRequest,
   signal?: AbortSignal,

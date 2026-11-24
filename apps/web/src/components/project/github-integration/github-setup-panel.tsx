@@ -15,7 +15,7 @@ import { useGithubVerification } from "@/components/project/github-integration/u
 import { IntegrationPanel } from "@/components/project/integrations/panel/integration-panel";
 import { IntegrationPanelFooter } from "@/components/project/integrations/panel/integration-panel-footer";
 import { IntegrationSteps } from "@/components/project/integrations/panel/integration-steps";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import type { GitHubAppInfo } from "@/fetchers/github-integration/get-app-info";
 
 type GithubSetupPanelProps = {

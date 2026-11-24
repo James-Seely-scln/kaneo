@@ -10,7 +10,7 @@ import { authMessageClassName } from "@/components/auth/auth-form-styles";
 import { AuthPage } from "@/components/auth/auth-page";
 import { normalizeDeviceCode } from "@/components/auth/device-code";
 import PageTitle from "@/components/page-title";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { authClient } from "@/lib/auth-client";

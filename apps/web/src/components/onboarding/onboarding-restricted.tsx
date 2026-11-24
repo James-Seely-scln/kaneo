@@ -1,7 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import { AuthPage } from "@/components/auth/auth-page";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 export function OnboardingRestricted() {
   const { t } = useTranslation();
@@ -13,8 +13,8 @@ export function OnboardingRestricted() {
       description={t("auth:onboarding.restrictedSubtitle")}
     >
       <Button
-        size="lg"
-        variant="outline"
+        size="large"
+        variant="outlined"
         className="w-full"
         onClick={() => navigate({ to: "/invitations" })}
       >

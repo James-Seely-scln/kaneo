@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useShortcut } from "@/lib/shortcuts/use-shortcut";
 import { useAuth } from "@/components/providers/auth-provider/hooks/use-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -61,8 +61,8 @@ export function UserAvatar() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
-          size="icon"
+          variant="minimal"
+          size="small"
           className="h-8 w-8 rounded-full p-0 hover:bg-sidebar-accent/70"
         >
           <Avatar className="h-8 w-8">

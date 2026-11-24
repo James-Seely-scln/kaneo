@@ -1,4 +1,4 @@
-export type ExternalLinkMetadata = {
+type ExternalLinkMetadata = {
   syncFilterPaused?: boolean;
   state?: string;
   merged?: boolean;
@@ -7,13 +7,13 @@ export type ExternalLinkMetadata = {
   branch?: string;
   author?: string;
   createdFrom?:
-    | "github"
-    | "kaneo"
-    | "gitea"
-    | "gitea-import"
-    | "github-import"
-    | "gitlab"
-    | "gitlab-import";
+  | "github"
+  | "kaneo"
+  | "gitea"
+  | "gitea-import"
+  | "github-import"
+  | "gitlab"
+  | "gitlab-import";
   lastCommit?: {
     sha: string;
     message: string;

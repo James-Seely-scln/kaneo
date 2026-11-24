@@ -11,7 +11,7 @@ import useGetMyProjectAccess from "@/hooks/queries/workspace-users/use-get-my-pr
 import useActiveWorkspace from "@/hooks/queries/workspace/use-active-workspace";
 import { useWorkspacePermission } from "@/hooks/use-workspace-permission";
 import { toast } from "@/lib/toast";
-import { Button } from "../ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Dialog,
   DialogClose,
@@ -183,7 +183,7 @@ function InviteTeamMemberModal({ open, onClose }: Props) {
               <InvitationLinkField invitationId={createdInvitation.id} />
             </DialogPanel>
             <DialogFooter>
-              <Button size="sm" onClick={closeModal}>
+              <Button size="small" onClick={closeModal}>
                 {t("team:inviteModal.done")}
               </Button>
             </DialogFooter>
@@ -229,13 +229,13 @@ function InviteTeamMemberModal({ open, onClose }: Props) {
 
               <DialogFooter>
                 <DialogClose
-                  render={<Button variant="outline" size="sm" type="button" />}
+                  render={<Button variant="outlined" size="small" type="button" />}
                 >
                   {t("common:actions.cancel")}
                 </DialogClose>
                 <Button
                   type="submit"
-                  size="sm"
+                  size="small"
                   disabled={!workspaceId || !canInvite || isMyAccessPending}
                 >
                   {t("team:inviteModal.sendInvitation")}

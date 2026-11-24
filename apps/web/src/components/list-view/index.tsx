@@ -17,7 +17,7 @@ import { Flag, ArchiveIcon } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { priorityColorsTaskCard } from "@/constants/priority-colors";
 import { useUpdateTask } from "@/hooks/mutations/task/use-update-task";
 import useGetProjectTaskRelations from "@/hooks/queries/task-relation/use-get-project-task-relations";
@@ -379,8 +379,8 @@ function ListView({
 
   const activeTask = activeId
     ? project.columns
-        ?.flatMap((col) => col.tasks)
-        .find((task) => task.id === activeId)
+      ?.flatMap((col) => col.tasks)
+      .find((task) => task.id === activeId)
     : null;
 
   return (
@@ -408,8 +408,8 @@ function ListView({
           >
             <span>{t("tasks:listView.subtasksLoadError")}</span>
             <Button
-              variant="outline"
-              size="sm"
+              variant="outlined"
+              size="small"
               onClick={() => void refetchRelations()}
             >
               {t("common:error.tryAgain")}
@@ -448,7 +448,7 @@ function ListView({
                   className={cn(
                     "w-3 h-3",
                     priorityColorsTaskCard[
-                      activeTask.priority as keyof typeof priorityColorsTaskCard
+                    activeTask.priority as keyof typeof priorityColorsTaskCard
                     ],
                   )}
                 />

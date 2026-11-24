@@ -2,7 +2,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { fieldDescribedBy } from "@/components/import/connect-forms/field-ids";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   InputGroup,
   InputGroupAddon,
@@ -45,16 +45,16 @@ export function SecretInput({
       />
       <InputGroupAddon align="inline-end">
         <Button
-          variant="ghost"
-          size="icon-xs"
+          variant="minimal"
+          size="small"
           aria-label={
             visible
               ? t("settings:workspaceImport.connect.hideSecret", {
-                  field: label,
-                })
+                field: label,
+              })
               : t("settings:workspaceImport.connect.showSecret", {
-                  field: label,
-                })
+                field: label,
+              })
           }
           aria-pressed={visible}
           onClick={() => setVisible((current) => !current)}

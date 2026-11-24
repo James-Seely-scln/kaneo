@@ -1,6 +1,6 @@
 import { ArrowRight, Plus } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Tooltip,
   TooltipContent,
@@ -26,8 +26,8 @@ export function BacklogToolbarActions({
         <TooltipTrigger
           render={
             <Button
-              variant="ghost"
-              size="icon-sm"
+              variant="minimal"
+              size="small"
               aria-label={planLabel}
               onClick={onPlan}
             />
@@ -41,8 +41,8 @@ export function BacklogToolbarActions({
         <TooltipTrigger
           render={
             <Button
-              variant="ghost"
-              size="icon-sm"
+              variant="minimal"
+              size="small"
               aria-label={moveAllLabel}
               onClick={onMoveAll}
             />

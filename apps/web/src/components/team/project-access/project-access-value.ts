@@ -1,4 +1,4 @@
-export type ProjectAccessMode = "all" | "selected";
+type ProjectAccessMode = "all" | "selected";
 
 export type ProjectAccessValue = {
   projectAccess: ProjectAccessMode;

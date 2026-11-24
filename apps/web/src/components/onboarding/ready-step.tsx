@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { ReadySummaryRow } from "./ready-summary-row";
 
 type ReadyStepProps = {
@@ -45,7 +45,7 @@ export function ReadyStep({
         ) : null}
       </ul>
       <Button
-        size="lg"
+        size="large"
         className="self-start"
         autoFocus
         disabled={opening}

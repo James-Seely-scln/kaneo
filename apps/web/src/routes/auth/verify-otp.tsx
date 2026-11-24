@@ -17,7 +17,7 @@ import { AuthPage } from "@/components/auth/auth-page";
 import { useAuthCaptcha } from "@/components/auth/use-auth-captcha";
 import { readSignUpName } from "@/components/auth/verify-otp-path";
 import PageTitle from "@/components/page-title";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   InputOTP,
   InputOTPGroup,
@@ -84,16 +84,16 @@ function VerifyOtp() {
           };
           setError(
             messages[result.error.code ?? ""] ??
-              (result.error.message || t("auth:verifyOtp.toast.invalidCode")),
+            (result.error.message || t("auth:verifyOtp.toast.invalidCode")),
           );
           setIsVerifying(false);
           return;
         }
         history.push(
           safeRedirect ??
-            (invitationId
-              ? `/invitation/accept/${invitationId}`
-              : "/dashboard"),
+          (invitationId
+            ? `/invitation/accept/${invitationId}`
+            : "/dashboard"),
         );
       } catch (caught) {
         toast.error(

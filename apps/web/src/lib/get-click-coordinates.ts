@@ -17,21 +17,3 @@ export function getClickCoordinates(event: MouseEvent<HTMLElement>): {
 
   return { x, y };
 }
-
-/**
- * Get coordinates from an element's center position.
- * Useful for programmatic animations without click events.
- *
- * @param element - The HTML element to get coordinates from
- * @returns Object with x and y coordinates as percentages (0-100)
- */
-export function getElementCoordinates(element: HTMLElement): {
-  x: number;
-  y: number;
-} {
-  const rect = element.getBoundingClientRect();
-  const x = ((rect.left + rect.width / 2) / window.innerWidth) * 100;
-  const y = ((rect.top + rect.height / 2) / window.innerHeight) * 100;
-
-  return { x, y };
-}

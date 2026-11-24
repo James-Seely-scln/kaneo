@@ -10,7 +10,7 @@ import { getImportSource } from "@/components/import/import-source-definitions";
 import { ImportStepLayout } from "@/components/import/import-step-layout";
 import { IMPORT_UNIT_COPY } from "@/components/import/import-unit-copy";
 import { useImportRunFinished } from "@/components/import/use-import-run-finished";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Empty,
   EmptyContent,
@@ -65,10 +65,10 @@ export function ImportRunView({
             <EmptyDescription>{error?.message}</EmptyDescription>
           </EmptyHeader>
           <EmptyContent className="flex-row justify-center">
-            <Button variant="outline" size="sm" onClick={onOverview}>
+            <Button variant="outlined" size="small" onClick={onOverview}>
               {t("settings:workspaceImport.back.overview")}
             </Button>
-            <Button size="sm" loading={isFetching} onClick={() => refetch()}>
+            <Button size="small" loading={isFetching} onClick={() => refetch()}>
               {t("settings:workspaceImport.retry")}
             </Button>
           </EmptyContent>
@@ -93,19 +93,19 @@ export function ImportRunView({
     progress.completed === progress.total
       ? t(copy.allImported, { count: progress.total })
       : [
-          t(copy.someImported, {
-            count: progress.total,
-            done: progress.completed,
-          }),
-          progress.failedNames.length > 0
-            ? t("settings:workspaceImport.run.failedNames", {
-                count: progress.failedNames.length,
-                names: progress.failedNames,
-              })
-            : null,
-        ]
-          .filter(Boolean)
-          .join(" ");
+        t(copy.someImported, {
+          count: progress.total,
+          done: progress.completed,
+        }),
+        progress.failedNames.length > 0
+          ? t("settings:workspaceImport.run.failedNames", {
+            count: progress.failedNames.length,
+            names: progress.failedNames,
+          })
+          : null,
+      ]
+        .filter(Boolean)
+        .join(" ");
 
   return (
     <ImportStepLayout
@@ -136,11 +136,11 @@ export function ImportRunView({
                 : t("settings:workspaceImport.run.finishedNoteNoComments")}
             </p>
             <div className="flex flex-wrap justify-end gap-2 pt-1">
-              <Button variant="outline" size="sm" onClick={onOverview}>
+              <Button variant="outlined" size="small" onClick={onOverview}>
                 {t("settings:workspaceImport.run.importMore")}
               </Button>
               <Button
-                size="sm"
+                size="small"
                 render={
                   <Link
                     to="/dashboard/workspace/$workspaceId/projects"

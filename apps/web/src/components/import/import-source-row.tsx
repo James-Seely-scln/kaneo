@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 import type { ImportSourceDefinition } from "@/components/import/import-source-definitions";
 import { ImportSourceLogoTile } from "@/components/import/import-source-logo-tile";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type ImportSourceRowProps = {
   source: ImportSourceDefinition;
@@ -22,8 +22,8 @@ export function ImportSourceRow({ source }: ImportSourceRowProps) {
         </p>
       </div>
       <Button
-        variant="outline"
-        size="sm"
+        variant="outlined"
+        size="small"
         className="w-24 shrink-0"
         aria-label={t("settings:workspaceImport.sources.connectTo", {
           source: name,

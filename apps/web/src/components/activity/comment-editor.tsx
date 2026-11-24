@@ -36,7 +36,7 @@ import { KaneoMention } from "@kaneo/editor";
 import type { MentionMember } from "@/components/task/extensions/mention-list";
 import { MentionSuggestion } from "@/components/task/extensions/mention-suggestion";
 import { SHIKI_CODEBLOCK_REFRESH_META } from "@/components/task/extensions/shiki-code-block";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Dialog, DialogPopup } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import {
@@ -180,15 +180,15 @@ export default function CommentEditor({
     () =>
       projectId
         ? (projectMembers ?? []).map((member) => ({
-            id: member.id,
-            label: member.name || member.email,
-            image: member.image,
-          }))
+          id: member.id,
+          label: member.name || member.email,
+          image: member.image,
+        }))
         : (workspaceUsers?.members ?? []).map((member) => ({
-            id: member.userId,
-            label: member.user?.name ?? member.user?.email ?? "",
-            image: member.user?.image ?? null,
-          })),
+          id: member.userId,
+          label: member.user?.name ?? member.user?.email ?? "",
+          image: member.user?.image ?? null,
+        })),
     [projectId, projectMembers, workspaceUsers],
   );
   const editorShellRef = useRef<HTMLDivElement | null>(null);
@@ -214,8 +214,8 @@ export default function CommentEditor({
   const onCancelShortcutRef = useRef(onCancelShortcut);
   onSubmitShortcutRef.current = onSubmitShortcut;
   onCancelShortcutRef.current = onCancelShortcut;
-  const linkShortcutRef = useRef(() => {});
-  const attachShortcutRef = useRef(() => {});
+  const linkShortcutRef = useRef(() => { });
+  const attachShortcutRef = useRef(() => { });
   const readOnlyRef = useRef(readOnly);
   readOnlyRef.current = readOnly;
   const pendingImageInsertRef = useRef<{
@@ -322,10 +322,10 @@ export default function CommentEditor({
         const uploadedAsset = uploadAssetRef.current
           ? await uploadAssetRef.current(file)
           : await uploadTaskImage({
-              taskId: resolvedTaskId!,
-              surface: uploadSurfaceRef.current,
-              file,
-            });
+            taskId: resolvedTaskId!,
+            surface: uploadSurfaceRef.current,
+            file,
+          });
 
         // Reuse a replacement editor only while it still belongs to the task
         // that owns the uploaded asset.
@@ -335,7 +335,7 @@ export default function CommentEditor({
         const taskChanged =
           initialTaskId === undefined
             ? taskIdRef.current !== undefined &&
-              taskIdRef.current !== resolvedTaskId
+            taskIdRef.current !== resolvedTaskId
             : taskIdRef.current !== initialTaskId;
         if (!isMountedRef.current || taskChanged) {
           toast.dismiss(loadingToast);
@@ -744,10 +744,10 @@ export default function CommentEditor({
               if (!editor) return true;
               const command =
                 filteredSlashCommands[
-                  Math.min(
-                    slashMenu.selectedIndex,
-                    filteredSlashCommands.length - 1,
-                  )
+                Math.min(
+                  slashMenu.selectedIndex,
+                  filteredSlashCommands.length - 1,
+                )
                 ];
               if (command) {
                 command.run(editor, { from: slashMenu.from, to: slashMenu.to });
@@ -1486,8 +1486,8 @@ export default function CommentEditor({
             <>
               <Button
                 type="button"
-                variant="ghost"
-                size="xs"
+                variant="minimal"
+                size="small"
                 className={cn(
                   "kaneo-comment-editor-bubble-btn",
                   editor.isActive("bold") && "bg-accent text-accent-foreground",
@@ -1498,12 +1498,12 @@ export default function CommentEditor({
               </Button>
               <Button
                 type="button"
-                variant="ghost"
-                size="xs"
+                variant="minimal"
+                size="small"
                 className={cn(
                   "kaneo-comment-editor-bubble-btn",
                   editor.isActive("italic") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleItalic().run()}
               >
@@ -1511,12 +1511,12 @@ export default function CommentEditor({
               </Button>
               <Button
                 type="button"
-                variant="ghost"
-                size="xs"
+                variant="minimal"
+                size="small"
                 className={cn(
                   "kaneo-comment-editor-bubble-btn",
                   editor.isActive("underline") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleUnderline().run()}
               >
@@ -1524,12 +1524,12 @@ export default function CommentEditor({
               </Button>
               <Button
                 type="button"
-                variant="ghost"
-                size="xs"
+                variant="minimal"
+                size="small"
                 className={cn(
                   "kaneo-comment-editor-bubble-btn",
                   editor.isActive("bulletList") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleBulletList().run()}
               >
@@ -1537,12 +1537,12 @@ export default function CommentEditor({
               </Button>
               <Button
                 type="button"
-                variant="ghost"
-                size="xs"
+                variant="minimal"
+                size="small"
                 className={cn(
                   "kaneo-comment-editor-bubble-btn",
                   editor.isActive("taskList") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleTaskList().run()}
               >
@@ -1550,12 +1550,12 @@ export default function CommentEditor({
               </Button>
               <Button
                 type="button"
-                variant="ghost"
-                size="xs"
+                variant="minimal"
+                size="small"
                 className={cn(
                   "kaneo-comment-editor-bubble-btn",
                   editor.isActive("orderedList") &&
-                    "bg-accent text-accent-foreground",
+                  "bg-accent text-accent-foreground",
                 )}
                 onClick={() => editor.chain().focus().toggleOrderedList().run()}
               >
@@ -1563,8 +1563,8 @@ export default function CommentEditor({
               </Button>
               <Button
                 type="button"
-                variant="ghost"
-                size="xs"
+                variant="minimal"
+                size="small"
                 className={cn(
                   "kaneo-comment-editor-bubble-btn",
                   editor.isActive("link") && "bg-accent text-accent-foreground",
@@ -1575,8 +1575,8 @@ export default function CommentEditor({
               </Button>
               <Button
                 type="button"
-                variant="ghost"
-                size="xs"
+                variant="minimal"
+                size="small"
                 className="kaneo-comment-editor-bubble-btn"
                 onClick={() => openImagePicker(editor)}
               >
@@ -1758,19 +1758,19 @@ export default function CommentEditor({
               <div className="kaneo-embed-composer-actions">
                 <Button
                   type="button"
-                  size="xs"
-                  variant="ghost"
+                  size="small"
+                  variant="minimal"
                   onClick={() => submitEmbedComposer("link")}
                 >
                   {t("activity:comment.editor.asLink")}
                 </Button>
-                <Button type="submit" size="xs">
+                <Button type="submit" size="small">
                   {t("activity:comment.editor.embed")}
                 </Button>
                 <Button
                   type="button"
-                  size="xs"
-                  variant="ghost"
+                  size="small"
+                  variant="minimal"
                   onClick={() => {
                     setEmbedComposer(null);
                     setEmbedComposerError(null);

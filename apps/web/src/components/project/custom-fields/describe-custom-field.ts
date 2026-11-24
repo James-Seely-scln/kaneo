@@ -10,7 +10,7 @@ type DescribedField = Pick<
 const MAX_LISTED_OPTIONS = 3;
 const SEPARATOR = " · ";
 
-export function describeOptions(options: string[] | null, t: Translate) {
+function describeOptions(options: string[] | null, t: Translate) {
   const list = options ?? [];
   const shown = list.slice(0, MAX_LISTED_OPTIONS).join(", ");
   const hiddenCount = list.length - MAX_LISTED_OPTIONS;
@@ -55,8 +55,8 @@ function describeDefault(field: DescribedField, t: Translate, locale?: string) {
     case "date":
       return value
         ? t("settings:customFields.startsOn", {
-            date: formatDateDefault(value, locale),
-          })
+          date: formatDateDefault(value, locale),
+        })
         : "";
   }
 }

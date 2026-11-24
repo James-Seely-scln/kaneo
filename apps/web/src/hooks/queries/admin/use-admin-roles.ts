@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "@/components/providers/auth-provider/hooks/use-auth";
 import { getAdminRoles } from "@/fetchers/admin/get-admin-roles";
 
-export type { AdminRole } from "@/fetchers/admin/role-types";
+type { AdminRole } from "@/fetchers/admin/role-types";
 
 export const ADMIN_ROLES_QUERY_KEY = ["admin", "roles"] as const;
 

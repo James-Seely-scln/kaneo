@@ -2,7 +2,7 @@ import { ChevronDown, ChevronRight, Loader2, Play, Square } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useAuth from "@/components/providers/auth-provider/hooks/use-auth";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Collapsible,
   CollapsibleContent,
@@ -63,9 +63,9 @@ export function TaskTimeTracking({ taskId }: TaskTimeTrackingProps) {
       entry.endTime === null
         ? Math.floor((now - Date.parse(entry.startTime)) / 1000)
         : (entry.duration ??
-            Math.floor(
-              (Date.parse(entry.endTime) - Date.parse(entry.startTime)) / 1000,
-            )),
+          Math.floor(
+            (Date.parse(entry.endTime) - Date.parse(entry.startTime)) / 1000,
+          )),
     );
 
   const totalSeconds = entries.reduce(

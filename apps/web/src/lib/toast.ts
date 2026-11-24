@@ -36,12 +36,12 @@ function addToast(
     type: variant,
     actionProps: action
       ? {
-          children: action.label,
-          onClick: () => {
-            action.onClick?.();
-            toastManager.close(id);
-          },
-        }
+        children: action.label,
+        onClick: () => {
+          action.onClick?.();
+          toastManager.close(id);
+        },
+      }
       : undefined,
   });
 }
@@ -78,5 +78,4 @@ const toast = Object.assign(message, {
   dismiss,
 });
 
-export type { ToastOptions };
 export { toast };

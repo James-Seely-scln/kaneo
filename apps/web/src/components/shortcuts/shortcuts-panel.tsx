@@ -2,7 +2,7 @@ import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
 import { Search, X } from "lucide-react";
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { cn } from "@/lib/cn";
 import {
   SHORTCUT_CATEGORIES,
@@ -72,8 +72,8 @@ export function ShortcutsPanel() {
             <DialogPrimitive.Close
               render={
                 <Button
-                  variant="ghost"
-                  size="icon-sm"
+                  variant="minimal"
+                  size="small"
                   aria-label={t("common:actions.close")}
                 />
               }

@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 import Layout from "@/components/common/layout";
 import PageTitle from "@/components/page-title";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import {
@@ -211,8 +211,8 @@ function InvitationsPage() {
                           key={invitation.id}
                           className={cn(
                             expiryStatus.isUrgent &&
-                              expiryStatus.variant === "destructive" &&
-                              "bg-destructive/5",
+                            expiryStatus.variant === "destructive" &&
+                            "bg-destructive/5",
                           )}
                         >
                           <TableCell className="font-medium">

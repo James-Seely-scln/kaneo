@@ -20,17 +20,6 @@ const CommandDialog = CommandDialogPrimitive.Root;
 
 const CommandDialogPortal = CommandDialogPrimitive.Portal;
 
-const CommandCreateHandle = CommandDialogPrimitive.createHandle;
-
-function CommandDialogTrigger(props: CommandDialogPrimitive.Trigger.Props) {
-  return (
-    <CommandDialogPrimitive.Trigger
-      data-slot="command-dialog-trigger"
-      {...props}
-    />
-  );
-}
-
 function CommandDialogBackdrop({
   className,
   ...props
@@ -74,7 +63,7 @@ function CommandDialogPopup({
       <CommandDialogBackdrop
         className={cn(
           instant &&
-            "transition-none data-starting-style:opacity-100 data-ending-style:opacity-100",
+          "transition-none data-starting-style:opacity-100 data-ending-style:opacity-100",
         )}
       />
       <CommandDialogViewport>
@@ -82,7 +71,7 @@ function CommandDialogPopup({
           className={cn(
             "relative row-start-2 flex max-h-105 min-h-0 w-full min-w-0 max-w-xl flex-col rounded-2xl border bg-popover not-dark:bg-clip-padding text-popover-foreground shadow-lg/5 outline-none transition-[scale,opacity,translate] duration-200 ease-out will-change-transform before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-2xl)-1px)] before:bg-muted/72 before:shadow-[0_1px_--theme(--color-black/4%)] data-ending-style:scale-98 data-starting-style:scale-98 data-ending-style:opacity-0 data-starting-style:opacity-0 **:data-[slot=scroll-area-viewport]:data-has-overflow-y:pe-1 dark:before:shadow-[0_-1px_--theme(--color-white/6%)]",
             instant &&
-              "transition-none data-starting-style:scale-100 data-starting-style:opacity-100 data-ending-style:scale-100 data-ending-style:opacity-100",
+            "transition-none data-starting-style:scale-100 data-starting-style:opacity-100 data-ending-style:scale-100 data-ending-style:opacity-100",
             className,
           )}
           data-slot="command-dialog-popup"
@@ -255,10 +244,8 @@ function CommandFooter({ className, ...props }: React.ComponentProps<"div">) {
 export {
   Command,
   CommandCollection,
-  CommandCreateHandle,
   CommandDialog,
   CommandDialogPopup,
-  CommandDialogTrigger,
   CommandEmpty,
   CommandFooter,
   CommandGroup,

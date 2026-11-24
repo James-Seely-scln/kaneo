@@ -12,7 +12,7 @@ export type TaskFilterControls = Pick<
   | "activeFilterCount"
 >;
 
-export type FilterOption = {
+type FilterOption = {
   value: string;
   label: string;
   icon?: ReactNode;

@@ -14,7 +14,7 @@ import { AuthPage } from "@/components/auth/auth-page";
 import { useSettledSession } from "@/components/auth/use-settled-session";
 import PageTitle from "@/components/page-title";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { useGetInvitationDetails } from "@/hooks/queries/invitation/use-get-invitation-details";
 import { authClient } from "@/lib/auth-client";
 import { formatDateMedium } from "@/lib/format";
@@ -91,9 +91,9 @@ function AcceptInvitation() {
           description={
             expired
               ? t("auth:invitation.expired.description", {
-                  inviterName: invitation.inviterName,
-                  workspaceName: invitation.workspaceName,
-                })
+                inviterName: invitation.inviterName,
+                workspaceName: invitation.workspaceName,
+              })
               : t("auth:invitation.invalid.description")
           }
         >

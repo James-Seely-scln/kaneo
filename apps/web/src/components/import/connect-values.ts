@@ -1,4 +1,4 @@
-export type PlankaSignIn = "apiKey" | "password";
+type PlankaSignIn = "apiKey" | "password";
 
 export type ImportConnectValues = {
   url: string;

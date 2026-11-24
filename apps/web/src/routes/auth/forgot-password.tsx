@@ -9,7 +9,7 @@ import { AuthPage } from "@/components/auth/auth-page";
 import { useAuthCaptcha } from "@/components/auth/use-auth-captcha";
 import PageTitle from "@/components/page-title";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import useGetConfig from "@/hooks/queries/config/use-get-config";

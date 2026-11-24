@@ -11,7 +11,7 @@ import {
 import { authClient } from "@/lib/auth-client";
 import { reconcileProjectAccess } from "@/lib/reconcile-project-access";
 
-export function getUserWsUrl() {
+function getUserWsUrl() {
   const base = getApiUrl("ws");
   const wsBase = base.replace(/^http/, "ws");
   return `${wsBase}/user?windowId=${encodeURIComponent(windowId)}`;

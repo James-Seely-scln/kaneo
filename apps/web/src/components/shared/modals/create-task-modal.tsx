@@ -1,18 +1,31 @@
 import { useLocation, useParams } from "@tanstack/react-router";
+import {
+  Alert,
+  Breadcrumbs,
+  Button,
+  Checkbox,
+  Dialog,
+  InputGroup,
+  Menu,
+  MenuDivider,
+  MenuItem,
+  PopoverNext,
+  Tag as BpTag,
+  type BreadcrumbProps,
+} from "@blueprintjs/core";
 import { produce } from "immer";
 import {
   CalendarIcon,
-  CircleAlert,
-  Check,
-  FolderKanban,
-  Plus,
-  Search,
-  Tag,
-  UserIcon,
-  X,
+  CircleExclamationIcon,
+  CheckIcon,
+  BoxIcon,
+  PlusIcon,
+  MagnifyingGlassIcon,
   TagIcon,
-  SquarePlusIcon,
-} from "lucide-react";
+  UserIcon,
+  XIcon,
+  SquarePlusIcon
+} from "@blueprintjs/icons/next";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { CustomFieldChip } from "@/components/custom-fields/custom-field-chip";
@@ -24,38 +37,8 @@ import type { CustomFieldDefinition } from "@/components/project/custom-fields/t
 import TaskDescriptionEditor from "@/components/task/task-description-editor";
 import TaskDueDatePicker from "@/components/task/task-due-date-picker";
 import { TaskRecurrenceBadge } from "@/components/task/task-recurrence-badge";
-import {
-  AlertDialog,
-  AlertDialogClose,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { DatePickerMenu } from "@/components/common/date-picker/date-picker-menu";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { useGetColumns } from "@/hooks/queries/column/use-get-columns";
 import { getColumnIcon } from "@/lib/column";
 import { getStatusDisplayLabel } from "@/lib/i18n/domain";
@@ -292,10 +275,10 @@ function CreateTaskModalContent({
     () =>
       resolvedProjectId
         ? (projectMembers ?? []).map((member) => ({
-            id: member.id,
-            name: member.name,
-            image: member.image,
-          }))
+          id: member.id,
+          name: member.name,
+          image: member.image,
+        }))
         : workspaceAssigneeOptions,
     [resolvedProjectId, projectMembers, workspaceAssigneeOptions],
   );
@@ -770,37 +753,46 @@ function CreateTaskModalContent({
     setLabels(labels.filter((l) => l.name !== labelName));
   };
 
+  const breadcrumbItems: BreadcrumbProps[] = [
+    {
+      text:
+        resolvedProject?.slug?.toUpperCase() ||
+        t("common:modals.createTask.breadcrumbTask"),
+    },
+    {
+      text: t("common:modals.createTask.title"),
+    },
+  ];
+
   // Defense-in-depth: if the user lacks task-create permission, don't render
   // the modal even if a stale trigger somehow opens it (e.g., keyboard
   // shortcut after the capability has changed).
   if (!canCreateTaskCapability) return null;
 
   return (
-    <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent
-        className="kaneo-create-task-modal max-w-2xl max-h-[90vh] flex flex-col overflow-hidden"
-        showCloseButton={false}
-        instant={instant}
+    <>
+      <Dialog
+        isOpen={open}
+        onClose={() => handleOpenChange(false)}
+        isCloseButtonShown={false}
+        aria-label={t("common:modals.createTask.title")}
+        aria-describedby="create-task-desc"
+        className="kaneo-create-task-modal"
+        style={{
+          width: "min(672px, calc(100vw - 40px))",
+          maxHeight: "90vh",
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
+        }}
+        transitionDuration={instant ? 0 : undefined}
       >
-        <DialogHeader className="flex-shrink-0">
-          <DialogTitle asChild>
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="text-muted-foreground font-semibold tracking-wider text-sm">
-                  {resolvedProject?.slug?.toUpperCase() ||
-                    t("common:modals.createTask.breadcrumbTask")}
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem className="text-foreground font-medium text-sm">
-                  {t("common:modals.createTask.title")}
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </DialogTitle>
-          <DialogDescription className="sr-only">
-            {t("common:modals.createTask.description")}
-          </DialogDescription>
-        </DialogHeader>
+        <div className="flex-shrink-0 px-3 pt-4 pb-1">
+          <Breadcrumbs items={breadcrumbItems} />
+        </div>
+        <span id="create-task-desc" className="sr-only">
+          {t("common:modals.createTask.description")}
+        </span>
 
         <form
           onSubmit={handleSubmit}
@@ -842,11 +834,10 @@ function CreateTaskModalContent({
             {labels.length > 0 && (
               <div className="flex flex-wrap mb-2">
                 {labels.map((label) => (
-                  <Badge
+                  <BpTag
                     key={label.name}
-                    color={label.color}
-                    variant="outline"
-                    className="flex items-center gap-1 pl-3 cursor-pointer hover:bg-accent/50 transition-colors"
+                    minimal
+                    interactive
                     onClick={() => removeLabel(label.name)}
                   >
                     <span
@@ -856,38 +847,23 @@ function CreateTaskModalContent({
                       }}
                     />
                     <span className="max-w-20 truncate">{label.name}</span>
-                  </Badge>
+                  </BpTag>
                 ))}
               </div>
             )}
 
             <div className="flex flex-wrap items-center gap-2 py-2">
               {!explicitProjectId && (
-                <Popover open={projectOpen} onOpenChange={setProjectOpen}>
-                  <PopoverTrigger asChild>
-                    <button
-                      type="button"
-                      className={cn(
-                        "flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors border border-border hover:bg-accent/50",
-                        resolvedProjectId
-                          ? "bg-accent/30 text-foreground"
-                          : "text-muted-foreground",
-                      )}
-                    >
-                      <FolderKanban className="w-3.5 h-3.5" />
-                      <span>
-                        {resolvedProject?.name ||
-                          t("common:modals.createTask.selectProject")}
-                      </span>
-                    </button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-48 p-1" align="start">
-                    <div className="space-y-1">
+                <PopoverNext
+                  isOpen={projectOpen}
+                  onInteraction={(next) => setProjectOpen(next)}
+                  placement="bottom-start"
+                  content={
+                    <Menu>
                       {workspaceProjects?.map((workspaceProject) => (
-                        <button
+                        <MenuItem
                           key={workspaceProject.id}
-                          type="button"
-                          className="w-full flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-accent/50 text-left transition-colors h-8"
+                          text={workspaceProject.name}
                           disabled={
                             isPreparingDraft ||
                             stagedAssetsRef.current.length > 0 ||
@@ -903,18 +879,34 @@ function CreateTaskModalContent({
                               setProjectOpen(false);
                             }
                           }}
-                        >
-                          <span className="text-sm truncate">
-                            {workspaceProject.name}
-                          </span>
-                          {resolvedProjectId === workspaceProject.id && (
-                            <Check className="ml-auto h-4 w-4 shrink-0" />
-                          )}
-                        </button>
+                          labelElement={
+                            resolvedProjectId === workspaceProject.id ? (
+                              <CheckIcon className="h-4 w-4" />
+                            ) : undefined
+                          }
+                        />
                       ))}
-                    </div>
-                  </PopoverContent>
-                </Popover>
+                    </Menu>
+                  }
+                  renderTarget={(props) => (
+                    <button
+                      type="button"
+                      {...props}
+                      className={cn(
+                        "flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors border border-border hover:bg-accent/50",
+                        resolvedProjectId
+                          ? "bg-accent/30 text-foreground"
+                          : "text-muted-foreground",
+                      )}
+                    >
+                      <BoxIcon className="w-3.5 h-3.5" />
+                      <span>
+                        {resolvedProject?.name ||
+                          t("common:modals.createTask.selectProject")}
+                      </span>
+                    </button>
+                  )}
+                />
               )}
               <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-accent/50 text-foreground rounded-md text-xs font-medium border border-border">
                 {getColumnIcon(
@@ -925,10 +917,30 @@ function CreateTaskModalContent({
                 {statusLabel}
               </div>
 
-              <Popover open={startDateOpen} onOpenChange={setStartDateOpen}>
-                <PopoverTrigger asChild>
+              <PopoverNext
+                isOpen={startDateOpen}
+                onInteraction={(next) => setStartDateOpen(next)}
+                placement="bottom-start"
+                content={
+                  <div className="w-65 p-0">
+                    <DatePickerMenu
+                      label={t("common:modals.createTask.startDate")}
+                      placeholder={t("tasks:datePicker.startDatePlaceholder")}
+                      clearLabel={t("common:modals.createTask.clearStartDate")}
+                      value={startDate ?? null}
+                      onChange={(date) => {
+                        setStartDate(date ?? undefined);
+                        setStartDateOpen(false);
+                      }}
+                      bounds={dueDate ? { after: dueDate } : undefined}
+                      formatLimit={(date) => t("tasks:due.fullDate", { date })}
+                    />
+                  </div>
+                }
+                renderTarget={(props) => (
                   <button
                     type="button"
+                    {...props}
                     className={cn(
                       "flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors border border-border hover:bg-accent/50",
                       startDate
@@ -943,27 +955,37 @@ function CreateTaskModalContent({
                         : t("common:modals.createTask.startDate")}
                     </span>
                   </button>
-                </PopoverTrigger>
-                <PopoverContent className="w-65 p-0" align="start">
-                  <DatePickerMenu
-                    label={t("common:modals.createTask.startDate")}
-                    placeholder={t("tasks:datePicker.startDatePlaceholder")}
-                    clearLabel={t("common:modals.createTask.clearStartDate")}
-                    value={startDate ?? null}
-                    onChange={(date) => {
-                      setStartDate(date ?? undefined);
-                      setStartDateOpen(false);
-                    }}
-                    bounds={dueDate ? { after: dueDate } : undefined}
-                    formatLimit={(date) => t("tasks:due.fullDate", { date })}
-                  />
-                </PopoverContent>
-              </Popover>
+                )}
+              />
 
-              <Popover open={priorityOpen} onOpenChange={setPriorityOpen}>
-                <PopoverTrigger asChild>
+              <PopoverNext
+                isOpen={priorityOpen}
+                onInteraction={(next) => setPriorityOpen(next)}
+                placement="bottom-start"
+                content={
+                  <Menu>
+                    {priorityOptions.map((option) => (
+                      <MenuItem
+                        key={option.value}
+                        icon={getPriorityIcon(option.value)}
+                        text={option.label}
+                        onClick={() => {
+                          setPriority(option.value as Priority);
+                          setPriorityOpen(false);
+                        }}
+                        labelElement={
+                          priority === option.value ? (
+                            <CheckIcon className="h-4 w-4" />
+                          ) : undefined
+                        }
+                      />
+                    ))}
+                  </Menu>
+                }
+                renderTarget={(props) => (
                   <button
                     type="button"
+                    {...props}
                     className={cn(
                       "flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors border border-border hover:bg-accent/50",
                       priority !== "no-priority"
@@ -978,34 +1000,64 @@ function CreateTaskModalContent({
                         : t("common:modals.createTask.priority")}
                     </span>
                   </button>
-                </PopoverTrigger>
-                <PopoverContent className="w-48 p-1" align="start">
-                  <div className="space-y-1">
-                    {priorityOptions.map((option) => (
-                      <button
-                        key={option.value}
-                        type="button"
-                        className="w-full flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-accent/50 text-left transition-colors h-8"
-                        onClick={() => {
-                          setPriority(option.value as Priority);
-                          setPriorityOpen(false);
-                        }}
-                      >
-                        {getPriorityIcon(option.value)}
-                        <span className="text-sm">{option.label}</span>
-                        {priority === option.value && (
-                          <Check className="ml-auto h-4 w-4" />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </PopoverContent>
-              </Popover>
+                )}
+              />
 
-              <Popover open={assigneeOpen} onOpenChange={setAssigneeOpen}>
-                <PopoverTrigger asChild>
+              <PopoverNext
+                isOpen={assigneeOpen}
+                onInteraction={(next) => setAssigneeOpen(next)}
+                placement="bottom-start"
+                content={
+                  <Menu>
+                    <MenuItem
+                      icon={
+                        <div className="w-6 h-6 rounded-full bg-muted border border-border flex items-center justify-center">
+                          <span className="text-[10px] font-medium text-muted-foreground">
+                            ?
+                          </span>
+                        </div>
+                      }
+                      text={t("common:modals.createTask.assignUnassigned")}
+                      onClick={() => {
+                        setAssigneeId("");
+                        setAssigneeOpen(false);
+                      }}
+                      labelElement={
+                        !selectedUser ? <CheckIcon className="h-4 w-4" /> : undefined
+                      }
+                    />
+                    {assigneeOptions.map((member) => (
+                      <MenuItem
+                        key={member.id}
+                        icon={
+                          <Avatar className="h-6 w-6">
+                            <AvatarImage
+                              src={member.image ?? ""}
+                              alt={member.name}
+                            />
+                            <AvatarFallback className="text-xs font-medium border border-border/30">
+                              {getInitials(member.name)}
+                            </AvatarFallback>
+                          </Avatar>
+                        }
+                        text={member.name}
+                        onClick={() => {
+                          setAssigneeId(member.id);
+                          setAssigneeOpen(false);
+                        }}
+                        labelElement={
+                          selectedUser?.id === member.id ? (
+                            <CheckIcon className="h-4 w-4" />
+                          ) : undefined
+                        }
+                      />
+                    ))}
+                  </Menu>
+                }
+                renderTarget={(props) => (
                   <button
                     type="button"
+                    {...props}
                     className={cn(
                       "flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors border border-border hover:bg-accent/50",
                       selectedUser
@@ -1033,65 +1085,35 @@ function CreateTaskModalContent({
                       </>
                     )}
                   </button>
-                </PopoverTrigger>
-                <PopoverContent className="w-48 p-1" align="start">
-                  <div className="space-y-1">
-                    <button
-                      type="button"
-                      className="w-full flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-accent/50 text-left transition-colors h-8"
-                      onClick={() => {
-                        setAssigneeId("");
-                        setAssigneeOpen(false);
-                      }}
-                    >
-                      <div
-                        className="w-6 h-6 rounded-full bg-muted border border-border flex items-center justify-center"
-                        title={t(
-                          "common:modals.createTask.assignUnassignedTitle",
-                        )}
-                      >
-                        <span className="text-[10px] font-medium text-muted-foreground">
-                          ?
-                        </span>
-                      </div>
-                      <span className="text-sm">
-                        {t("common:modals.createTask.assignUnassigned")}
-                      </span>
-                      {!selectedUser && <Check className="ml-auto h-4 w-4" />}
-                    </button>
-                    {assigneeOptions.map((member) => (
-                      <button
-                        key={member.id}
-                        type="button"
-                        className="w-full flex items-center gap-2 px-2 py-1.5 text-sm hover:bg-accent/50 text-left transition-colors h-8"
-                        onClick={() => {
-                          setAssigneeId(member.id);
-                          setAssigneeOpen(false);
-                        }}
-                      >
-                        <Avatar className="h-6 w-6">
-                          <AvatarImage
-                            src={member.image ?? ""}
-                            alt={member.name}
-                          />
-                          <AvatarFallback className="text-xs font-medium border border-border/30">
-                            {getInitials(member.name)}
-                          </AvatarFallback>
-                        </Avatar>
-                        <span className="text-sm">{member.name}</span>
-                        {selectedUser?.id === member.id && (
-                          <Check className="ml-auto h-4 w-4" />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </PopoverContent>
-              </Popover>
+                )}
+              />
 
-              <Popover open={dueDateOpen} onOpenChange={setDueDateOpen}>
-                <PopoverTrigger asChild>
+              <PopoverNext
+                isOpen={dueDateOpen}
+                onInteraction={(next) => setDueDateOpen(next)}
+                placement="bottom-start"
+                content={
+                  <div className="w-65 p-0">
+                    <TaskDueDatePicker
+                      label={t("common:modals.createTask.dueDate")}
+                      clearLabel={t("tasks:popover.dueDate.clear")}
+                      dueDate={dueDate ?? null}
+                      startDate={startDate}
+                      recurrence={recurrence}
+                      onDateChange={(date) => {
+                        setDueDate(date ?? undefined);
+                        // Keep a repeating task's picker open to show its upcoming dates.
+                        if (!recurrence || !date) setDueDateOpen(false);
+                      }}
+                      onRecurrenceChange={setRecurrence}
+                      canSetRecurrence={canSetRecurrence}
+                    />
+                  </div>
+                }
+                renderTarget={(props) => (
                   <button
                     type="button"
+                    {...props}
                     className={cn(
                       "flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors border border-border hover:bg-accent/50",
                       dueDate || recurrence
@@ -1107,29 +1129,132 @@ function CreateTaskModalContent({
                     </span>
                     <TaskRecurrenceBadge task={{ recurrence }} asText />
                   </button>
-                </PopoverTrigger>
-                <PopoverContent className="w-65 p-0" align="start">
-                  <TaskDueDatePicker
-                    label={t("common:modals.createTask.dueDate")}
-                    clearLabel={t("tasks:popover.dueDate.clear")}
-                    dueDate={dueDate ?? null}
-                    startDate={startDate}
-                    recurrence={recurrence}
-                    onDateChange={(date) => {
-                      setDueDate(date ?? undefined);
-                      // Keep a repeating task's picker open to show its upcoming dates.
-                      if (!recurrence || !date) setDueDateOpen(false);
-                    }}
-                    onRecurrenceChange={setRecurrence}
-                    canSetRecurrence={canSetRecurrence}
-                  />
-                </PopoverContent>
-              </Popover>
+                )}
+              />
 
-              <Popover open={labelsOpen} onOpenChange={setLabelsOpen}>
-                <PopoverTrigger asChild>
+              <PopoverNext
+                isOpen={labelsOpen}
+                onInteraction={(next) => setLabelsOpen(next)}
+                placement="bottom-start"
+                content={
+                  <>
+                    {labelsStep === "select" && (
+                      <>
+                        <div className="flex items-center gap-2 p-2 border-b border-border">
+                          <MagnifyingGlassIcon className="w-3 h-3 text-muted-foreground" />
+                          <InputGroup
+                            inputRef={searchInputRef}
+                            value={searchValue}
+                            onChange={(e) => setSearchValue(e.target.value)}
+                            placeholder={t("common:modals.createTask.searchLabels")}
+                            size="small"
+                            fill
+                          />
+                        </div>
+                        <Menu>
+                          {filteredLabels.length === 0 &&
+                            searchValue.length === 0 && (
+                              <MenuItem
+                                disabled
+                                text={t("common:modals.createTask.noLabelsFound")}
+                              />
+                            )}
+                          {filteredLabels.map((label) => (
+                            <MenuItem
+                              key={label.id}
+                              shouldDismissPopover={false}
+                              icon={
+                                <span
+                                  className="block w-2 h-2 rounded-full"
+                                  style={{
+                                    backgroundColor: resolveLabelColor(label.color),
+                                  }}
+                                />
+                              }
+                              text={label.name}
+                              onClick={() => toggleLabel(label.name)}
+                              labelElement={
+                                labels.some((l) => l.name === label.name) ? (
+                                  <CheckIcon className="w-3 h-3" />
+                                ) : undefined
+                              }
+                            />
+                          ))}
+                          {canCreateLabelCapability &&
+                            isCreatingNewLabel &&
+                            filteredLabels.length > 0 && <MenuDivider />}
+                          {canCreateLabelCapability && isCreatingNewLabel && (
+                            <MenuItem
+                              shouldDismissPopover={false}
+                              icon={<PlusIcon className="w-3 h-3" />}
+                              text={
+                                <span className="flex items-center gap-2">
+                                  <span
+                                    className="w-2 h-2 rounded-full"
+                                    style={{
+                                      backgroundColor:
+                                        labelColors.find(
+                                          (c) => c.value === selectedColor,
+                                        )?.color || "var(--color-neutral-400)",
+                                    }}
+                                  />
+                                  <span>
+                                    {t("common:modals.createTask.createLabel", {
+                                      name: searchValue,
+                                    })}
+                                  </span>
+                                </span>
+                              }
+                              onClick={handleCreateNewClick}
+                            />
+                          )}
+                        </Menu>
+                      </>
+                    )}
+                    {labelsStep === "color" && (
+                      <>
+                        <div className="flex items-center justify-between p-2 border-b border-border">
+                          <span className="text-xs font-medium">
+                            {t("common:modals.createTask.chooseColor")}
+                          </span>
+                          <Button
+                            variant="minimal"
+                            size="small"
+                            icon={<XIcon className="h-3 w-3" />}
+                            onClick={() => setLabelsStep("select")}
+                          />
+                        </div>
+                        <Menu>
+                          {labelColors.map((color) => (
+                            <MenuItem
+                              key={color.value}
+                              shouldDismissPopover={false}
+                              icon={
+                                <span
+                                  className="block w-2 h-2 rounded-full"
+                                  style={{ backgroundColor: color.color }}
+                                />
+                              }
+                              text={color.label}
+                              onClick={() =>
+                                handleColorSelect(color.value as LabelColor)
+                              }
+                              labelElement={
+                                selectedColor === color.value ? (
+                                  <CheckIcon className="w-3 h-3" />
+                                ) : undefined
+                              }
+                            />
+                          ))}
+                        </Menu>
+                      </>
+                    )}
+                  </>
+                }
+                renderTarget={(props) => (
                   <button
                     type="button"
+                    {...props}
                     className={cn(
                       "flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium rounded-md transition-colors border border-border hover:bg-accent/50",
                       labels.length > 0
@@ -1137,133 +1262,11 @@ function CreateTaskModalContent({
                         : "text-muted-foreground",
                     )}
                   >
-                    <Tag className="w-3.5 h-3.5" />
+                    <TagIcon className="w-3.5 h-3.5" />
                     <span>{t("common:modals.createTask.labels")}</span>
                   </button>
-                </PopoverTrigger>
-                <PopoverContent className="p-0" align="start">
-                  {labelsStep === "select" && (
-                    <div className="w-auto">
-                      <div className="flex items-center gap-2 p-2 border-b border-border">
-                        <Search className="w-3 h-3 text-muted-foreground" />
-                        <input
-                          ref={searchInputRef}
-                          value={searchValue}
-                          onChange={(e) => setSearchValue(e.target.value)}
-                          placeholder={t(
-                            "common:modals.createTask.searchLabels",
-                          )}
-                          className="w-full bg-transparent border-none text-foreground text-base focus:outline-none placeholder:text-muted-foreground sm:text-xs"
-                        />
-                      </div>
-
-                      <div className="py-1">
-                        {filteredLabels.length === 0 &&
-                          searchValue.length === 0 && (
-                            <span className="text-xs text-muted-foreground px-2">
-                              {t("common:modals.createTask.noLabelsFound")}
-                            </span>
-                          )}
-                        {filteredLabels.map((label) => (
-                          <button
-                            key={label.id}
-                            type="button"
-                            className="w-full flex items-center gap-2 px-2 py-1.5 text-xs hover:bg-accent/50 text-left"
-                            onClick={() => toggleLabel(label.name)}
-                          >
-                            <div className="flex-shrink-0 w-3 flex justify-center">
-                              {labels.some((l) => l.name === label.name) && (
-                                <Check className="w-3 h-3" />
-                              )}
-                            </div>
-                            <span
-                              className="w-2 h-2 rounded-full flex-shrink-0"
-                              style={{
-                                backgroundColor: resolveLabelColor(label.color),
-                              }}
-                            />
-                            <span className="max-w-20 truncate">
-                              {label.name}
-                            </span>
-                          </button>
-                        ))}
-
-                        {canCreateLabelCapability &&
-                          isCreatingNewLabel &&
-                          filteredLabels.length > 0 && (
-                            <div className="border-t border-border my-1" />
-                          )}
-                        {canCreateLabelCapability && isCreatingNewLabel && (
-                          <button
-                            type="button"
-                            className="w-full flex items-center gap-2 px-2 py-1.5 text-xs hover:bg-accent/50 text-left"
-                            onClick={handleCreateNewClick}
-                          >
-                            <div className="flex-shrink-0 w-3 flex justify-center">
-                              <Plus className="w-3 h-3" />
-                            </div>
-                            <span
-                              className="w-2 h-2 rounded-full flex-shrink-0"
-                              style={{
-                                backgroundColor:
-                                  labelColors.find(
-                                    (c) => c.value === selectedColor,
-                                  )?.color || "var(--color-neutral-400)",
-                              }}
-                            />
-                            <span className="truncate">
-                              {t("common:modals.createTask.createLabel", {
-                                name: searchValue,
-                              })}
-                            </span>
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  )}
-                  {labelsStep === "color" && (
-                    <div className="w-auto">
-                      <div className="flex items-center justify-between p-2 border-b border-border">
-                        <span className="text-xs font-medium">
-                          {t("common:modals.createTask.chooseColor")}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => setLabelsStep("select")}
-                          className="w-4 h-4 flex items-center justify-center hover:bg-accent/50 rounded"
-                        >
-                          <X className="h-3 w-3" />
-                        </button>
-                      </div>
-
-                      <div className="py-1">
-                        {labelColors.map((color) => (
-                          <button
-                            key={color.value}
-                            type="button"
-                            className={cn(
-                              "w-full flex items-center gap-2 px-2 py-1.5 text-xs hover:bg-accent/50 text-left",
-                              selectedColor === color.value && "bg-accent/30",
-                            )}
-                            onClick={() =>
-                              handleColorSelect(color.value as LabelColor)
-                            }
-                          >
-                            <span
-                              className="w-2 h-2 rounded-full flex-shrink-0"
-                              style={{ backgroundColor: color.color }}
-                            />
-                            <span className="truncate">{color.label}</span>
-                            {selectedColor === color.value && (
-                              <Check className="w-3 h-3 ml-auto" />
-                            )}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </PopoverContent>
-              </Popover>
+                )}
+              />
               {customFields.length > 0 && (
                 <div className="flex w-full flex-wrap items-center gap-2">
                   {customFields.map((field) => (
@@ -1293,25 +1296,21 @@ function CreateTaskModalContent({
               {t("common:modals.createTask.statusLoadError")}
               <Button
                 type="button"
-                variant="ghost"
-                size="sm"
+                variant="minimal"
+                size="small"
                 onClick={() => void refetchColumns()}
               >
                 {t("common:error.tryAgain")}
               </Button>
             </div>
           )}
-          <DialogFooter className="flex-shrink-0 border-t border-border bg-background px-6 py-4">
+          <div className="flex-shrink-0 border-t border-border bg-background px-6 py-4 flex items-center gap-3">
             <div className="flex items-center gap-3 mr-auto">
-              <label className="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer hover:text-foreground transition-colors">
-                <input
-                  type="checkbox"
-                  checked={createMore}
-                  onChange={(e) => setCreateMore(e.target.checked)}
-                  className="rounded border-border bg-background text-primary focus:ring-ring focus:ring-offset-0 focus:ring-2 transition-[border-color,box-shadow]"
-                />
-                {t("common:modals.createTask.createMore")}
-              </label>
+              <Checkbox
+                checked={createMore}
+                onChange={(e) => setCreateMore(e.currentTarget.checked)}
+                label={t("common:modals.createTask.createMore")}
+              />
             </div>
 
             {showMissingRequired && missingRequired.length > 0 && (
@@ -1319,7 +1318,7 @@ function CreateTaskModalContent({
                 role="alert"
                 className="flex items-center gap-1.5 text-destructive-foreground text-xs"
               >
-                <CircleAlert aria-hidden="true" className="size-3.5" />
+                <CircleExclamationIcon aria-hidden="true" className="size-3.5" />
                 {t("tasks:customFields.missingRequired", {
                   count: missingRequired.length,
                 })}
@@ -1328,9 +1327,8 @@ function CreateTaskModalContent({
             <Button
               type="button"
               onClick={() => handleOpenChange(false)}
-              variant="outline"
-              size="sm"
-              className="border-border text-foreground hover:bg-accent"
+              variant="outlined"
+              size="small"
             >
               {t("common:actions.cancel")}
             </Button>
@@ -1345,48 +1343,30 @@ function CreateTaskModalContent({
                 isPreparingDraft
               }
               aria-busy={isPreparingDraft || isSubmitting}
-              size="sm"
-              className="disabled:opacity-50"
+              size="small"
             >
               {isPreparingDraft
                 ? t("activity:comment.editor.uploadingFile")
                 : t("common:modals.createTask.createButton")}
             </Button>
-          </DialogFooter>
+          </div>
         </form>
-      </DialogContent>
+      </Dialog>
 
-      <AlertDialog
-        open={discardConfirmationOpen}
-        onOpenChange={setDiscardConfirmationOpen}
+      <Alert
+        isOpen={discardConfirmationOpen}
+        onClose={() => setDiscardConfirmationOpen(false)}
+        onCancel={() => setDiscardConfirmationOpen(false)}
+        onConfirm={closeAndReset}
+        icon={null}
+        intent="danger"
+        cancelButtonText={t("common:actions.cancel")}
+        confirmButtonText={t("common:modals.createTask.discardButton")}
       >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              {t("common:modals.createTask.discardTitle")}
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              {t("common:modals.createTask.discardDescription")}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogClose
-              render={<Button type="button" variant="outline" size="sm" />}
-            >
-              {t("common:actions.cancel")}
-            </AlertDialogClose>
-            <Button
-              type="button"
-              variant="destructive"
-              size="sm"
-              onClick={closeAndReset}
-            >
-              {t("common:modals.createTask.discardButton")}
-            </Button>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </Dialog>
+        <h5>{t("common:modals.createTask.discardTitle")}</h5>
+        <p>{t("common:modals.createTask.discardDescription")}</p>
+      </Alert>
+    </>
   );
 }
 

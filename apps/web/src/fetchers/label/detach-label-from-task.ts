@@ -1,7 +1,7 @@
 import { client } from "@kaneo/libs";
 
 import { HttpError } from "@/lib/http-error";
-export type DetachLabelFromTaskRequest = {
+type DetachLabelFromTaskRequest = {
   labelId: string;
 };
 

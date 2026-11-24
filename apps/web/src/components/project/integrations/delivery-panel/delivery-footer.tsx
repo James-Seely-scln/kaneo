@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IntegrationPanelFooter } from "@/components/project/integrations/panel/integration-panel-footer";
 import { ConfirmDialog } from "@/components/settings/confirm-dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type DeliveryFooterProps = {
   connected: boolean;

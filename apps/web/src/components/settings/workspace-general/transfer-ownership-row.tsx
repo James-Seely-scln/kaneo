@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ConfirmDialog } from "@/components/settings/confirm-dialog";
 import { SettingsRow } from "@/components/settings/settings-row";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Select,
   SelectContent,

@@ -6,7 +6,7 @@ import type { IntegrationDefinition } from "@/components/project/integrations/in
 import { IntegrationStatusBadge } from "@/components/project/integrations/integration-status-badge";
 import { integrationTriggerLabel } from "@/components/project/integrations/integration-trigger-label";
 import { SettingsIconTile } from "@/components/settings/settings-icon-tile";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Collapsible,
   CollapsiblePanel,
@@ -76,20 +76,20 @@ export function IntegrationRow({
           <Button
             className="w-24 shrink-0"
             onClick={onRetry}
-            size="sm"
+            size="small"
             type="button"
-            variant="outline"
+            variant="outlined"
           >
             {t("common:error.tryAgain")}
           </Button>
         ) : (
           <CollapsibleTrigger
             disabled={state === "loading" && !open}
-            className={buttonVariants({
-              variant: "outline",
-              size: "sm",
-              className: "w-24 shrink-0",
-            })}
+          // className={buttonVariants({
+          //   variant: "outline",
+          //   size: "sm",
+          //   className: "w-24 shrink-0",
+          // })}
           >
             {t(integrationTriggerLabel(state, open))}
           </CollapsibleTrigger>

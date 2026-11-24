@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { useOpenBillingPortal } from "@/hooks/mutations/billing/use-billing-actions";
 
 type BillingPortalRowProps = {
@@ -25,8 +25,8 @@ export function BillingPortalRow({
       {hasCustomer ? (
         <Button
           type="button"
-          variant="outline"
-          size="sm"
+          variant="outlined"
+          size="small"
           className="shrink-0"
           disabled={!canManage || portal.isPending}
           onClick={() => portal.mutate()}

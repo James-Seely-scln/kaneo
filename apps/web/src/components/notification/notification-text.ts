@@ -1,7 +1,7 @@
 import { getStatusLabel } from "@/lib/i18n/domain";
 import type { Notification } from "@/types/notification";
 
-export function getEventDataRecord(
+function getEventDataRecord(
   eventData: unknown,
 ): Record<string, unknown> | null {
   if (!eventData || typeof eventData !== "object" || Array.isArray(eventData)) {
@@ -121,13 +121,13 @@ export function getNotificationContent(
       case "time_entry_created":
         return eventData.taskTitle
           ? t("notifications:events.time_entry_created.contentWithTask", {
-              ...eventData,
-              defaultValue: notification.content ?? "",
-            })
+            ...eventData,
+            defaultValue: notification.content ?? "",
+          })
           : t("notifications:events.time_entry_created.contentWithoutTask", {
-              ...eventData,
-              defaultValue: notification.content ?? "",
-            });
+            ...eventData,
+            defaultValue: notification.content ?? "",
+          });
       case "task_mention":
         return t("notifications:events.task_mention.content", {
           ...eventData,

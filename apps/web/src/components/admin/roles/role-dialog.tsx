@@ -1,7 +1,7 @@
 import { INSTANCE_ROLE_NAME_PATTERN } from "@kaneo/permissions";
 import { type FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Dialog,
   DialogClose,
@@ -108,7 +108,7 @@ export function RoleDialog({ open, role, onOpenChange }: RoleDialogProps) {
           </DialogPanel>
           <DialogFooter>
             <DialogClose
-              render={<Button type="button" variant="outline" />}
+              render={<Button type="button" variant="outlined" />}
               disabled={isPending}
             >
               {t("common:actions.cancel")}

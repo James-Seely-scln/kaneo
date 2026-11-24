@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 import PageTitle from "@/components/page-title";
 import useAuth from "@/components/providers/auth-provider/hooks/use-auth";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Table,
   TableBody,
@@ -191,7 +191,7 @@ function InvitationsPage() {
                 // Without creation rights there is no setup to continue to,
                 // and this would bounce back to the onboarding screen that
                 // sent the user here.
-                <Button onClick={handleSkip} variant="default">
+                <Button onClick={handleSkip}>
                   {t("invitations:continueToSetup")}
                 </Button>
               )}
@@ -228,8 +228,8 @@ function InvitationsPage() {
                           key={invitation.id}
                           className={cn(
                             expiryStatus.isUrgent &&
-                              expiryStatus.variant === "destructive" &&
-                              "bg-destructive/5",
+                            expiryStatus.variant === "destructive" &&
+                            "bg-destructive/5",
                           )}
                         >
                           <TableCell className="font-medium">
@@ -255,8 +255,8 @@ function InvitationsPage() {
                           <TableCell className="text-right">
                             <div className="flex items-center justify-end gap-1">
                               <Button
-                                variant="ghost"
-                                size="sm"
+                                variant="minimal"
+                                size="small"
                                 onClick={() =>
                                   handleAcceptInvitation(
                                     invitation.id,
@@ -273,8 +273,8 @@ function InvitationsPage() {
                                 )}
                               </Button>
                               <Button
-                                variant="ghost"
-                                size="sm"
+                                variant="minimal"
+                                size="small"
                                 onClick={() =>
                                   handleRejectInvitation(invitation.id)
                                 }
@@ -301,7 +301,7 @@ function InvitationsPage() {
                 // with nothing to do and no way back to this invitation.
                 <div className="flex justify-center pt-2">
                   <Button
-                    variant="ghost"
+                    variant="minimal"
                     onClick={handleSkip}
                     className="text-muted-foreground hover:text-foreground"
                   >

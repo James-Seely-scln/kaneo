@@ -2,7 +2,7 @@ import { Loader2 } from "lucide-react";
 import { type ChangeEvent, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { DirectoryAvatar } from "@/components/admin/directory/directory-avatar";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useRemoveAdminUserAvatar from "@/hooks/mutations/admin/use-remove-admin-user-avatar";
 import useSetAdminUserAvatar from "@/hooks/mutations/admin/use-set-admin-user-avatar";
 import type { AdminUser } from "@/hooks/queries/admin/use-admin-users";
@@ -64,8 +64,8 @@ export function UserAvatarField({ user }: UserAvatarFieldProps) {
         {canRemove ? (
           <Button
             type="button"
-            variant="ghost"
-            size="sm"
+            variant="minimal"
+            size="small"
             className="text-muted-foreground"
             disabled={isBusy}
             onClick={handleRemove}
@@ -85,8 +85,8 @@ export function UserAvatarField({ user }: UserAvatarFieldProps) {
             />
             <Button
               type="button"
-              variant="outline"
-              size="sm"
+              variant="outlined"
+              size="small"
               disabled={isBusy}
               onClick={() => inputRef.current?.click()}
             >

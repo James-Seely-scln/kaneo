@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import type { JSX } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { formatDate } from "@/lib/format";
 
 type CalendarToolbarProps = {
@@ -34,8 +34,8 @@ export default function CalendarToolbar({
 
         <div className="flex shrink-0 items-center gap-1">
           <Button
-            variant="outline"
-            size="icon-xs"
+            variant="outlined"
+            size="small"
             className="min-h-11 touch-manipulation sm:min-h-0"
             aria-label={t("tasks:calendar.previousMonth")}
             onClick={onPreviousMonth}
@@ -43,16 +43,16 @@ export default function CalendarToolbar({
             <ChevronLeft />
           </Button>
           <Button
-            variant="outline"
-            size="xs"
+            variant="outlined"
+            size="small"
             className="min-h-11 touch-manipulation sm:min-h-0"
             onClick={onToday}
           >
             {t("tasks:calendar.today")}
           </Button>
           <Button
-            variant="outline"
-            size="icon-xs"
+            variant="outlined"
+            size="small"
             className="min-h-11 touch-manipulation sm:min-h-0"
             aria-label={t("tasks:calendar.nextMonth")}
             onClick={onNextMonth}

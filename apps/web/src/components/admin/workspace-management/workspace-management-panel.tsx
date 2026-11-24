@@ -12,7 +12,7 @@ import { SettingsCard } from "@/components/settings/settings-card";
 import { SettingsEmpty } from "@/components/settings/settings-empty";
 import { SettingsPage } from "@/components/settings/settings-page";
 import { SettingsSection } from "@/components/settings/settings-section";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useAdminWorkspaces, {
   ADMIN_WORKSPACES_PAGE_SIZE,
   ADMIN_WORKSPACES_SEARCH_MAX_LENGTH,
@@ -99,8 +99,8 @@ function WorkspaceManagementPanel() {
                 search ? (
                   <Button
                     type="button"
-                    variant="ghost"
-                    size="sm"
+                    variant="minimal"
+                    size="small"
                     onClick={() => setSearch("")}
                   >
                     {t("settings:adminWorkspaces.clearSearch")}

@@ -6,7 +6,7 @@ export type VerifyGiteaAccessRequest = InferRequestType<
   (typeof client)["gitea-integration"]["verify"]["$post"]
 >["json"];
 
-export type VerifyGiteaAccessResponse = InferResponseType<
+type VerifyGiteaAccessResponse = InferResponseType<
   (typeof client)["gitea-integration"]["verify"]["$post"],
   200
 >;

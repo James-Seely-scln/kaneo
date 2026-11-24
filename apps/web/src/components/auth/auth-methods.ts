@@ -36,7 +36,7 @@ export function getSignUpEmailMethod(
   return getEmailMethod(config);
 }
 
-export function isSsoOnly(providers: AuthProvider[]) {
+function isSsoOnly(providers: AuthProvider[]) {
   return providers.length === 1 && providers[0] === "custom";
 }
 

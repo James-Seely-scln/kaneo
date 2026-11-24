@@ -25,7 +25,7 @@ export function isReservedWorkspaceSlug(slug: string): boolean {
   return RESERVED_WORKSPACE_SLUGS.has(slug.toLowerCase());
 }
 
-export function createWorkspaceBaseSlug(value: string): string {
+function createWorkspaceBaseSlug(value: string): string {
   return createSlug(value) || "workspace";
 }
 

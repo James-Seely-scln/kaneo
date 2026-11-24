@@ -1,6 +1,5 @@
 "use client";
 
-import { Slot } from "radix-ui";
 import * as React from "react";
 
 import { cn } from "@/lib/cn";
@@ -85,66 +84,6 @@ function TimelineContent({
   );
 }
 
-// TimelineDate
-interface TimelineDateProps extends React.HTMLAttributes<HTMLTimeElement> {
-  asChild?: boolean;
-}
-
-function TimelineDate({
-  asChild = false,
-  className,
-  ...props
-}: TimelineDateProps) {
-  const Comp = asChild ? Slot.Root : "time";
-
-  return (
-    <Comp
-      className={cn(
-        "mb-1 block font-medium text-muted-foreground text-xs group-data-[orientation=vertical]/timeline:max-sm:h-4",
-        className,
-      )}
-      data-slot="timeline-date"
-      {...props}
-    />
-  );
-}
-
-// TimelineHeader
-function TimelineHeader({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div className={cn(className)} data-slot="timeline-header" {...props} />
-  );
-}
-
-// TimelineIndicator
-interface TimelineIndicatorProps extends React.HTMLAttributes<HTMLDivElement> {
-  asChild?: boolean;
-}
-
-function TimelineIndicator({
-  asChild = false,
-  className,
-  children,
-  ...props
-}: TimelineIndicatorProps) {
-  return (
-    <div
-      aria-hidden="true"
-      className={cn(
-        "group-data-[orientation=horizontal]/timeline:-top-6 group-data-[orientation=horizontal]/timeline:-translate-y-1/2 group-data-[orientation=vertical]/timeline:-left-6 group-data-[orientation=vertical]/timeline:-translate-x-1/2 absolute size-4 rounded-full border-2 border-primary/20 group-data-[orientation=vertical]/timeline:top-0 group-data-[orientation=horizontal]/timeline:left-0 group-data-completed/timeline-item:border-primary",
-        className,
-      )}
-      data-slot="timeline-indicator"
-      {...props}
-    >
-      {children}
-    </div>
-  );
-}
-
 // TimelineItem
 interface TimelineItemProps extends React.HTMLAttributes<HTMLDivElement> {
   step: number;
@@ -166,48 +105,8 @@ function TimelineItem({ step, className, ...props }: TimelineItemProps) {
   );
 }
 
-// TimelineSeparator
-function TimelineSeparator({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      aria-hidden="true"
-      className={cn(
-        "group-data-[orientation=horizontal]/timeline:-top-6 group-data-[orientation=horizontal]/timeline:-translate-y-1/2 group-data-[orientation=vertical]/timeline:-left-6 group-data-[orientation=vertical]/timeline:-translate-x-1/2 absolute self-start bg-primary/10 group-last/timeline-item:hidden group-data-[orientation=horizontal]/timeline:h-0.5 group-data-[orientation=vertical]/timeline:h-[calc(100%-1rem-0.25rem)] group-data-[orientation=horizontal]/timeline:w-[calc(100%-1rem-0.25rem)] group-data-[orientation=vertical]/timeline:w-0.5 group-data-[orientation=horizontal]/timeline:translate-x-4.5 group-data-[orientation=vertical]/timeline:translate-y-4.5",
-        className,
-      )}
-      data-slot="timeline-separator"
-      {...props}
-    />
-  );
-}
-
-// TimelineTitle
-function TimelineTitle({
-  className,
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLHeadingElement>) {
-  return (
-    <h3
-      className={cn("font-medium text-sm", className)}
-      data-slot="timeline-title"
-      {...props}
-    >
-      {children}
-    </h3>
-  );
-}
-
 export {
   Timeline,
   TimelineContent,
-  TimelineDate,
-  TimelineHeader,
-  TimelineIndicator,
   TimelineItem,
-  TimelineSeparator,
-  TimelineTitle,
 };

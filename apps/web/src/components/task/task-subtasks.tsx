@@ -12,7 +12,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import CircularProgress from "@/components/ui/circular-progress";
 import { Input } from "@/components/ui/input";
 import useCreateTask from "@/hooks/mutations/task/use-create-task";

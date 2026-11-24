@@ -6,7 +6,7 @@ import type { ProjectColumn } from "@/components/project/columns/types";
 import { InlineNameInput } from "@/components/project/inline-name-input";
 import { DragHandle } from "@/components/project/sortable/drag-handle";
 import { useSortableRow } from "@/components/project/sortable/use-sortable-row";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Switch } from "@/components/ui/switch";
 import { DEFAULT_COLUMN_ICON_NAMES } from "@/constants/column-icons";
 import { cn } from "@/lib/cn";
@@ -25,7 +25,7 @@ function selectedIconName(column: ProjectColumn) {
   return (
     column.icon ||
     DEFAULT_COLUMN_ICON_NAMES[
-      column.slug as keyof typeof DEFAULT_COLUMN_ICON_NAMES
+    column.slug as keyof typeof DEFAULT_COLUMN_ICON_NAMES
     ]
   );
 }

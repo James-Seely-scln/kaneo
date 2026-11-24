@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { cn } from "@/lib/cn";
 
 export type MyTasksGroupBy = "dueDate" | "project";
@@ -24,8 +24,9 @@ export function MyTasksGroupByToggle({ value, onChange }: MyTasksGroupByProps) {
       {options.map((option) => (
         <Button
           key={option.value}
-          variant={value === option.value ? "secondary" : "ghost"}
-          size="xs"
+          intent={value === option.value ? "success" : "primary"}
+          variant="minimal"
+          size="small"
           aria-pressed={value === option.value}
           onClick={() => onChange(option.value)}
           className={cn(value !== option.value && "text-muted-foreground")}

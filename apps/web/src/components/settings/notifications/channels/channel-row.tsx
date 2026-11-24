@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { SettingsRow } from "@/components/settings/settings-row";
 import { StatusBadge } from "@/components/settings/status-badge";
-import { buttonVariants } from "@/components/ui/button";
 import {
   Collapsible,
   CollapsiblePanel,
@@ -75,11 +74,11 @@ export function ChannelRow({
       >
         <CollapsibleTrigger
           aria-label={triggerAccessibleLabel}
-          className={buttonVariants({
-            variant: "outline",
-            size: "sm",
-            className: "w-24",
-          })}
+        // className={buttonVariants({
+        //   variant: "outline",
+        //   size: "sm",
+        //   className: "w-24",
+        // })}
         >
           {triggerLabel}
         </CollapsibleTrigger>

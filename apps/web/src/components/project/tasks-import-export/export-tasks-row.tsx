@@ -2,7 +2,7 @@ import { saveAs } from "file-saver";
 import { Loader2, Upload, DownloadIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { SettingsRow } from "@/components/settings/settings-row";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import useExportTasks from "@/hooks/mutations/task/use-export-tasks";
 import { toast } from "@/lib/toast";
 import type { ProjectWithTasks } from "@/types/project";

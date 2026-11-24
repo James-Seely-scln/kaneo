@@ -8,7 +8,7 @@ import {
   summarizeImportCounts,
 } from "@/components/import/summarize-import-counts";
 import { Badge, badgeVariants } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Collapsible,
   CollapsiblePanel,
@@ -57,8 +57,8 @@ export function ImportRunProjectRow({
       case "completed":
         return project.projectId ? (
           <Button
-            variant="outline"
-            size="sm"
+            variant="outlined"
+            size="small"
             className="w-18"
             aria-label={t("settings:workspaceImport.run.openProject", {
               name: project.name,

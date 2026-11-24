@@ -13,7 +13,7 @@ import { GitlabIcon } from "@/components/icons/gitlab-icon";
 import { SectionAddButton } from "@/components/task/sections/section-add-button";
 import { SectionHeader } from "@/components/task/sections/section-header";
 import { sectionRowClass } from "@/components/task/sections/section-row-class";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Collapsible,
   CollapsibleContent,
@@ -255,7 +255,7 @@ export function ExternalLinksAccordion({
                           {isUrl
                             ? linkHost(link.url)
                             : link.resourceType !== "branch" &&
-                              `#${link.externalId}`}
+                            `#${link.externalId}`}
                         </span>
                         {getStatusBadge(link)}
                       </a>
@@ -330,7 +330,7 @@ export function ExternalLinksAccordion({
             <DialogFooter>
               <Button
                 type="button"
-                variant="outline"
+                variant="outlined"
                 onClick={() => handleDialogChange(false)}
                 disabled={createExternalLink.isPending}
               >

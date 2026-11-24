@@ -1,6 +1,6 @@
 import { authClient } from "@/lib/auth-client";
 
-export type GetActiveWorkspaceUsersRequest = {
+type GetActiveWorkspaceUsersRequest = {
   workspaceId: string;
 };
 

@@ -16,7 +16,7 @@ import { useSaveGiteaIntegration } from "@/components/project/gitea-integration/
 import { IntegrationPanel } from "@/components/project/integrations/panel/integration-panel";
 import { IntegrationPanelFooter } from "@/components/project/integrations/panel/integration-panel-footer";
 import { IntegrationSteps } from "@/components/project/integrations/panel/integration-steps";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type GiteaSetupPanelProps = {
   projectId: string;
@@ -38,11 +38,11 @@ export function GiteaSetupPanel({ projectId }: GiteaSetupPanelProps) {
   const access =
     urlValid && repository && trimmedToken
       ? {
-          baseUrl: trimmedUrl,
-          accessToken: trimmedToken,
-          repositoryOwner: repository.owner,
-          repositoryName: repository.name,
-        }
+        baseUrl: trimmedUrl,
+        accessToken: trimmedToken,
+        repositoryOwner: repository.owner,
+        repositoryName: repository.name,
+      }
       : null;
   const verification = useGiteaVerification(projectId, access);
   const verified = isAccessVerified(verification.result);

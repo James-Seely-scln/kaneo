@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ConfirmDialog } from "@/components/settings/confirm-dialog";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 
 type DisconnectIntegrationButtonProps = {
   provider: string;
@@ -23,8 +23,9 @@ export function DisconnectIntegrationButton({
     <>
       <Button
         type="button"
-        variant="destructive-outline"
-        size="sm"
+        variant="outlined"
+        intent="danger"
+        size="small"
         disabled={pending}
         onClick={() => setOpen(true)}
       >

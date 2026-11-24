@@ -1,7 +1,7 @@
 import { useId, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SettingsRow } from "@/components/settings/settings-row";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -45,8 +45,8 @@ export function InstanceNameRow({
         />
         <Button
           type="submit"
-          size="sm"
-          variant="outline"
+          size="small"
+          variant="outlined"
           disabled={!changed || pending}
         >
           {t("settings:adminSettings.save")}

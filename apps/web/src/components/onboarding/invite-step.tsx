@@ -1,7 +1,7 @@
 import { Plus, SendIcon } from "lucide-react";
 import { useId, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   INITIAL_INVITE_FIELDS,
   MAX_INVITE_FIELDS,
@@ -132,8 +132,8 @@ export function InviteStep({ workspaceId, onDone }: InviteStepProps) {
         {emails.length < MAX_INVITE_FIELDS ? (
           <Button
             type="button"
-            variant="ghost"
-            size="sm"
+            variant="minimal"
+            size="small"
             className="-ms-2 self-start text-muted-foreground"
             disabled={isSending}
             onClick={() => setEmails((current) => [...current, ""])}
@@ -146,7 +146,7 @@ export function InviteStep({ workspaceId, onDone }: InviteStepProps) {
       <div className="flex items-center justify-between gap-3">
         <Button
           type="submit"
-          size="lg"
+          size="large"
           loading={isSending}
           disabled={filled === 0}
         >
@@ -156,8 +156,8 @@ export function InviteStep({ workspaceId, onDone }: InviteStepProps) {
         </Button>
         <Button
           type="button"
-          variant="ghost"
-          size="lg"
+          variant="minimal"
+          size="large"
           className="text-muted-foreground"
           disabled={isSending}
           onClick={() => onDone(sentSoFar)}

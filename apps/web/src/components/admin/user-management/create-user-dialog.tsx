@@ -2,7 +2,7 @@ import { InfoIcon } from "lucide-react";
 import { type FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Dialog,
   DialogClose,
@@ -145,7 +145,7 @@ export function CreateUserDialog({
           </DialogPanel>
           <DialogFooter>
             <DialogClose
-              render={<Button type="button" variant="outline" />}
+              render={<Button type="button" variant="outlined" />}
               disabled={isPending}
             >
               {t("common:actions.cancel")}

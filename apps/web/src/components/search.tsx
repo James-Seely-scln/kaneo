@@ -5,7 +5,7 @@ import { SearchIcon } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import SearchCommandMenu from "@/components/search-command-menu";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import {
   Tooltip,
   TooltipContent,
@@ -29,8 +29,8 @@ export default function Search() {
         <Tooltip>
           <TooltipTrigger asChild>
             <Button
-              variant="ghost"
-              size="icon"
+              variant="minimal"
+              size="small"
               className="size-8 shrink-0 text-muted-foreground hover:bg-sidebar-accent/70"
               onClick={() => setOpen(true)}
             >

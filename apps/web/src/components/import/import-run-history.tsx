@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { ImportRunHistoryRow } from "@/components/import/import-run-history-row";
 import { SettingsSectionHeader } from "@/components/settings/settings-section-header";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Skeleton } from "@/components/ui/skeleton";
 import useImportRuns from "@/hooks/queries/import/use-import-runs";
 
@@ -51,8 +51,8 @@ export function ImportRunHistory({ workspaceId }: ImportRunHistoryProps) {
             {t("settings:workspaceImport.history.loadError")}
           </p>
           <Button
-            variant="outline"
-            size="sm"
+            variant="outlined"
+            size="small"
             className="self-start sm:self-auto"
             loading={isFetching}
             onClick={() => refetch()}

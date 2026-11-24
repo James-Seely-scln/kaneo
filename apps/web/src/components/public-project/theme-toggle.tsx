@@ -1,7 +1,7 @@
 import { Moon, Sun } from "lucide-react";
 import type { MouseEvent } from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { getClickCoordinates } from "@/lib/get-click-coordinates";
 import { useUserPreferencesStore } from "@/store/user-preferences";
 

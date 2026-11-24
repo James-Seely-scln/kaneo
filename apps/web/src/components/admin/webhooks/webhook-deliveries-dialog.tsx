@@ -2,7 +2,7 @@ import { getWebhookErrorLabel } from "./get-webhook-error-label";
 import { useTranslation } from "react-i18next";
 import { DirectoryErrorRow } from "@/components/admin/directory/directory-error-row";
 import { getAuditActionLabel } from "@/components/admin/audit-log/get-audit-action-label";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
@@ -109,7 +109,7 @@ export function WebhookDeliveriesDialog({
           </ul>
         </DialogPanel>
         <DialogFooter>
-          <DialogClose render={<Button type="button" variant="outline" />}>
+          <DialogClose render={<Button type="button" variant="outlined" />}>
             {t("common:actions.close")}
           </DialogClose>
         </DialogFooter>

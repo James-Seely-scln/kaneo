@@ -2,7 +2,7 @@ import { client } from "@kaneo/libs";
 import type { InferResponseType } from "hono";
 import { HttpError } from "@/lib/http-error";
 
-export type ListRepositoriesResponse = InferResponseType<
+type ListRepositoriesResponse = InferResponseType<
   (typeof client)["github-integration"]["repositories"][":projectId"]["$get"],
   200
 >;

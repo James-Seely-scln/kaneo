@@ -11,7 +11,7 @@ import { AuthPage } from "@/components/auth/auth-page";
 import { useSettledSession } from "@/components/auth/use-settled-session";
 import PageTitle from "@/components/page-title";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { useMcpAuthorizationDecision } from "@/hooks/mutations/mcp/use-authorization-decision";
 import { useMcpAuthorizationRequest } from "@/hooks/queries/mcp/use-authorization-request";
 
@@ -66,7 +66,7 @@ function McpAuthorizePage() {
           description={t("auth:mcp.signIn.description")}
         >
           <Button
-            size="lg"
+            size="large"
             className="w-full"
             onClick={() =>
               void navigate({
@@ -128,8 +128,8 @@ function McpAuthorizePage() {
           />
           <div className="grid grid-cols-2 gap-2">
             <Button
-              variant="outline"
-              size="lg"
+              variant="outlined"
+              size="large"
               loading={decision.isPending && !decision.variables?.approved}
               disabled={decision.isPending}
               onClick={() => submitDecision(false)}
@@ -137,7 +137,7 @@ function McpAuthorizePage() {
               {t("auth:mcp.authorize.deny")}
             </Button>
             <Button
-              size="lg"
+              size="large"
               loading={decision.isPending && decision.variables?.approved}
               disabled={decision.isPending}
               onClick={() => submitDecision(true)}

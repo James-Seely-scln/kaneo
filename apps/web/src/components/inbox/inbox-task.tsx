@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import Activity from "@/components/activity";
 import CommentInput from "@/components/activity/comment-input";
 import { DueDateText } from "@/components/my-work/due-date-text";
-import { Button } from "@/components/ui/button";
+import { Button } from "@blueprintjs/core";
 import { HttpError } from "@/lib/http-error";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Timeline } from "@/components/ui/timeline";
@@ -92,7 +92,7 @@ export function InboxTask({ taskId, workspaceId }: InboxTaskProps) {
         </p>
         {!unavailable && (
           <Button
-            variant="outline"
+            variant="outlined"
             disabled={isFetching}
             onClick={() => void refetch()}
           >
@@ -115,8 +115,8 @@ export function InboxTask({ taskId, workspaceId }: InboxTaskProps) {
           </h2>
           {linkWorkspaceId && (
             <Button
-              variant="outline"
-              size="xs"
+              variant="outlined"
+              size="small"
               render={
                 <Link
                   to="/dashboard/workspace/$workspaceId/project/$projectId/task/$taskId"
